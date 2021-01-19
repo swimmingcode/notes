@@ -7,4 +7,7 @@ package org.youyuan.diy;
 
 public class StringUtils {
 
+    public static void main(String[] args) {
+
+    }
 }
