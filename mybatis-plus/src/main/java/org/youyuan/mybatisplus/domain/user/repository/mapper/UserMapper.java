@@ -1,8 +1,8 @@
-package org.youyuan.mybatisplus.mapper;
+package org.youyuan.mybatisplus.domain.user.repository.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import org.youyuan.mybatisplus.domain.user.po.UserPO;
+import org.youyuan.mybatisplus.domain.user.repository.po.UserPO;
 
 /**
  * @Author youjiancheng

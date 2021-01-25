@@ -1,4 +1,4 @@
-package org.youyuan.mybatisplus.config;
+package org.youyuan.mybatisplus.infrastructure.config;
 
 import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import org.springframework.context.annotation.Configuration;

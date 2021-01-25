@@ -1,4 +1,4 @@
-package org.youyuan.mybatisplus.domain.user.vo;
+package org.youyuan.mybatisplus.domain.user.entity.vo;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import lombok.AllArgsConstructor;

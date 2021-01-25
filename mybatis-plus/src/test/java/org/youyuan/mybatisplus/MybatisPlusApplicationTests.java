@@ -6,8 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.youyuan.mybatisplus.domain.user.po.UserPO;
-import org.youyuan.mybatisplus.mapper.UserMapper;
+import org.youyuan.mybatisplus.domain.user.repository.po.UserPO;
+import org.youyuan.mybatisplus.domain.user.repository.mapper.UserMapper;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = "org.youyuan.mybatisplus.mapper")
+@MapperScan(basePackages = "org.youyuan.mybatisplus.domain.user.repository.mapper")
 public class MybatisPlusApplication {
 
     public static void main(String[] args) {
