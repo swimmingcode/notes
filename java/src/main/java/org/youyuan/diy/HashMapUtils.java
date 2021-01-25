@@ -1,4 +1,4 @@
-package org.youyuan.java.diy;
+package org.youyuan.diy;
 
 /**
  * @Author youjiancheng

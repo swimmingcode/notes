@@ -1,10 +1,10 @@
-package org.youyuan.java;
+package org.youyuan.web;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JavaApplicationTests {
+class WebApplicationTests {
 
     @Test
     void contextLoads() {

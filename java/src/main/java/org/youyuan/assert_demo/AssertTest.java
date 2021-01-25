@@ -1,4 +1,4 @@
-package org.youyuan.java.assert_demo;
+package org.youyuan.assert_demo;
 
 /**
  * @Author youjiancheng

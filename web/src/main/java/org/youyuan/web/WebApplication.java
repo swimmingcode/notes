@@ -1,13 +1,13 @@
-package org.youyuan.java;
+package org.youyuan.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JavaApplication {
+public class WebApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JavaApplication.class, args);
+        SpringApplication.run(WebApplication.class, args);
     }
 
 }

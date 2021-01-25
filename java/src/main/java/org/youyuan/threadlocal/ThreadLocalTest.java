@@ -1,4 +1,4 @@
-package org.youyuan.java.threadlocal;
+package org.youyuan.threadlocal;
 
 import java.util.function.Supplier;
 

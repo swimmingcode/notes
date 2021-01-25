@@ -1,4 +1,4 @@
-package org.youyuan.java.offer;
+package org.youyuan.offer;
 
 /**
  * @Author youjiancheng
