@@ -44,4 +44,9 @@ public class TestController {
         //向下转型
         User user1 = (User) person;
     }
+
+    @GetMapping("/test2")
+    public void test2() {
+        log.info(System.getProperty("user.dir"));
+    }
 }
