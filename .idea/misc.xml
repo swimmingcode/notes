@@ -6,6 +6,9 @@
         <option value="$PROJECT_DIR$/mybatis-plus/pom.xml" />
         <option value="$PROJECT_DIR$/web/pom.xml" />
         <option value="$PROJECT_DIR$/java/pom.xml" />
+        <option value="$PROJECT_DIR$/redis/pom.xml" />
+        <option value="$PROJECT_DIR$/jwt/pom.xml" />
+        <option value="$PROJECT_DIR$/websocket/pom.xml" />
       </list>
     </option>
   </component>

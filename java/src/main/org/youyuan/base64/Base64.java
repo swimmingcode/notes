@@ -1,4 +1,4 @@
-package org.youyuan;
+package org.youyuan.base64;
 
 import sun.misc.BASE64Decoder;
 
