@@ -1,4 +1,4 @@
-package org.youyuan.jwt.utils.common;
+package org.youyuan.jwt.utils.common.response;
 
 /**
  * @Describe: 工厂模式构建返回前端数据

@@ -1,4 +1,4 @@
-package org.youyuan.jwt.utils.common;
+package org.youyuan.jwt.utils.common.response;
 
 import lombok.Data;
 
