@@ -9,4 +9,5 @@ import org.youyuan.jwt.domain.UserPO;
  * @Date: 2021/1/30 21:50
  */
 public interface UserMapper extends BaseMapper<UserPO> {
+
 }

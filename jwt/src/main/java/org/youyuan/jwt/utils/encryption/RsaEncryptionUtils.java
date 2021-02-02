@@ -4,6 +4,7 @@ package org.youyuan.jwt.utils.encryption;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -21,6 +22,7 @@ import java.security.spec.X509EncodedKeySpec;
  * @Author: youjiancheng
  * @Date: 2021/1/31 23:19
  */
+@Component
 public class RsaEncryptionUtils {
 
     public static String RSA_ALGORITHM = "RSA";
@@ -124,7 +126,7 @@ public class RsaEncryptionUtils {
      * @throws IllegalBlockSizeException
      * @throws InvalidKeyException
      */
-    private  byte[] encryptByPublicKey(byte[] data, byte[] key) throws NoSuchAlgorithmException,
+    public   byte[] encryptByPublicKey(byte[] data, byte[] key) throws NoSuchAlgorithmException,
             InvalidKeySpecException, NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
         //实例化密钥工厂
         KeyFactory keyFactory = KeyFactory.getInstance(RSA_ALGORITHM);
