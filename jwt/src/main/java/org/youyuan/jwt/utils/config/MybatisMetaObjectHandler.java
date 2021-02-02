@@ -2,6 +2,7 @@ package org.youyuan.jwt.utils.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
  * @Author: youjiancheng
  * @Date: 2021/2/2 17:20
  */
+@Configuration
 public class MybatisMetaObjectHandler implements MetaObjectHandler {
 
     @Override public void insertFill(MetaObject metaObject) {

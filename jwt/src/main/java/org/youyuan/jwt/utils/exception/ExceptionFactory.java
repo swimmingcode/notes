@@ -1,6 +1,6 @@
 package org.youyuan.jwt.utils.exception;
 
-import org.youyuan.jwt.utils.common.ResponseCode;
+import org.youyuan.jwt.utils.common.response.ResponseCode;
 
 /**
  * @Describe: 自定义异常工厂

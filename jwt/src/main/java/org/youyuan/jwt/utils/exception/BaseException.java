@@ -1,8 +1,7 @@
 package org.youyuan.jwt.utils.exception;
 
 import lombok.Data;
-import org.youyuan.jwt.utils.common.Response;
-import org.youyuan.jwt.utils.common.ResponseCode;
+import org.youyuan.jwt.utils.common.response.Response;
 
 /**
  * @Describe: #请描述当前类的功能#

@@ -3,6 +3,7 @@ package org.youyuan.jwt.service.impl;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.youyuan.jwt.domain.UserPO;
 import org.youyuan.jwt.mapper.UserMapper;
 import org.youyuan.jwt.service.TokenService;
@@ -36,6 +37,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserAccountVO createAccount() {
         //生成账号
         String userName = "YJ" + RandomStringUtils.randomAlphabetic(4);
