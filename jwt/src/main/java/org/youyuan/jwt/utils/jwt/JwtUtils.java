@@ -4,18 +4,20 @@ import io.jsonwebtoken.*;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
-
-
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @Describe: JWT工具：用于生成、验证Token
+ * @Author: youjiancheng
+ * @Date: 2021/1/30 21:16
+ *
  *  JwtToken生成的工具类
  *  JWT token的格式：header.payload.signature
  *  header的格式（算法、token的类型）：
@@ -24,20 +26,17 @@ import java.util.Map;
  *  {"name":"wang","created":1489079981393,"exp":1489684781}
  *  signature的生成算法：
  *  HMACSHA512(base64UrlEncode(header) + "." +base64UrlEncode(payload),secret)
- *
- * @Author: youjiancheng
- * @Date: 2021/1/30 21:16
  */
 @Slf4j
-@Data
 @Component
 public class JwtUtils {
 
+    // TODO: 2021/2/2 无法注入value值
     @Value("${jwt.secret}")
-    private String secret;
+    private String secret = "youyuancode@2021";
 
     @Value("${jwt.expiration}")
-    private Long expiration;
+    private Long expiration = 8640L;
 
     private  final String TOKEN = "token";
 
@@ -61,6 +60,7 @@ public class JwtUtils {
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
         //设置Header
         HashMap<String, Object> headMap = new HashMap<>();
+        // TODO: 2021/2/2 是否可以添加其他参数
         headMap.put("alg","HS512");
         headMap.put("typ","JWT");
         //设置claims
@@ -73,7 +73,7 @@ public class JwtUtils {
                 .setClaims(claimsMap)
                 .signWith(signatureAlgorithm, signingKey);
         if (expiration >= 0) {
-            long expMillis = nowMillis + expiration;
+            long expMillis = nowMillis + expiration * 1000;
             Date exp = new Date(expMillis);
             builder.setExpiration(exp);
         }
@@ -87,7 +87,7 @@ public class JwtUtils {
      * @param jwt
      * @return
      */
-    public  String parseJWT(String jwt) {
+    public String parseJWT(String jwt) {
         Claims claims = Jwts.parser()
                 .setSigningKey(DatatypeConverter.parseBase64Binary(secret))
                 .parseClaimsJws(jwt)

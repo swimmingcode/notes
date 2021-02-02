@@ -1,6 +1,6 @@
 package org.youyuan.offer;
 
-import javax.swing.tree.TreeNode;
+
 
 /**
  * @Author youjiancheng
@@ -38,10 +38,25 @@ import javax.swing.tree.TreeNode;
  * 链接：https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class Offer24 {
+public class Offer26 {
 
     public boolean isSubStructure(TreeNode A, TreeNode B) {
+        if (A == null && B == null) {
+            return false;
+        }
+        if (A == null || B == null) {
+            return false;
+        }
+        return dfs(A,B) || isSubStructure(A.left,B) || isSubStructure(A.right,B);
+    }
 
-        return true;
+    private boolean dfs(TreeNode a, TreeNode b) {
+        if (a == null ) {
+            return true;
+        }
+        if (a.val != b.val || b == null) {
+            return false;
+        }
+        return dfs(a.left,b.left) && dfs(a.right,b.right);
     }
 }

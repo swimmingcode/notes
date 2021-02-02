@@ -9,8 +9,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.youyuan.jwt.domain.RolePO;
 import org.youyuan.jwt.utils.encryption.RsaEncryptionUtils;
 import sun.misc.BASE64Encoder;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * @Describe: 自定义Token，用于存储用户的信息
@@ -27,4 +31,5 @@ public class Token {
     private  Integer id;
 
     private String name;
+
 }
