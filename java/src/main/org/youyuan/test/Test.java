@@ -7,6 +7,8 @@ package org.youyuan.test;
  */
 public class Test {
     public static void main(String[] args) {
-
+        Class<? extends Test> aClass = new Test().getClass();
+        ClassLoader classLoader = aClass.getClassLoader();
+        System.out.println(classLoader.getParent());
     }
 }

@@ -32,6 +32,12 @@ import javax.swing.*;
  */
 public class Offer12 {
 
+    public static void main(String[] args) {
+        char[][] chars = new char[1][1];
+        chars[0][0] = 'a';
+        System.out.println(new Offer12().exist(chars, "ab"));
+    }
+
     public boolean exist(char[][] board, String word) {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
@@ -56,12 +62,12 @@ public class Offer12 {
         if (x < 0 || x >= board.length || y < 0 || y >= board[0].length || board[x][y] != word.charAt(i)) {
             return false;
         }
-        if (i == board.length - 1) {
+        if (i == word.length() - 1) {
             return true;
         }
         //防止重复遍历，设置一个标志字符
         char temp = board[x][y];
-        board[x][y] = '\0';
+        board[x][y] = '*';
         Boolean res = dfs(board, word, i + 1, x, y - 1) //向上
                    || dfs(board, word, i + 1, x, y + 1) //向下
                    || dfs(board, word, i + 1, x + 1, y)//向右
