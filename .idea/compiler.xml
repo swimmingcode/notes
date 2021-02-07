@@ -11,6 +11,7 @@
         <module name="java" />
         <module name="websocket" />
         <module name="web" />
+        <module name="myspring" />
         <module name="mybatis-plus" />
         <module name="redis" />
       </profile>
@@ -19,6 +20,7 @@
       <module name="java" target="1.8" />
       <module name="jwt" target="1.8" />
       <module name="mybatis-plus" target="1.8" />
+      <module name="myspring" target="1.5" />
       <module name="redis" target="1.8" />
       <module name="web" target="1.8" />
       <module name="websocket" target="1.8" />
