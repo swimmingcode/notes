@@ -1,15 +1,13 @@
 package org.youyuan.spring;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.youyuan.spring.strategy.AutowiredAnnotation;
 import org.youyuan.spring.strategy.ContextStrategy;
 import org.youyuan.spring.strategy.ValueAnnotation;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @Describe: #请描述当前类的功能#
@@ -29,57 +27,38 @@ public class MyAnnotationConfigApplicationContext {
     }
 
 
+    public Object getBean(String beanName) {
+        return objectMap.get(beanName);
+    }
     /**
      * 针对Autowired注解进行赋值
      */
     public void beanDefinitionAutowired() {
-        try {
-            for (BeanDefinition beanDefinition : this.beanDefinitions) {
-                String beanName = beanDefinition.getBeanName();
-                Class aClass = beanDefinition.getClassName();
-                Object o = aClass.newInstance();;
-                //创建对象并给其赋值
-                for (Field field : aClass.getDeclaredFields()) {
-                    Annotation[] annotations = field.getAnnotations();
-                    for (Annotation annotation : annotations) {
-                        //会有问题 每一个属性返回一个Object 之前的会被覆盖掉
-                        String annotationName = annotation.toString();
-                        if (annotationName.contains("Autowired")) {
-                            try {
-                                Value valueAnnotation = field.getAnnotation(Value.class);
-                                if (valueAnnotation != null) {
-                                    //对其进行赋值 value的值都为String，需要相应转换
-                                    String value = valueAnnotation.value();
-                                    //添加set方法 调用set方法对其进行赋值
-                                    //                        System.out.println(field.getName());
-                                    String methodName = "set" + field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1, field.getName().length());
-                                    Method method = aClass.getMethod(methodName,field.getType());
-                                    //                        System.out.println(field.getType().getName());
-                                    switch (field.getType().getName()) {
-                                        case "java.lang.Integer":
-                                            int i = Integer.parseInt(value);
-                                            method.invoke(o,i);
-                                            break;
-                                        case "java.lang.String":
-                                            String s = String.valueOf(value);
-                                            method.invoke(o,s);
-                                            break;
-                                    }
-                                }
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            } catch (NoSuchMethodException e) {
-                                e.printStackTrace();
-                            } catch (InvocationTargetException e) {
-                                e.printStackTrace();
-                            }
+        Iterator<BeanDefinition> iterator = this.beanDefinitions.iterator();
+        while (iterator.hasNext()) {
+            BeanDefinition next = iterator.next();
+            Class className = next.getClassName();
+            for (Field declaredField : className.getDeclaredFields()) {
+                Autowired annotation = declaredField.getAnnotation(Autowired.class);
+                if (annotation != null) {
+                    Qualifier qualifier = declaredField.getAnnotation(Qualifier.class);
+                    if (qualifier != null) {
+                        String value = qualifier.value();
+                        //需要赋值的Bean
+                        Object bean = getBean(value);
+                        try {
+                            Method method = className.getMethod("set" + value.substring(0, 1).toUpperCase() + value.substring(1),declaredField.getType());
+                            method.invoke(objectMap.get(next.getBeanName()),bean);
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        } catch (NoSuchMethodException | InvocationTargetException e) {
+                            e.printStackTrace();
                         }
+
                     }
                 }
-                this.objectMap.put(beanName,o);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+
         }
     }
 
