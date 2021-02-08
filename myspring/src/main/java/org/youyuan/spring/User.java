@@ -12,13 +12,16 @@ public class User {
     @Value("zs")
     private String name;
     @Autowired
+    @Qualifier("role")
     private Role role;
+
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", role=" + role +
                 '}';
     }
 
