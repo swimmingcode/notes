@@ -6,6 +6,9 @@ import org.youyuan.dao.MyDao2;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -32,22 +35,60 @@ public class DaoFactory {
 
     }
 
+    static Map map = new HashMap<String,Object>();
 
-    public static Dao getDate(String type) {
+    /**
+     * 配置文件
+     */
+    static Properties properties = new Properties();
+
+    static {
         //读取配置文件
         InputStream resourceAsStream = DaoFactory.class.getClassLoader().getResourceAsStream("data.properties");
-        Properties properties = new Properties();
         try {
             properties.load(resourceAsStream);
         } catch (IOException e) {
             System.out.println("读取错误");
             e.printStackTrace();
         }
-        Object myDao = properties.get("MyDao");
+    }
 
-        //根据反射创建对象
-        DaoFactory.class;
-        return null;
+    /**
+     * 单例模式，加缓冲
+     *
+     * @param
+     * @return
+     */
+    public static Object getDate(String className) {
+        String packageClass = ((String) properties.get(className));
+        //判断是否已经创建 双重锁检测
+        if (!map.containsKey(packageClass)) {
+            //根据反射创建对象
+            try {
+                synchronized (DaoFactory.class) {
+                    if (!map.containsKey(packageClass)) {
+                        Class<?> aClass = Class.forName(packageClass);
+                        Object o = aClass.getConstructor().newInstance();
+                        if (o == null) {
+                            throw new RuntimeException("配置出错，无此类");
+                        }
+                        map.put(packageClass, o);
+                    }
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return map.get(packageClass);
     }
 
     public static void main(String[] args) {
