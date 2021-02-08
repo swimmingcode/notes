@@ -20,7 +20,7 @@
       <module name="java" target="1.8" />
       <module name="jwt" target="1.8" />
       <module name="mybatis-plus" target="1.8" />
-      <module name="myspring" target="1.5" />
+      <module name="myspring" target="8" />
       <module name="redis" target="1.8" />
       <module name="web" target="1.8" />
       <module name="websocket" target="1.8" />
