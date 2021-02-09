@@ -1,10 +1,5 @@
 package org.youyuan.spring;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
-import org.youyuan.spring.strategy.AutowiredAnnotation;
-import org.youyuan.spring.strategy.ContextStrategy;
-import org.youyuan.spring.strategy.ValueAnnotation;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import java.util.*;
@@ -16,25 +11,52 @@ import java.util.*;
  */
 public class MyAnnotationConfigApplicationContext {
 
+    /**
+     * 包下的所有Class
+     */
     private  Set<Class<?>> classes;
 
-    private Set<BeanDefinition> beanDefinitions = new HashSet<BeanDefinition>();
+    /**
+     * 所有的BeanDefine
+     */
+    private Set<BeanDefinition> beanDefinitionsIOC = new HashSet<BeanDefinition>();
 
+    /**
+     * Bean对象：key/value=beanName/Object
+     */
     private Map<String,Object> objectMap = new HashMap<>();
 
     public MyAnnotationConfigApplicationContext(String packageName) {
+        //1、获取包下的所有Class
         this.classes = MyTools.getClasses(packageName);
+        //2、获取所有的BeanDefine
+        this.beanDefinitionsIOC = getBeanDefinitionsIOC();
+        //3、根据原材料创建bean
+        beanDefinitionCreateObject();
+        //4、Autowired自动注入
+        beanDefinitionAutowired();
     }
 
 
     public Object getBean(String beanName) {
         return objectMap.get(beanName);
     }
+
     /**
-     * 针对Autowired注解进行赋值
+     * 获取所有Bean的名字
+     *
+     * @return
      */
-    public void beanDefinitionAutowired() {
-        Iterator<BeanDefinition> iterator = this.beanDefinitions.iterator();
+    public String[] getBeanNames() {
+        Set<String> strings = this.objectMap.keySet();
+        return strings.toArray(new String[0]);
+    }
+
+    /**
+     * 针对Autowired/Qualified注解进行赋值
+     */
+    public void beanDefinitionAutowired()  {
+        Iterator<BeanDefinition> iterator = this.beanDefinitionsIOC.iterator();
         while (iterator.hasNext()) {
             BeanDefinition next = iterator.next();
             Class className = next.getClassName();
@@ -43,18 +65,32 @@ public class MyAnnotationConfigApplicationContext {
                 if (annotation != null) {
                     Qualifier qualifier = declaredField.getAnnotation(Qualifier.class);
                     if (qualifier != null) {
+                        //通过名称注入
                         String value = qualifier.value();
                         //需要赋值的Bean
                         Object bean = getBean(value);
                         try {
                             Method method = className.getMethod("set" + value.substring(0, 1).toUpperCase() + value.substring(1),declaredField.getType());
-                            method.invoke(objectMap.get(next.getBeanName()),bean);
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        } catch (NoSuchMethodException | InvocationTargetException e) {
+                            method.invoke(getBean(next.getBeanName()),bean);
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
-
+                    } else {
+                        //通过类型自动注入
+                        //该字段的字节码类型
+                        Class<?> type = declaredField.getType();
+                        //该类的Bean
+                        //需要找到该字段的Bean，再给其赋值
+                        Object bean = getBean(next.getBeanName());
+                        String name = declaredField.getName();
+                        try {
+                            Method method = className.getMethod("set" + name.substring(0, 1).toUpperCase() + name.substring(1),declaredField.getType());
+                            //将实例化后的Bean注入
+                            Object o = getIocObjectByBeanClass(type);
+                            method.invoke(bean, o);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -63,13 +99,32 @@ public class MyAnnotationConfigApplicationContext {
     }
 
     /**
+     * 通过class获取IOC的Bean对象
+     *
+     * @param type
+     * @return
+     */
+    public Object getIocObjectByBeanClass(Class<?> type ) {
+        //先获取BeanName
+        Iterator<BeanDefinition> iterator = this.getBeanDefinitionsIOC().iterator();
+        while (iterator.hasNext()) {
+            BeanDefinition next = iterator.next();
+            if (next.getClassName() == type) {
+                return getBean(next.getBeanName());
+            }
+        }
+        return null;
+    }
+
+
+    /**
      * beanDefinitions注入值
      * @Value注解
      * @Autowired 需要在@Value注入之后才能进行注入
      */
     public void beanDefinitionCreateObject() {
         try {
-            for (BeanDefinition beanDefinition : this.beanDefinitions) {
+            for (BeanDefinition beanDefinition : this.beanDefinitionsIOC) {
                 String beanName = beanDefinition.getBeanName();
                 Class aClass = beanDefinition.getClassName();
                 Object o = aClass.newInstance();;
@@ -116,7 +171,6 @@ public class MyAnnotationConfigApplicationContext {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        beanDefinitionAutowired();
     }
 
     /**
@@ -124,7 +178,8 @@ public class MyAnnotationConfigApplicationContext {
      *
      * @return
      */
-    public Set<BeanDefinition> getBeanDefinitions() {
+    public Set<BeanDefinition> getBeanDefinitionsIOC() {
+        Set<BeanDefinition> beanDefinitions = new HashSet<BeanDefinition>();
         Set<Class<?>> classes = this.classes;
         for (Class<?> aClass : classes) {
             Component component = aClass.getAnnotation(Component.class);
@@ -140,13 +195,13 @@ public class MyAnnotationConfigApplicationContext {
                         value = s.substring(0, 1).toLowerCase() + s.substring(1, s.length());
                     }
                     BeanDefinition beanDefinition = new BeanDefinition(value , aClass);
-                    this.beanDefinitions.add(beanDefinition);
+                    beanDefinitions.add(beanDefinition);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
-        return this.beanDefinitions;
+        return beanDefinitions;
     }
 
 
@@ -159,8 +214,8 @@ public class MyAnnotationConfigApplicationContext {
         this.classes = classes;
     }
 
-    public void setBeanDefinitions(Set<BeanDefinition> beanDefinitions) {
-        this.beanDefinitions = beanDefinitions;
+    public void setBeanDefinitionsIOC(Set<BeanDefinition> beanDefinitionsIOC) {
+        this.beanDefinitionsIOC = beanDefinitionsIOC;
     }
 
     public Map<String, Object> getObjectMap() {
