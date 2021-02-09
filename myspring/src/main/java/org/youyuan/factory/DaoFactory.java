@@ -54,7 +54,7 @@ public class DaoFactory {
     }
 
     /**
-     * 单例模式，加缓冲
+     * 单例模式，加缓存
      *
      * @param
      * @return

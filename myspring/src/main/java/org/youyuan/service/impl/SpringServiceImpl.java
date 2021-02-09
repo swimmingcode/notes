@@ -19,6 +19,7 @@ public class SpringServiceImpl implements SpringService {
      */
     private Dao daoTwo = (Dao) DaoFactory.getDate("MyDao");
 
+    @Override
     public String getDate() {
         //需求变化时，需要切换数据库，如何处理
         //处理方法：1、构建工厂 只需要把你想要你的DAO传入即可 ，但需要修改代码，不够方便。
@@ -29,6 +30,7 @@ public class SpringServiceImpl implements SpringService {
         //多线程条件下，并未出现问题
         for (int i = 0; i < 10; i++) {
             new Thread(new Runnable() {
+                @Override
                 public void run() {
                     System.out.println((Dao) DaoFactory.getDate("MyDao") + Thread.currentThread().getName());
                 }

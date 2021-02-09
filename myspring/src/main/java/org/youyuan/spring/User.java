@@ -12,7 +12,7 @@ public class User {
     @Value("zs")
     private String name;
     @Autowired
-    @Qualifier("role")
+//    @Qualifier("role")
     private Role role;
 
 
