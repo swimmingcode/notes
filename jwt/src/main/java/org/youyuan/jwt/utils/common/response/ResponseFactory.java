@@ -1,7 +1,7 @@
 package org.youyuan.jwt.utils.common.response;
 
 /**
- * @Describe: 工厂模式构建返回前端数据
+ * @Describe: 工厂模式返回数据
  * @Author: youjiancheng
  * @Date: 2021/2/2 15:17
  */

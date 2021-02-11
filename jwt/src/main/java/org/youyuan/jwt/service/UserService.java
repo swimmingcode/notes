@@ -25,4 +25,12 @@ public interface UserService {
      */
     UserAccountVO createAccount();
 
+
+    /**
+     * 验证用户名密码
+     *
+     * @param username
+     * @param password
+     */
+    void verifyUserNameAndPassword(String username, String password);
 }
