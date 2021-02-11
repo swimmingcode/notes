@@ -6,6 +6,7 @@ package org.youyuan.dao;
  * @Date: 2021/2/7 18:15
  */
 public class MyDao2 implements Dao {
+    @Override
     public String getDate() {
         return "Spring IOC MyDao2";
     }

@@ -1,5 +1,6 @@
 package org.youyuan.jwt.vo.response;
 
+import com.sun.istack.internal.NotNull;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @ApiModel(value = "用户账号")
 public class UserAccountVO {
+
     @ApiModelProperty("用户名")
     private String username;
     @ApiModelProperty("账号")

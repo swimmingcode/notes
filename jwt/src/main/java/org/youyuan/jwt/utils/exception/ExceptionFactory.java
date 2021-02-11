@@ -14,6 +14,6 @@ public class ExceptionFactory extends BaseException {
     }
 
     public ExceptionFactory(ResponseCode responseCode) {
-        super(responseCode.getCode(),responseCode.getMessage());
+        super(responseCode);
     }
 }
