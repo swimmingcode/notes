@@ -1,5 +1,6 @@
 package org.youyuan.jwt.service;
 
+import org.youyuan.jwt.domain.UserPO;
 import org.youyuan.jwt.utils.jwt.Token;
 import org.youyuan.jwt.vo.response.UserAccountVO;
 
@@ -27,10 +28,18 @@ public interface UserService {
 
 
     /**
-     * 验证用户名密码
+     *  验证用户名密码
      *
      * @param username
      * @param password
+     * @return
      */
-    void verifyUserNameAndPassword(String username, String password);
+    UserPO verifyUserNameAndPassword(String username, String password);
+
+    /**
+     * 退出账号
+     *
+     * @param username
+     */
+    void logoutAccount(String username);
 }

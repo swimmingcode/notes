@@ -10,7 +10,6 @@ import java.util.ArrayList;
  * @Date: 2021/2/2 15:26
  */
 @Data
-//@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Response<T> {
     private int code;
     private String message;
@@ -32,14 +31,13 @@ public class Response<T> {
     public Response(ResponseCode responseCode) {
         this.code = responseCode.getCode();
         this.message = responseCode.getMessage();
-        this.data = (T) new ArrayList<T>();
+        // TODO: 2021/2/12 如何返回一个{}
     }
 
 
     public Response(int code, String message) {
         this.code = code;
         this.message = message;
-        this.data = (T) new ArrayList<T>();
     }
 
 

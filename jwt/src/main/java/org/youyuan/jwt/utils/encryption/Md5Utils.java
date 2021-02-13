@@ -20,9 +20,4 @@ public class Md5Utils {
         return DigestUtils.md5Hex(DigestUtils.md5Hex(str + salt) + salt);
     }
 
-    public static void main(String[] args) {
-        //9455b96cf90025273b4530c6434c1939
-        //System.out.println(encryptedMd5("123"));
-    }
-
 }

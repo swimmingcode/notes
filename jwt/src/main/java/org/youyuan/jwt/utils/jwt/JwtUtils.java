@@ -1,12 +1,12 @@
 package org.youyuan.jwt.utils.jwt;
 
 import io.jsonwebtoken.*;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
+import org.youyuan.jwt.utils.common.response.ResponseCode;
+import org.youyuan.jwt.utils.exception.ExceptionFactory;
+
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
@@ -33,10 +33,10 @@ public class JwtUtils {
 
     // TODO: 2021/2/2 无法注入value值
     @Value("${jwt.secret}")
-    private String secret = "youyuancode@2021";
+    private String secret ;
 
     @Value("${jwt.expiration}")
-    private Long expiration = 8640L;
+    private Long expiration;
 
     private  final String TOKEN = "token";
 
@@ -88,10 +88,16 @@ public class JwtUtils {
      * @return
      */
     public String parseJWT(String jwt) {
-        Claims claims = Jwts.parser()
-                .setSigningKey(DatatypeConverter.parseBase64Binary(secret))
-                .parseClaimsJws(jwt)
-                .getBody();
+        Claims claims = null;
+        try {
+            claims = Jwts.parser()
+                    .setSigningKey(DatatypeConverter.parseBase64Binary(secret))
+                    .parseClaimsJws(jwt)
+                    .getBody();
+        } catch (Exception e) {
+            log.error("验证JWT失败" + e.getMessage());
+           throw new ExceptionFactory(ResponseCode.JWT_VALID_ERROR);
+        }
         return ((String) claims.get(TOKEN));
 //        System.out.println("ID: " + claims.getId());
 //        System.out.println("Subject: " + claims.getSubject());

@@ -5,7 +5,9 @@ import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.youyuan.jwt.utils.common.response.ResponseCode;
 import org.youyuan.jwt.utils.encryption.RsaEncryptionUtils;
+import org.youyuan.jwt.utils.exception.ExceptionFactory;
 
 /**
  * @Describe: #请描述当前类的功能#
@@ -58,6 +60,7 @@ public class TokenUtils {
             tokenRes = objectMapper.readValue(new String(bytes,"UTF-8"),Token.class);
         } catch (Exception e) {
             log.info("token解密失败");
+            throw new ExceptionFactory(ResponseCode.TOKEN_ENCRYPTION_ERROR);
         }
         return tokenRes;
     }
