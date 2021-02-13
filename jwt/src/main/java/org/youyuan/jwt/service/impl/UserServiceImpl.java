@@ -15,7 +15,6 @@ import org.youyuan.jwt.utils.exception.BaseException;
 import org.youyuan.jwt.utils.jwt.Token;
 import org.youyuan.jwt.vo.response.UserAccountVO;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,7 +58,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void verifyUserNameAndPassword(String username, String password) {
+    public UserPO
+    verifyUserNameAndPassword(String username, String password) {
         QueryWrapper<UserPO> wrapper = new QueryWrapper();
         wrapper.eq("name",username);
         List<UserPO> userPOS = userMapper.selectList(wrapper);
@@ -69,5 +69,16 @@ public class UserServiceImpl implements UserService {
         if (!pwd.equals(userPOS.get(0).getPassword())) {
             throw new BaseException(ResponseCode.USER_PASSWORD_ERROR);
         }
+        return userPOS.get(0);
+    }
+
+    @Override
+    public void logoutAccount(String username) {
+        QueryWrapper<UserPO> wrapper = new QueryWrapper();
+        wrapper.eq("name",username);
+        List<UserPO> userPOS = userMapper.selectList(wrapper);
+        Optional.ofNullable(userPOS).orElseThrow(() -> new BaseException(ResponseCode.USER_Name_ERROR));
+        //清空cookie
+        tokenService.logoutCookie();
     }
 }

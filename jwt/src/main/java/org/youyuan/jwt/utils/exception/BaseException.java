@@ -1,7 +1,6 @@
 package org.youyuan.jwt.utils.exception;
 
 import lombok.Data;
-import org.youyuan.jwt.utils.common.response.Response;
 import org.youyuan.jwt.utils.common.response.ResponseCode;
 
 /**
@@ -12,7 +11,8 @@ import org.youyuan.jwt.utils.common.response.ResponseCode;
 @Data
 public class BaseException extends RuntimeException {
     private int code;
-    private String message;
+    //message在RuntimeException中包含，不需要自定义
+//    private String message;
 //    private Response response;
 
     public BaseException(ResponseCode responseCode) {
