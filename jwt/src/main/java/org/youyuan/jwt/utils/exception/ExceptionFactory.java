@@ -3,7 +3,7 @@ package org.youyuan.jwt.utils.exception;
 import org.youyuan.jwt.utils.common.response.ResponseCode;
 
 /**
- * @Describe: 自定义异常工厂
+ * @Describe: 工程模式自定义异常
  * @Author: youjiancheng
  * @Date: 2021/2/2 15:55
  */

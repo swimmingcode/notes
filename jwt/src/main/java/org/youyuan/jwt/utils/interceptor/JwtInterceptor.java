@@ -1,6 +1,8 @@
 package org.youyuan.jwt.utils.interceptor;
 
 import ch.qos.logback.core.pattern.color.ANSIConstants;
+import com.alibaba.fastjson.JSONArray;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
@@ -8,6 +10,7 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.youyuan.jwt.service.TokenService;
+import org.youyuan.jwt.utils.common.redis.RedisUtils;
 import org.youyuan.jwt.utils.common.response.ResponseCode;
 import org.youyuan.jwt.utils.exception.ExceptionFactory;
 import org.youyuan.jwt.utils.jwt.annotation.UnLogin;
@@ -16,9 +19,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+
+import static org.youyuan.jwt.utils.common.Constant.BLACK_TOKEN__LIST;
+import static org.youyuan.jwt.utils.common.Constant.TOKEN;
 
 /**
  * @Describe: #请描述当前类的功能#
@@ -26,10 +30,14 @@ import java.util.Optional;
  * @Date: 2021/1/30 22:03
  */
 @Component
+@Slf4j
 public class JwtInterceptor  implements HandlerInterceptor {
 
     @Autowired
     TokenService tokenService;
+
+    @Autowired
+    RedisUtils redisUtils;
 
     /**
      * 放行白名单
@@ -55,9 +63,28 @@ public class JwtInterceptor  implements HandlerInterceptor {
         if (verifyAnnotation(handler)) {
             return true;
         }
+        //Toke黑名单验证
+        verifyBlackTokenList(request);
         //Token验证
         getCurrentToken(request);
         return true;
+    }
+
+    /**
+     * Toke黑名单验证
+     *
+     * @param request
+     */
+    private void verifyBlackTokenList(HttpServletRequest request) {
+        Map<String, Cookie> stringCookieMap = ReadCookieMap(request);
+        List<Object> objects = redisUtils.opsForListGetValue(BLACK_TOKEN__LIST);
+        for (int i = 0; i < objects.size(); i++) {
+            Object token = objects.get(i);
+            if (stringCookieMap.containsKey(TOKEN) && stringCookieMap.get(TOKEN).getValue().equals(token)) {
+                log.error("账号已退出，此token为黑名单token");
+                throw new ExceptionFactory(ResponseCode.TOKEN_LOGOUT);
+            }
+        }
     }
 
     /**

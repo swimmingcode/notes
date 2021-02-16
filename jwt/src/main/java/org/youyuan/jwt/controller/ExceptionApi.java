@@ -5,17 +5,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.youyuan.jwt.utils.common.response.Response;
 import org.youyuan.jwt.utils.common.response.ResponseCode;
 import org.youyuan.jwt.utils.common.response.ResponseFactory;
-import org.youyuan.jwt.utils.exception.BaseException;
 import org.youyuan.jwt.utils.exception.ExceptionFactory;
 
 import java.util.List;
 
-import static org.youyuan.jwt.utils.common.response.ResponseCode.Parameter_exception;
+import static org.youyuan.jwt.utils.common.response.ResponseCode.PARAMETER_EXCEPTION;
 
 /**
  * @Describe:全局异常处理类
@@ -42,7 +40,7 @@ public class ExceptionApi {
             stringBuilder.append(i+1 + ":" + defaultMessage+ " ");
         }
         log.error(stringBuilder.toString());
-        return ResponseFactory.productEmptyResult(Parameter_exception.getCode(),stringBuilder.toString());
+        return ResponseFactory.productEmptyResult(PARAMETER_EXCEPTION.getCode(),stringBuilder.toString());
     }
 
     /**
@@ -54,7 +52,7 @@ public class ExceptionApi {
     @ExceptionHandler(value = NullPointerException.class)
     public Response<Void> exceptionHandler(NullPointerException e){
         log.error("发生空指针异常！原因是:",e);
-        return ResponseFactory.productEmptyResult(ResponseCode.Null_Pointer_Exception);
+        return ResponseFactory.productEmptyResult(ResponseCode.NULL_POINTER_EXCEPTION);
     }
 
     @ExceptionHandler(value = ExceptionFactory.class)
