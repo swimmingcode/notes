@@ -8,4 +8,6 @@ public class Constant {
      * Token黑名单
      */
     public static final String  BLACK_TOKEN__LIST = "blackTokenList";
+
+    public static final String PASSWORD_ERROR_TIMES = "passwordErrorTimes";
 }

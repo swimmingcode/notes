@@ -53,7 +53,7 @@ public class RedisUtils {
      * @param key
      * @param value
      */
-    public void opsForList(String key, Object value) {
+    public void opsForList(String key, String value) {
         redisTemplate.opsForList().leftPush(key,value);
     }
 

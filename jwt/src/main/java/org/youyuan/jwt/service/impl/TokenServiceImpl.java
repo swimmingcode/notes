@@ -14,8 +14,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.youyuan.jwt.utils.common.Constant.BLACK_TOKEN__LIST;
 import static org.youyuan.jwt.utils.common.Constant.TOKEN;
@@ -80,12 +78,8 @@ public class TokenServiceImpl implements TokenService {
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals(TOKEN)) {
                 //将token设置为黑名单 存入Redis当中
-                List<String> value = new ArrayList<>();
-                value.add(cookie.getValue());
-                if (!redisTemplate.hasKey(BLACK_TOKEN__LIST)) {
-                    redisTemplate.opsForList().set(BLACK_TOKEN__LIST,60 * 60 * 24L,new ArrayList<>());
-                }
-                redisUtils.opsForList(BLACK_TOKEN__LIST,value);
+                redisUtils.opsForList(BLACK_TOKEN__LIST,cookie.getValue());
+//                redisUtils.opsForValue(cookie.getValue(),System.currentTimeMillis());
                 cookie.setMaxAge(0);
                 cookie.setPath("/");  //路径一定要写上，不然销毁不了
                 globalHttpResponse.addCookie(cookie);

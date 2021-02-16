@@ -18,6 +18,7 @@ import org.youyuan.jwt.utils.common.response.ResponseFactory;
 import org.youyuan.jwt.utils.jwt.Token;
 import org.youyuan.jwt.utils.jwt.annotation.UnLogin;
 import org.youyuan.jwt.vo.response.UserAccountVO;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -46,10 +47,13 @@ public class UserApi {
     RedisTemplate<String,Object> redisTemplate;
 
     @UnLogin
-    @ApiResponse(code = 200,message = "成功")
+    @ApiResponses({
+            @ApiResponse(code = 200,message = "成功")
+    })
     @ApiOperation(value = "登录接口",notes = "返回Token")
     @PostMapping("/account/login")
-    public Response<String> login(@ApiParam(value = "用户名/密码") @RequestBody @Valid UserAccountVO userAccountVO,
+    public Response<String> login(@ApiIgnore  @org.youyuan.jwt.utils.jwt.annotation.Token Token tokenDetail,
+                                  @ApiParam(value = "用户名/密码") @RequestBody @Valid UserAccountVO userAccountVO,
                                   HttpServletResponse response) {
         UserPO userPO = userService.verifyUserNameAndPassword(userAccountVO.getUsername(), userAccountVO.getPassword());
         //生成Token
@@ -84,14 +88,30 @@ public class UserApi {
         return ResponseFactory.<Void>productEmptyResult(ResponseCode.OK);
     }
 
+
+    @ApiResponse(code = 200,message = "成功")
+    @ApiOperation(value = "修改用户密码")
+    @PutMapping("/update/account/password")
+    public Response<Void> updateAccountPassword(@ApiParam(value = "账户名称") @RequestParam(value = "username") String username) {
+        return ResponseFactory.<Void>productEmptyResult(ResponseCode.OK);
+    }
+
+    @ApiResponse(code = 200,message = "成功")
+    @ApiOperation(value = "修改用户名")
+    @PutMapping("/update/account/username")
+    public Response<Void> updateAccountUserName(@ApiParam(value = "账户名称") @RequestParam(value = "username") String username) {
+        //名称唯一
+        return ResponseFactory.<Void>productEmptyResult(ResponseCode.OK);
+    }
+
+
+
 //    @UnLogin
 //    @GetMapping("/redis")
 //    public Response<UserAccountVO> createAccount1() {
 //        ArrayList<String> objects = new ArrayList<>();
 //        objects.add("1");
 //        objects.add("2");
-//
-//
 //        redisTemplate.opsForValue().set("k",objects);
 //        ArrayList k = (ArrayList) redisTemplate.opsForValue().get("k");
 //        log.info("{}",k);
