@@ -79,7 +79,6 @@ public class TokenServiceImpl implements TokenService {
             if (cookie.getName().equals(TOKEN)) {
                 //将token设置为黑名单 存入Redis当中
                 redisUtils.opsForList(BLACK_TOKEN__LIST,cookie.getValue());
-//                redisUtils.opsForValue(cookie.getValue(),System.currentTimeMillis());
                 cookie.setMaxAge(0);
                 cookie.setPath("/");  //路径一定要写上，不然销毁不了
                 globalHttpResponse.addCookie(cookie);

@@ -49,6 +49,11 @@ public class UserPO {
     private Date updateTime;
 
     /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
      * 逻辑删除
      */
     @TableLogic
