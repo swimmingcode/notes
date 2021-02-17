@@ -9,6 +9,7 @@ import org.youyuan.jwt.utils.common.response.ResponseCode;
  */
 public class ExceptionFactory extends BaseException {
 
+    //应该由static静态方法返回
     public ExceptionFactory(int code, String message) {
         super(code, message);
     }

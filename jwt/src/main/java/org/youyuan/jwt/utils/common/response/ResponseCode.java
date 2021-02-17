@@ -24,7 +24,8 @@ public enum ResponseCode {
     NO_TOKEN(2004,"token不存在,请重新登录"),
     TOKEN_ENCRYPTION_ERROR(205,"token解密失败"),
     TOKEN_LOGOUT(206,"账号已退出，Token失效"),
-    PASSWORD_ERROR_TIMES(207,"输入密码错误超过五次，账号被锁定五分钟");
+    PASSWORD_ERROR_TIMES(207,"输入密码错误超过五次，账号被锁定五分钟"),
+    AUTH_CODE_ERROR(208,"验证码错误");
 
     @Getter
     @Setter
