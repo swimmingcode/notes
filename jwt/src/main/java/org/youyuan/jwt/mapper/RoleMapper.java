@@ -10,4 +10,5 @@ import org.youyuan.jwt.domain.RolePO;
  */
 public interface RoleMapper extends BaseMapper<RolePO> {
 
+
 }

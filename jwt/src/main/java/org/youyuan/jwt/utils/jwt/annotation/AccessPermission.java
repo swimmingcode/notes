@@ -12,5 +12,5 @@ import java.lang.annotation.*;
 @Documented
 @Target(value = {ElementType.METHOD,ElementType.TYPE})
 public @interface AccessPermission {
-    String[] roleCode() default " ";
+    String[] roleName() default " ";
 }

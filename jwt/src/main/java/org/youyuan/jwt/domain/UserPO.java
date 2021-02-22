@@ -57,6 +57,7 @@ public class UserPO {
      * 逻辑删除
      */
     @TableLogic
+    @TableField(select = false)
     private Integer deleted;
 
 }

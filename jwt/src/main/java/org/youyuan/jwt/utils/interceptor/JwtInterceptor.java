@@ -1,19 +1,24 @@
 package org.youyuan.jwt.utils.interceptor;
 
-import ch.qos.logback.core.pattern.color.ANSIConstants;
-import com.alibaba.fastjson.JSONArray;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.youyuan.jwt.mapper.UserMapper;
 import org.youyuan.jwt.service.TokenService;
+import org.youyuan.jwt.service.UserService;
 import org.youyuan.jwt.utils.common.redis.RedisUtils;
 import org.youyuan.jwt.utils.common.response.ResponseCode;
 import org.youyuan.jwt.utils.exception.ExceptionFactory;
+import org.youyuan.jwt.utils.jwt.Token;
+import org.youyuan.jwt.utils.jwt.annotation.AccessPermission;
 import org.youyuan.jwt.utils.jwt.annotation.UnLogin;
+import org.youyuan.jwt.vo.response.UserInfo;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -31,13 +36,20 @@ import static org.youyuan.jwt.utils.common.Constant.TOKEN;
  */
 @Component
 @Slf4j
-public class JwtInterceptor  implements HandlerInterceptor {
+@Primary
+public class JwtInterceptor implements HandlerInterceptor {
 
     @Autowired
     TokenService tokenService;
 
     @Autowired
     RedisUtils redisUtils;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    UserMapper userMapper;
 
     /**
      * 放行白名单
@@ -66,8 +78,23 @@ public class JwtInterceptor  implements HandlerInterceptor {
         //Toke黑名单验证
         verifyBlackTokenList(request);
         //Token验证
-        getCurrentToken(request);
+        Token token = getCurrentToken(request);
+
+        //用户权限校验
+        permissionValid(token.getId(),handler);
         return true;
+    }
+
+    private void permissionValid(Integer id, Object handler) {
+        HandlerMethod method = (HandlerMethod) handler;
+        AccessPermission methodAnnotation = method.getMethodAnnotation(AccessPermission.class);
+        String[] roles = null;
+        if (methodAnnotation != null) {
+             roles = methodAnnotation.roleName();
+        }
+        //获取当前用户所需的角色
+        UserInfo userInfo = userMapper.getUserInfo(id);
+        log.info("{}",userInfo);
     }
 
     /**
@@ -120,13 +147,16 @@ public class JwtInterceptor  implements HandlerInterceptor {
 
 
 
-    private void getCurrentToken(HttpServletRequest request) {
+    private Token getCurrentToken(HttpServletRequest request) {
         Map<String, Cookie> stringCookieMap = ReadCookieMap(request);
         if (!stringCookieMap.containsKey("token")) {
             throw new ExceptionFactory(ResponseCode.NO_TOKEN);
         }
         //验证token
-        tokenService.verifyToken(stringCookieMap.get("token").getValue());
+        Token token = tokenService.verifyToken(stringCookieMap.get("token").getValue());
+        //request中的attribute中设置token
+        request.setAttribute("token",token);
+        return token;
     }
 
     @Override
