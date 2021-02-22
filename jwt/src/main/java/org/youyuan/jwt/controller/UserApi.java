@@ -75,7 +75,7 @@ public class UserApi {
     @ApiResponse(code = 200, message = "成功")
     @ApiOperation(value = "创建用户账号")
     @PostMapping("/account/create")
-    public Response<UserAccountVO> createAccount() {
+    public Response<UserAccountVO> createAccount(@org.youyuan.jwt.utils.jwt.annotation.Token Token token) {
         UserAccountVO userAccount = userService.createAccount();
         return ResponseFactory.<UserAccountVO>productResult(ResponseCode.OK, userAccount);
     }

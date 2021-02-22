@@ -1,11 +1,13 @@
 package org.youyuan.jwt.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @Describe:角色类
@@ -16,6 +18,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 @TableName("role")
+@NoArgsConstructor
 public class RolePO {
 
     /**
@@ -23,6 +26,12 @@ public class RolePO {
      */
     @TableId
     private Integer id;
+
+    /**
+     * 角色名称
+     */
+    @TableField(value = "role_name")
+    private String roleName;
 
     /**
      * 角色描述
@@ -33,8 +42,7 @@ public class RolePO {
      * 逻辑删除
      */
     @TableLogic
+    @TableField(select = false)
     private Integer deleted;
-
-
 
 }

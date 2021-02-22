@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.youyuan.web.bean.Person;
 import org.youyuan.web.bean.User;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @Describe
  * @Author youjiancheng
@@ -48,4 +54,12 @@ public class TestController {
     public void test2() {
         log.info(System.getProperty("user.dir"));
     }
+
+    @GetMapping("/test/encode")
+    public void testEncode(HttpServletResponse response, HttpServletRequest request) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyyMMddHHmmss");
+        String filename = "视频分析任务结果导出_"+ sdf.format(new Date()) +".xlsx";
+
+    }
+
 }
