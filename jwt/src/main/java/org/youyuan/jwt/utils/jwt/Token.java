@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.youyuan.jwt.vo.response.Role;
+
+import java.util.List;
 
 /**
  * @Describe: 自定义Token，用于存储用户的信息
@@ -21,5 +24,7 @@ public class Token {
     private  Integer id;
 
     private String name;
+
+    private List<Role> roles;
 
 }

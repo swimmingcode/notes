@@ -22,10 +22,11 @@ public enum ResponseCode {
     USER_PASSWORD_ERROR(2002,"密码错误"),
     JWT_VALID_ERROR(2003,"验证JWT失败"),
     NO_TOKEN(2004,"token不存在,请重新登录"),
-    TOKEN_ENCRYPTION_ERROR(205,"token解密失败"),
-    TOKEN_LOGOUT(206,"账号已退出，Token失效"),
-    PASSWORD_ERROR_TIMES(207,"输入密码错误超过五次，账号被锁定五分钟"),
-    AUTH_CODE_ERROR(208,"验证码错误");
+    TOKEN_ENCRYPTION_ERROR(2005,"token解密失败"),
+    TOKEN_LOGOUT(2006,"账号已退出，Token失效"),
+    PASSWORD_ERROR_TIMES(2007,"输入密码错误超过五次，账号被锁定五分钟"),
+    AUTH_CODE_ERROR(2008,"验证码错误"),
+    NO_ACCESS_PERMISSION(2009,"无此权限");
 
     @Getter
     @Setter

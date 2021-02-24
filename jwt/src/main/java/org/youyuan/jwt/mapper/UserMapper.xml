@@ -5,6 +5,7 @@
     <resultMap id="userInfo" type="org.youyuan.jwt.vo.response.UserInfo">
         <id column="uid" property="uid"></id>
         <result column="user_name" property="userName" ></result>
+        <result column="email" property="email"></result>
         <collection property="rolePOS" ofType="org.youyuan.jwt.vo.response.Role">
             <id column="rid" property="id" ></id>
             <result column="role_name" property="roleName" ></result>
@@ -13,11 +14,12 @@
     </resultMap>
 
     <select id="getUserInfo" resultMap="userInfo">
-        SELECT u.id as uid ,u.`name` as user_name, r.id as rid,r.description,r.role_name
+        SELECT u.id as uid ,u.`name` as user_name, u.email as email, r.id as rid,r.description,r.role_name
         from  role r,user u,user_role_rel ur
         WHERE u.id = ur.user_id AND ur.role_id = r.id AND u.id = #{userId}
     </select>
 
+    <select id="getUserList" resultType="org.youyuan.jwt.vo.response.UserInfo"></select>
 
 
 </mapper>

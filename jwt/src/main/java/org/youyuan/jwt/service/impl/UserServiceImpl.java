@@ -31,6 +31,7 @@ import org.youyuan.jwt.vo.request.EmailCodeVO;
 import org.youyuan.jwt.vo.request.UpdatePasswordByCodeVO;
 import org.youyuan.jwt.vo.request.UpdatePasswordByOldPwdVO;
 import org.youyuan.jwt.vo.response.UserAccountVO;
+import org.youyuan.jwt.vo.response.UserInfo;
 
 import java.util.List;
 import java.util.Optional;
@@ -219,6 +220,12 @@ public class UserServiceImpl implements UserService {
         UserPO userPO = userPOS.get(0);
         userPO.setPassword(md5Utils.encryptedMd5(updatePasswordByCodeVO.getNewPwd()));
         userMapper.updateById(userPO);
+    }
+
+    @Override
+    public List<UserInfo> getUserList(Integer page, Integer size) {
+        List<UserInfo> userInfos = userMapper.getUserList();
+        return null;
     }
 
 

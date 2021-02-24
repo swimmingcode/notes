@@ -14,13 +14,16 @@ import org.youyuan.jwt.utils.common.response.Response;
 import org.youyuan.jwt.utils.common.response.ResponseCode;
 import org.youyuan.jwt.utils.common.response.ResponseFactory;
 import org.youyuan.jwt.utils.jwt.Token;
+import org.youyuan.jwt.utils.jwt.annotation.AccessPermission;
 import org.youyuan.jwt.utils.jwt.annotation.UnLogin;
 import org.youyuan.jwt.vo.request.*;
 import org.youyuan.jwt.vo.response.UserAccountVO;
+import org.youyuan.jwt.vo.response.UserInfo;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -63,7 +66,7 @@ public class UserApi {
         return ResponseFactory.productResult(ResponseCode.OK, token);
     }
 
-    @UnLogin
+
     @ApiResponse(code = 200, message = "成功")
     @ApiOperation(value = "鉴权Token接口", notes = "返回用户信息")
     @GetMapping("/verify/token")
@@ -72,14 +75,16 @@ public class UserApi {
         return ResponseFactory.<Token>productResult(ResponseCode.OK, tokenRes);
     }
 
+    @AccessPermission(roleName = "admin")
     @ApiResponse(code = 200, message = "成功")
     @ApiOperation(value = "创建用户账号")
     @PostMapping("/account/create")
-    public Response<UserAccountVO> createAccount(@org.youyuan.jwt.utils.jwt.annotation.Token Token token) {
+    public Response<UserAccountVO> createAccount(@ApiIgnore @org.youyuan.jwt.utils.jwt.annotation.Token Token token) {
         UserAccountVO userAccount = userService.createAccount();
         return ResponseFactory.<UserAccountVO>productResult(ResponseCode.OK, userAccount);
     }
 
+    @AccessPermission(roleName = "user")
     @ApiResponse(code = 200, message = "成功")
     @ApiOperation(value = "退出账号")
     @PostMapping("/account/logout")
@@ -89,6 +94,7 @@ public class UserApi {
     }
 
 
+    @AccessPermission(roleName = "user")
     @ApiOperation(value = "修改用户名")
     @PutMapping("/update/account/username")
     public Response<Void> updateAccountUserName(@ApiParam(value = "新/旧账户名称") @Validated @RequestBody UpdateAccountNameVO updateAccountNameVO) {
@@ -98,6 +104,7 @@ public class UserApi {
     }
 
 
+    @AccessPermission(roleName = "user")
     @ApiResponse(code = 200, message = "成功")
     @ApiOperation(value = "获取邮箱Code码")
     @PostMapping("/email/code")
@@ -106,6 +113,7 @@ public class UserApi {
         return ResponseFactory.<Void>productEmptyResult(ResponseCode.OK);
     }
 
+    @AccessPermission(roleName = "user")
     @ApiResponse(code = 200, message = "成功")
     @ApiOperation(value = "绑定邮箱")
     @PostMapping("/bind/email")
@@ -114,6 +122,7 @@ public class UserApi {
         return ResponseFactory.<Void>productEmptyResult(ResponseCode.OK);
     }
 
+    @AccessPermission(roleName = "user")
     @ApiResponse(code = 200, message = "成功")
     @ApiOperation(value = "修改用户密码", notes = "使用旧密码验证")
     @PutMapping("/update/password/by/oldPwd")
@@ -122,6 +131,7 @@ public class UserApi {
         return ResponseFactory.<Void>productEmptyResult(ResponseCode.OK);
     }
 
+    @AccessPermission(roleName = "user")
     @ApiResponse(code = 200, message = "成功")
     @ApiOperation(value = "修改用户密码", notes = "使用邮箱验证码进行验证")
     @PutMapping("/update/account/by/code")
@@ -130,6 +140,17 @@ public class UserApi {
         //验证
         userService.updateAccountPasswordByCode(updatePasswordByCodeVO);
         return ResponseFactory.<Void>productEmptyResult(ResponseCode.OK);
+    }
+
+
+    @AccessPermission(roleName = "admin")
+    @ApiResponse(code = 200, message = "成功")
+    @ApiOperation(value = "用户列表")
+    @PutMapping("/user/list")
+    public Response getUserList(@ApiParam("页数") @RequestParam(value = "page",defaultValue = "1",required = true) Integer page,
+                                @ApiParam("大小") @RequestParam(value = "page",defaultValue = "10",required = true) Integer size) {
+        List<UserInfo> userInfoList = userService.getUserList(page,size);
+        return ResponseFactory.productResult(ResponseCode.OK,userInfoList);
     }
 
 
