@@ -9,15 +9,18 @@ import org.springframework.util.AntPathMatcher;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.youyuan.jwt.domain.RolePO;
 import org.youyuan.jwt.mapper.UserMapper;
 import org.youyuan.jwt.service.TokenService;
 import org.youyuan.jwt.service.UserService;
 import org.youyuan.jwt.utils.common.redis.RedisUtils;
 import org.youyuan.jwt.utils.common.response.ResponseCode;
+import org.youyuan.jwt.utils.common.web.GlobalHttpUtils;
 import org.youyuan.jwt.utils.exception.ExceptionFactory;
 import org.youyuan.jwt.utils.jwt.Token;
 import org.youyuan.jwt.utils.jwt.annotation.AccessPermission;
 import org.youyuan.jwt.utils.jwt.annotation.UnLogin;
+import org.youyuan.jwt.vo.response.Role;
 import org.youyuan.jwt.vo.response.UserInfo;
 
 import javax.servlet.http.Cookie;
@@ -51,6 +54,8 @@ public class JwtInterceptor implements HandlerInterceptor {
     @Autowired
     UserMapper userMapper;
 
+    public static final String ADMIN = "admin";
+
     /**
      * 放行白名单
      */
@@ -79,13 +84,13 @@ public class JwtInterceptor implements HandlerInterceptor {
         verifyBlackTokenList(request);
         //Token验证
         Token token = getCurrentToken(request);
-
         //用户权限校验
-        permissionValid(token.getId(),handler);
+        permissionValid(token,handler);
         return true;
     }
 
-    private void permissionValid(Integer id, Object handler) {
+    private void permissionValid(Token token, Object handler) {
+        HttpServletRequest globalHttpRequest = GlobalHttpUtils.getGlobalHttpRequest();
         HandlerMethod method = (HandlerMethod) handler;
         AccessPermission methodAnnotation = method.getMethodAnnotation(AccessPermission.class);
         String[] roles = null;
@@ -93,8 +98,32 @@ public class JwtInterceptor implements HandlerInterceptor {
              roles = methodAnnotation.roleName();
         }
         //获取当前用户所需的角色
-        UserInfo userInfo = userMapper.getUserInfo(id);
-        log.info("{}",userInfo);
+        UserInfo userInfo = userMapper.getUserInfo(token.getId());
+
+        //不需要权限
+        if (roles == null) {
+            token.setRoles(userInfo.getRolePOS());
+            globalHttpRequest.setAttribute("token",token);
+            return;
+        }
+        HashSet<String> roleName = new HashSet<>();
+        //超级管理员才能访问的
+        for (Role role : userInfo.getRolePOS()) {
+            roleName.add(role.getRoleName());
+        }
+        if (roleName.contains(ADMIN)) {
+            token.setRoles(userInfo.getRolePOS());
+            globalHttpRequest.setAttribute("token",token);
+            return;
+        }
+
+        for (String role : roles) {
+            if (!roleName.contains(role)) {
+                throw new ExceptionFactory(ResponseCode.NO_ACCESS_PERMISSION);
+            }
+        }
+        token.setRoles(userInfo.getRolePOS());
+        globalHttpRequest.setAttribute("token",token);
     }
 
     /**

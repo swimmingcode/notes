@@ -3,7 +3,7 @@ package org.youyuan.jwt.vo.response;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.youyuan.jwt.domain.RolePO;
+
 
 import java.util.List;
 
@@ -18,5 +18,6 @@ import java.util.List;
 public class UserInfo {
     private Integer uid;
     private String userName;
-    private List<RolePO> rolePOS;
+    private String email;
+    private List<Role> rolePOS;
 }

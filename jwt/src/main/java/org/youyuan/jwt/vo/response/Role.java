@@ -1,7 +1,5 @@
 package org.youyuan.jwt.vo.response;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 /**

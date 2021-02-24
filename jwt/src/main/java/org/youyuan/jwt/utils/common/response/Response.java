@@ -31,14 +31,20 @@ public class Response<T> {
     public Response(ResponseCode responseCode) {
         this.code = responseCode.getCode();
         this.message = responseCode.getMessage();
-        // TODO: 2021/2/12 如何返回一个{}
+//        this.data = (T) new EmptyResult();
     }
 
 
     public Response(int code, String message) {
         this.code = code;
         this.message = message;
+//        this.data = (T) new EmptyResult();
     }
+
+    public class EmptyResult<T> {
+
+    }
+
 
 
 }

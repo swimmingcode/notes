@@ -7,6 +7,9 @@ import org.youyuan.jwt.vo.request.EmailCodeVO;
 import org.youyuan.jwt.vo.request.UpdatePasswordByCodeVO;
 import org.youyuan.jwt.vo.request.UpdatePasswordByOldPwdVO;
 import org.youyuan.jwt.vo.response.UserAccountVO;
+import org.youyuan.jwt.vo.response.UserInfo;
+
+import java.util.List;
 
 /**
  * @Describe: #请描述当前类的功能#
@@ -82,4 +85,13 @@ public interface UserService {
      * @param updatePasswordByCodeVO
      */
     void updateAccountPasswordByCode(UpdatePasswordByCodeVO updatePasswordByCodeVO);
+
+    /**
+     * 用户列表
+     *
+     * @param page
+     * @param size
+     * @return
+     */
+    List<UserInfo> getUserList(Integer page, Integer size);
 }

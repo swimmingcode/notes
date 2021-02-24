@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Param;
 import org.youyuan.jwt.domain.UserPO;
 import org.youyuan.jwt.vo.response.UserInfo;
 
+import java.util.List;
+
 /**
  * @Describe: #请描述当前类的功能#
  * @Author: youjiancheng
@@ -21,4 +23,11 @@ public interface UserMapper extends BaseMapper<UserPO> {
      * @return
      */
     UserInfo getUserInfo(@Param("userId") Integer userId);
+
+    /**
+     * 获取用户列表
+     *
+     * @return
+     */
+    List<UserInfo> getUserList();
 }
