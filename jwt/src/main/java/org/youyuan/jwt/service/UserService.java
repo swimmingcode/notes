@@ -8,6 +8,7 @@ import org.youyuan.jwt.vo.request.UpdatePasswordByCodeVO;
 import org.youyuan.jwt.vo.request.UpdatePasswordByOldPwdVO;
 import org.youyuan.jwt.vo.response.UserAccountVO;
 import org.youyuan.jwt.vo.response.UserInfo;
+import org.youyuan.jwt.vo.response.UserVO;
 
 import java.util.List;
 
@@ -91,7 +92,8 @@ public interface UserService {
      *
      * @param page
      * @param size
+     * @param search
      * @return
      */
-    List<UserInfo> getUserList(Integer page, Integer size);
+    List<UserVO> getUserList(int page, int size, String search);
 }

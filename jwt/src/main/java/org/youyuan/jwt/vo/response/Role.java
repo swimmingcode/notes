@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class Role {
 
-    private Integer id;
+    private Integer rid;
 
     private String roleName;
 
