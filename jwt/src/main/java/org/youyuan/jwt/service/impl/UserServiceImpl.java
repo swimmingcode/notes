@@ -1,10 +1,9 @@
 package org.youyuan.jwt.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -32,12 +31,15 @@ import org.youyuan.jwt.vo.request.UpdatePasswordByCodeVO;
 import org.youyuan.jwt.vo.request.UpdatePasswordByOldPwdVO;
 import org.youyuan.jwt.vo.response.UserAccountVO;
 import org.youyuan.jwt.vo.response.UserInfo;
+import org.youyuan.jwt.vo.response.UserVO;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
-import static org.youyuan.jwt.utils.common.Constant.PASSWORD_ERROR_TIMES;
+import static org.youyuan.jwt.utils.common.Constant.*;
 
 /**
  * @Describe: #请描述当前类的功能#
@@ -73,6 +75,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
+    static ConcurrentHashMap<String, Integer> concurrentHashMap = new ConcurrentHashMap<>();
+
+
+    static {
+        concurrentHashMap.put(ADMIN,1);
+        concurrentHashMap.put(USER,2);
+    }
+
     @Override
     public String login(Token token) {
         String tokenRes = tokenService.createToken(token);
@@ -87,7 +97,10 @@ public class UserServiceImpl implements UserService {
         String password = RandomStringUtils.randomAlphabetic(6);
         //md5加密
         String pwd = md5Utils.encryptedMd5(password);
-        userMapper.insert(UserPO.builder().name(userName).password(pwd).build());
+        UserPO userPO = UserPO.builder().name(userName).createTime(new Date()).updateTime(new Date()).password(pwd).build();
+        userMapper.insertGeneratedPrimaryKey(userPO);
+        //赋予角色 普通用户 添加到user_role_rel当中
+        userMapper.insertUserRoleRel(userPO.getId(),concurrentHashMap.get(USER));
         return UserAccountVO.builder()
                 .username(userName)
                 .password(password)
@@ -222,10 +235,12 @@ public class UserServiceImpl implements UserService {
         userMapper.updateById(userPO);
     }
 
+
+
     @Override
-    public List<UserInfo> getUserList(Integer page, Integer size) {
-        List<UserInfo> userInfos = userMapper.getUserList();
-        return null;
+    public List<UserVO> getUserList(int page, int size, String search) {
+        List<UserVO> userInfos = userMapper.getUserInfoList((page-1) * size,size,search);
+        return userInfos;
     }
 
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.youyuan.jwt.domain.UserPO;
 import org.youyuan.jwt.service.TokenService;
 import org.youyuan.jwt.service.UserService;
+import org.youyuan.jwt.utils.common.PageResponse;
 import org.youyuan.jwt.utils.common.response.Response;
 import org.youyuan.jwt.utils.common.response.ResponseCode;
 import org.youyuan.jwt.utils.common.response.ResponseFactory;
@@ -19,6 +20,7 @@ import org.youyuan.jwt.utils.jwt.annotation.UnLogin;
 import org.youyuan.jwt.vo.request.*;
 import org.youyuan.jwt.vo.response.UserAccountVO;
 import org.youyuan.jwt.vo.response.UserInfo;
+import org.youyuan.jwt.vo.response.UserVO;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletResponse;
@@ -146,11 +148,12 @@ public class UserApi {
     @AccessPermission(roleName = "admin")
     @ApiResponse(code = 200, message = "成功")
     @ApiOperation(value = "用户列表")
-    @PutMapping("/user/list")
-    public Response getUserList(@ApiParam("页数") @RequestParam(value = "page",defaultValue = "1",required = true) Integer page,
-                                @ApiParam("大小") @RequestParam(value = "page",defaultValue = "10",required = true) Integer size) {
-        List<UserInfo> userInfoList = userService.getUserList(page,size);
-        return ResponseFactory.productResult(ResponseCode.OK,userInfoList);
+    @GetMapping("/user/list")
+    public Response<PageResponse<UserVO>> getUserList(@ApiParam("页数") @RequestParam(value = "page",defaultValue = "1",required = false) Integer page,
+                                                        @ApiParam("大小") @RequestParam(value = "size",defaultValue = "10",required = false) Integer size,
+                                                        @ApiParam("查询参数") @RequestParam(value = "search" ,required = false) String search) {
+        List<UserVO> userInfoList = userService.getUserList(page,size,search);
+        return ResponseFactory.productResult(ResponseCode.OK, PageResponse.<UserVO>builder().total(userInfoList.size()).list(userInfoList).build());
     }
 
 
