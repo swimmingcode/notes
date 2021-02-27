@@ -1,5 +1,6 @@
 package org.youyuan.jwt.utils.common;
 
+
 public class Constant {
 
     public static final String TOKEN = "token";
@@ -20,4 +21,5 @@ public class Constant {
      * 普通用户
      */
     public static final String USER = "user";
+
 }

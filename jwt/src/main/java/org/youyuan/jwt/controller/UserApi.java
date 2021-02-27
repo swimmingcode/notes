@@ -18,6 +18,7 @@ import org.youyuan.jwt.utils.jwt.Token;
 import org.youyuan.jwt.utils.jwt.annotation.AccessPermission;
 import org.youyuan.jwt.utils.jwt.annotation.UnLogin;
 import org.youyuan.jwt.vo.request.*;
+import org.youyuan.jwt.vo.response.AccountVO;
 import org.youyuan.jwt.vo.response.UserAccountVO;
 import org.youyuan.jwt.vo.response.UserInfo;
 import org.youyuan.jwt.vo.response.UserVO;
@@ -148,7 +149,7 @@ public class UserApi {
     @AccessPermission(roleName = "admin")
     @ApiResponse(code = 200, message = "成功")
     @ApiOperation(value = "用户列表")
-    @GetMapping("/user/list")
+    @GetMapping("/list")
     public Response<PageResponse<UserVO>> getUserList(@ApiParam("页数") @RequestParam(value = "page",defaultValue = "1",required = false) Integer page,
                                                         @ApiParam("大小") @RequestParam(value = "size",defaultValue = "10",required = false) Integer size,
                                                         @ApiParam("查询参数") @RequestParam(value = "search" ,required = false) String search) {
@@ -156,5 +157,13 @@ public class UserApi {
         return ResponseFactory.productResult(ResponseCode.OK, PageResponse.<UserVO>builder().total(userInfoList.size()).list(userInfoList).build());
     }
 
+    @AccessPermission(roleName = "admin")
+    @ApiResponse(code = 200, message = "成功")
+    @ApiOperation(value = "管理员重置用户密码")
+    @PutMapping("/admin/update/user/{id}/pwd/")
+    public Response<AccountVO> adminUpdatePassword(@ApiParam(value = "用户Id") @PathVariable(value = "id") String id) {
+        AccountVO accountVO = userService.adminUpdatePassword(id);
+        return ResponseFactory.<AccountVO>productResult(ResponseCode.OK,accountVO);
+    }
 
 }
