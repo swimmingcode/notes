@@ -31,7 +31,6 @@ import java.util.HashMap;
 @Component
 public class JwtUtils {
 
-    // TODO: 2021/2/2 无法注入value值
     @Value("${jwt.secret}")
     private String secret ;
 
@@ -48,7 +47,6 @@ public class JwtUtils {
      * @return
      */
     public String createJWT(String token) {
-
         //使用JWT签名算法对令牌进行签名
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
@@ -61,8 +59,8 @@ public class JwtUtils {
         //设置Header
         HashMap<String, Object> headMap = new HashMap<>();
         // TODO: 2021/2/2 是否可以添加其他参数
-        headMap.put("alg","HS512");
-        headMap.put("typ","JWT");
+//        headMap.put("alg","HS512");
+//        headMap.put("typ","JWT");
         //设置claims
         HashMap<String, Object> claimsMap = new HashMap<>();
         claimsMap.put(TOKEN,token);

@@ -1,7 +1,6 @@
 package org.youyuan.jwt.utils.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
@@ -9,10 +8,10 @@ import org.springframework.util.AntPathMatcher;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.youyuan.jwt.domain.RolePO;
 import org.youyuan.jwt.mapper.UserMapper;
 import org.youyuan.jwt.service.TokenService;
 import org.youyuan.jwt.service.UserService;
+import org.youyuan.jwt.utils.common.DateUtils;
 import org.youyuan.jwt.utils.common.redis.RedisUtils;
 import org.youyuan.jwt.utils.common.response.ResponseCode;
 import org.youyuan.jwt.utils.common.web.GlobalHttpUtils;
@@ -29,7 +28,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 import java.util.*;
 
-import static org.youyuan.jwt.utils.common.Constant.BLACK_TOKEN__LIST;
 import static org.youyuan.jwt.utils.common.Constant.TOKEN;
 
 /**
@@ -133,7 +131,7 @@ public class JwtInterceptor implements HandlerInterceptor {
      */
     private void verifyBlackTokenList(HttpServletRequest request) {
         Map<String, Cookie> stringCookieMap = ReadCookieMap(request);
-        List<Object> objects = redisUtils.opsForListGetValue(BLACK_TOKEN__LIST);
+        List<Object> objects = redisUtils.opsForListGetValue(DateUtils.dateFormatDay(new Date()));
         for (int i = 0; i < objects.size(); i++) {
             Object token = objects.get(i);
             if (stringCookieMap.containsKey(TOKEN) && stringCookieMap.get(TOKEN).getValue().equals(token)) {

@@ -26,7 +26,8 @@ public enum ResponseCode {
     TOKEN_LOGOUT(2006,"账号已退出，Token失效"),
     PASSWORD_ERROR_TIMES(2007,"输入密码错误超过五次，账号被锁定五分钟"),
     AUTH_CODE_ERROR(2008,"验证码错误"),
-    NO_ACCESS_PERMISSION(2009,"无此权限");
+    NO_ACCESS_PERMISSION(2009,"无此权限"),
+    USER_NOT_EXIST(2010,"用户不存在");
 
     @Getter
     @Setter

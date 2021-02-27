@@ -29,6 +29,7 @@ import org.youyuan.jwt.vo.request.BindEmailVO;
 import org.youyuan.jwt.vo.request.EmailCodeVO;
 import org.youyuan.jwt.vo.request.UpdatePasswordByCodeVO;
 import org.youyuan.jwt.vo.request.UpdatePasswordByOldPwdVO;
+import org.youyuan.jwt.vo.response.AccountVO;
 import org.youyuan.jwt.vo.response.UserAccountVO;
 import org.youyuan.jwt.vo.response.UserInfo;
 import org.youyuan.jwt.vo.response.UserVO;
@@ -241,6 +242,23 @@ public class UserServiceImpl implements UserService {
     public List<UserVO> getUserList(int page, int size, String search) {
         List<UserVO> userInfos = userMapper.getUserInfoList((page-1) * size,size,search);
         return userInfos;
+    }
+
+    @Override
+    public AccountVO adminUpdatePassword(String id) {
+        String password = RandomStringUtils.randomAlphabetic(6);
+        String pwd = md5Utils.encryptedMd5(password);
+        UserPO userPO = userMapper.selectById(id);
+        Optional.ofNullable(userPO).orElseThrow(() -> new ExceptionFactory(ResponseCode.USER_NOT_EXIST));
+       //线程处理 异步
+        threadPoolTaskExecutor.submit(()->{
+            userPO.setPassword(pwd);
+            userMapper.updateById(userPO);
+        });
+        return AccountVO.builder()
+                .name(userPO.getName())
+                .pwd(password)
+                .build();
     }
 
 

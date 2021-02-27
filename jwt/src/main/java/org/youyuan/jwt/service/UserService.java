@@ -6,6 +6,7 @@ import org.youyuan.jwt.vo.request.BindEmailVO;
 import org.youyuan.jwt.vo.request.EmailCodeVO;
 import org.youyuan.jwt.vo.request.UpdatePasswordByCodeVO;
 import org.youyuan.jwt.vo.request.UpdatePasswordByOldPwdVO;
+import org.youyuan.jwt.vo.response.AccountVO;
 import org.youyuan.jwt.vo.response.UserAccountVO;
 import org.youyuan.jwt.vo.response.UserInfo;
 import org.youyuan.jwt.vo.response.UserVO;
@@ -96,4 +97,11 @@ public interface UserService {
      * @return
      */
     List<UserVO> getUserList(int page, int size, String search);
+
+    /**
+     * 管理员重置用户密码
+     *
+     * @param id
+     */
+    AccountVO adminUpdatePassword(String id);
 }
