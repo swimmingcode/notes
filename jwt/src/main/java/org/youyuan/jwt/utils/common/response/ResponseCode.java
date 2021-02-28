@@ -15,8 +15,8 @@ public enum ResponseCode {
     FAIL(-1,"失败"),
     OK(200,"成功"),
 
-    PARAMETER_EXCEPTION(300,"传入参数格式错误"),
-    NULL_POINTER_EXCEPTION(400,"空指针错误"),
+    PARAMETER_EXCEPTION(3000,"传入参数格式错误"),
+    NULL_POINTER_EXCEPTION(4000,"空指针错误"),
 
     USER_NAME_ERROR(2001,"账户名称错误"),
     USER_PASSWORD_ERROR(2002,"密码错误"),
@@ -27,7 +27,10 @@ public enum ResponseCode {
     PASSWORD_ERROR_TIMES(2007,"输入密码错误超过五次，账号被锁定五分钟"),
     AUTH_CODE_ERROR(2008,"验证码错误"),
     NO_ACCESS_PERMISSION(2009,"无此权限"),
-    USER_NOT_EXIST(2010,"用户不存在");
+    USER_NOT_EXIST(2010,"用户不存在"),
+
+    //教材
+    BOOK_IMAGE_NOT_EXISTS(2011,"教材图片不存在");
 
     @Getter
     @Setter

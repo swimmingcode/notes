@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.youyuan.jwt.mapper.TextBookMapper">
+
+
+    <resultMap id="baseTextBook" type="org.youyuan.jwt.vo.response.TextBookVO">
+        <id property="id" column="id"/>
+        <result column="text_name" property="textName"/>
+        <result column="image_url" property="imageUrl"/>
+        <result column="professional" property="professional"/>
+        <result column="book_number" property="bookNumber"/>
+        <result column="book_describe" property="bookDescribe"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"></result>
+    </resultMap>
+
+    <sql id="textBook">
+        id,text_name,image_url,professional,book_number,book_describe,create_time,update_time
+    </sql>
+
+    <select id="getTextBookList" resultMap="baseTextBook">
+        select <include refid="textBook"> </include>
+        from text_book   where  deleted = 0
+        <if test="search!=null and search!=''">
+            and text_name like concat('%',#{search},'%')
+        </if>
+        limit #{page},#{size}
+    </select>
+
+
+</mapper>
