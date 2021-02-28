@@ -1,14 +1,13 @@
 package org.youyuan.jwt.domain;
 
-import com.baomidou.mybatisplus.annotation.EnumValue;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.youyuan.jwt.utils.diyenum.Professional;
+
+import java.util.Date;
 
 /**
  * @Describe: 教材类
@@ -25,7 +24,7 @@ public class TextBookPO {
     /**
      * ID
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     /**
@@ -55,6 +54,25 @@ public class TextBookPO {
     /**
      * 教材信息描述
      */
-    private String describe;
+    private String bookDescribe;
+
+    /**
+     * 创建时间
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private Date createTime;
+
+    /**
+     * 更新时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateTime;
+
+    /**
+     * 逻辑删除
+     */
+    @TableLogic
+    @TableField(select = false)
+    private Integer deleted;
 
 }

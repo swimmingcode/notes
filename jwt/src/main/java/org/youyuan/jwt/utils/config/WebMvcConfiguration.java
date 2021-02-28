@@ -45,13 +45,24 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         //解决swagger页面打不开
         //发现如果继承了WebMvcConfigurationSupport，则在properties中配置的相关内容会失效。需要重新指定静态资源
-        registry.addResourceHandler("swagger-ui.html")
+        registry.addResourceHandler("/swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/swagger-ui.html");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
 
-        registry.addResourceHandler("/**");
+        //Webapp下静态资源文件无法访问的问题
+        // TODO: 2021/2/28 无法找到路径
+        registry.addResourceHandler("/img/**").addResourceLocations("classpath:/META-INF/resources/");
+
+        //定义静态资源过滤策
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+
         super.addResourceHandlers(registry);
     }
+
+
+
+
+
 
 }

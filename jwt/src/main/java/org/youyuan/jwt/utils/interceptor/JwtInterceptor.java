@@ -65,7 +65,9 @@ public class JwtInterceptor implements HandlerInterceptor {
             "/favicon.ico",
             "/swagger-resources/**",
             "/null/swagger-resources/configuration/ui",
-            "/webjars/springfox-swagger-ui/**"
+            "/webjars/springfox-swagger-ui/**",
+            "/img/**",
+            "/static/**",
     };
 
     @Override
