@@ -49,9 +49,9 @@ public class TextBookServiceImpl implements TextBookService {
 
         //创建文件夹
         // TODO: 2021/2/28 第一种 直接放在static下的image中
-        String path = System.getProperty("user.dir") + File.separator +  "jwt" + File.separator + "src" + File.separator + "main" + File.separator + "resources"+File.separator + "static" + File.separator + "image" + format;//
+//        String path = System.getProperty("user.dir") + File.separator +  "jwt" + File.separator + "src" + File.separator + "main" + File.separator + "resources"+File.separator + "static" + File.separator + "image" + format;//
         // TODO: 2021/2/28 第二种 放在webapp下面
-//        String path = globalHttpRequest.getServletContext().getRealPath("/img/") + format;
+        String path = globalHttpRequest.getServletContext().getRealPath("/img") + format;
         log.info(path);
         File folder = new File(path);
         if (!folder.exists()) {
@@ -71,10 +71,10 @@ public class TextBookServiceImpl implements TextBookService {
             }
             log.info("文件路径为=" + path + fileName);
             //第一种
-            String url = globalHttpRequest. getScheme() + "://"+globalHttpRequest.getServerName() +":" + globalHttpRequest.getServerPort()+"/static/image" + format+ fileName;
+//            String url = globalHttpRequest. getScheme() + "://"+globalHttpRequest.getServerName() +":" + globalHttpRequest.getServerPort()+"/static/image" + format+ fileName;
             //第二种
             // TODO: 2021/2/28 有问题
-//            String url= globalHttpRequest. getScheme() + "://"+globalHttpRequest.getServerName() +":" + globalHttpRequest.getServerPort()+"/img" + format +fileName;
+            String url= globalHttpRequest.getScheme() + "://"+globalHttpRequest.getServerName() +":" + globalHttpRequest.getServerPort()+"/img" + format +fileName;
             log.info(url);
             String str = RandomStringUtils.randomAlphabetic(5);
             redisTemplate.opsForValue().set(str,url,5, TimeUnit.MINUTES);

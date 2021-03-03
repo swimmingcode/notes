@@ -1,6 +1,5 @@
 package org.youyuan.jwt.vo.response;
 
-import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;

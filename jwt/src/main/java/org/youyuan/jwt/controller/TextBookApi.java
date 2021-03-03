@@ -4,9 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.omg.CORBA.INTERNAL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +18,6 @@ import org.youyuan.jwt.utils.exception.ExceptionFactory;
 import org.youyuan.jwt.utils.jwt.annotation.AccessPermission;
 import org.youyuan.jwt.vo.request.AddTextBookVO;
 import org.youyuan.jwt.vo.response.TextBookVO;
-import org.youyuan.jwt.vo.response.UserVO;
 
 import java.util.List;
 

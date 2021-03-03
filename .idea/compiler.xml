@@ -14,6 +14,7 @@
         <module name="myspring" />
         <module name="mybatis-plus" />
         <module name="redis" />
+        <module name="upload" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +23,7 @@
       <module name="mybatis-plus" target="1.8" />
       <module name="myspring" target="6" />
       <module name="redis" target="1.8" />
+      <module name="upload" target="1.8" />
       <module name="web" target="1.8" />
       <module name="websocket" target="1.8" />
     </bytecodeTargetLevel>
@@ -32,6 +34,7 @@
       <module name="jwt" options="-parameters" />
       <module name="mybatis-plus" options="-parameters" />
       <module name="redis" options="-parameters" />
+      <module name="upload" options="-parameters" />
       <module name="web" options="-parameters" />
       <module name="websocket" options="-parameters" />
     </option>
