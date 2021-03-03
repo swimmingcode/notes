@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/myspring/myspring.iml" filepath="$PROJECT_DIR$/myspring/myspring.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/notes.iml" filepath="$PROJECT_DIR$/.idea/notes.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis/redis.iml" filepath="$PROJECT_DIR$/redis/redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/upload/upload.iml" filepath="$PROJECT_DIR$/upload/upload.iml" />
       <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
       <module fileurl="file://$PROJECT_DIR$/websocket/websocket.iml" filepath="$PROJECT_DIR$/websocket/websocket.iml" />
     </modules>

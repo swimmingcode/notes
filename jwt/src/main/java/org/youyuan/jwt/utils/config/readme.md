@@ -1,0 +1,4 @@
+implements WebMvcConfigurer与 extend WebMvcConfigurationSupport
+ 静态资源路径配置为什么访问不了
+ 其中的区别在哪里
+ 
