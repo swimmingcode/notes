@@ -20,7 +20,6 @@ import org.youyuan.jwt.utils.jwt.annotation.UnLogin;
 import org.youyuan.jwt.vo.request.*;
 import org.youyuan.jwt.vo.response.AccountVO;
 import org.youyuan.jwt.vo.response.UserAccountVO;
-import org.youyuan.jwt.vo.response.UserInfo;
 import org.youyuan.jwt.vo.response.UserVO;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -66,7 +65,7 @@ public class UserApi {
         redisTemplate.opsForValue().set(userAccountVO.getUsername(), 1L, 24L, TimeUnit.HOURS);
         //放入cookie当中
         tokenService.setCookie(token, response);
-        return ResponseFactory.productResult(ResponseCode.OK, token);
+        return ResponseFactory.<String>productResult(ResponseCode.OK, token);
     }
 
 
