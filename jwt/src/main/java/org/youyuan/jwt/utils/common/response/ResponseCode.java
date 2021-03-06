@@ -30,7 +30,9 @@ public enum ResponseCode {
     USER_NOT_EXIST(2010,"用户不存在"),
 
     //教材
-    BOOK_IMAGE_NOT_EXISTS(2011,"教材图片不存在");
+    BOOK_IMAGE_NOT_EXISTS(3001,"教材图片不存在"),
+    BOOK_NOT_EXISTS(3002,"教材不存在"),
+    BOOK_NUMBER_NOT_ENOUGH(3003,"教材数量不足");
 
     @Getter
     @Setter
