@@ -36,8 +36,7 @@ public class RecordServiceImpl implements RecordService {
 
     private final String KEY = "KEY_RECORD";
 
-    private static final Long SUCCESS = 1L;
-
+    private final Long SUCCESS = 1L;
 
     @Autowired
     RedisTemplate<String, Object> redisTemplate;
@@ -50,15 +49,14 @@ public class RecordServiceImpl implements RecordService {
 
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public void textBookReserve(ReserveBookVO reserveBookVO, Token token) {
         while (true) {
             //占位
             String value = UUID.randomUUID().toString();
-            Boolean ok = redisTemplate.opsForValue().setIfAbsent(KEY,value, 10L, TimeUnit.SECONDS);
+            Boolean ok = redisTemplate.opsForValue().setIfAbsent(KEY,value, 5L, TimeUnit.SECONDS);
             if (ok) {
-//                Object o = redisTemplate.opsForValue().get(KEY);
-//                log.info("开始进入,value为",o );
+                Object o = redisTemplate.opsForValue().get(KEY);
+                log.info("开始进入,value为",o);
 //                try {
 //                    TimeUnit.SECONDS.sleep(10L);
 //                } catch (InterruptedException e) {
@@ -66,9 +64,15 @@ public class RecordServiceImpl implements RecordService {
 //                }
                 //查询原有的数量
                 TextBookPO textBookPO = textBookMapper.selectById(reserveBookVO.getTextId());
+                log.info("库存为：{}",textBookPO);
                 Optional.ofNullable(textBookPO).orElseThrow(() -> new ExceptionFactory(ResponseCode.BOOK_NOT_EXISTS));
                 if (textBookPO.getBookNumber() < reserveBookVO.getTextBookSize() || textBookPO.getBookNumber() <= 0) {
                     log.error("库存不够");
+                    //释放锁 否者会发生死锁
+                    Boolean unlock = unlock(KEY, value);
+                    if (!unlock) {
+                        log.error("解锁失败");
+                    }
                     throw new ExceptionFactory(ResponseCode.BOOK_NUMBER_NOT_ENOUGH.getCode(), ResponseCode.BOOK_NUMBER_NOT_ENOUGH.getMessage()
                             + "【当前库存为：" + textBookPO.getBookNumber() + "】");
                 }
@@ -79,11 +83,11 @@ public class RecordServiceImpl implements RecordService {
                 recordPO.setUserName(token.getName());
                 recordPO.setRecordType(RecordType.SCHEDULED);
                 recordPO.setTextBookName(textBookPO.getTextName());
-                recordMapper.insert(recordPO);
-                //减少库存
-                Integer bookNumber = textBookPO.getBookNumber();
-                textBookPO.setBookNumber(bookNumber - reserveBookVO.getTextBookSize());
-                textBookMapper.updateById(textBookPO);
+
+                textBookReserveUpdateDB(recordPO,textBookPO,reserveBookVO);
+
+                TextBookPO textBookPO1 = textBookMapper.selectById(reserveBookVO.getTextId());
+                log.info("==========textBookPO1={}===========",textBookPO1);
                 //释放锁
                 //1、判断value是否位当前线程产生并比较  2、删除
                 //变成原子性
@@ -99,20 +103,54 @@ public class RecordServiceImpl implements RecordService {
                     log.error("except：解锁失败");
                     e.printStackTrace();
                 }
-//                Object o1 = redisTemplate.opsForValue().get(KEY);
-//                log.info("后面进入,value为",o1);
+                Object o1 = redisTemplate.opsForValue().get(KEY);
+                log.info("后面进入,value为",o1);
                 break;
             } else {
 
                 try {
                     TimeUnit.MICROSECONDS.sleep(1000L);
-                } catch (InterruptedException e) {
+                } catch (  Exception e) {
                     e.printStackTrace();
                 }
                 log.debug("================排队中========================");
             }
 
         }
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void textBookReserveUpdateDB(RecordPO recordPO, TextBookPO textBookPO, ReserveBookVO reserveBookVO) {
+        recordMapper.insert(recordPO);
+        //减少库存
+        Integer bookNumber = textBookPO.getBookNumber();
+        textBookPO.setBookNumber(bookNumber - reserveBookVO.getTextBookSize());
+        textBookMapper.updateById(textBookPO);
+    }
+
+
+
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+     public void textBookUnSubscribe(ReserveBookVO reserveBookVO, Token token) {
+        TextBookPO textBookPO = textBookMapper.selectById(reserveBookVO.getTextId());
+        Optional.ofNullable(textBookPO).orElseThrow(() -> new ExceptionFactory(ResponseCode.BOOK_NOT_EXISTS));
+
+
+        RecordPO recordPO = RecordPO.builder().build();
+        //进行入库处理
+        BeanUtils.copyProperties(reserveBookVO, recordPO);
+        recordPO.setUserId(token.getId());
+        recordPO.setUserName(token.getName());
+        recordPO.setRecordType(RecordType.WITHDRAW);
+        recordPO.setTextBookName(textBookPO.getTextName());
+        recordMapper.insert(recordPO);
+
+        //添加库存
+        Integer bookNumber = textBookPO.getBookNumber();
+        textBookPO.setBookNumber(bookNumber + reserveBookVO.getTextBookSize());
+        textBookMapper.updateById(textBookPO);
     }
 
 
@@ -125,15 +163,12 @@ public class RecordServiceImpl implements RecordService {
      */
     private Boolean unlock(String key, String value) {
         String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
-        DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>(script, Long.class);
+        DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>(script,Long.class);
         Object result = redisTemplate.execute(redisScript, Arrays.asList(key),value);
         if(SUCCESS.equals(result)) {
             return true;
         }
         return false;
     }
-
-
-
 
 }

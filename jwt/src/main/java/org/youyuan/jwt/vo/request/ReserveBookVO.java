@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @Describe: 预定教材实体类
+ * @Describe: 教材实体类
  * @Author: youjiancheng
  * @date 2021/3/6 15:42
  */
@@ -14,8 +14,6 @@ public class ReserveBookVO {
     @ApiModelProperty("教材ID")
     private Integer textId;
 
-//    @ApiModelProperty("教材名称")
-//    private String textBookName;
 
     @ApiModelProperty("教材数量")
     private Integer textBookSize;

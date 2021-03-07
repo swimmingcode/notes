@@ -145,6 +145,11 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>2.2.6</version>
+        </dependency>
 
     </dependencies>
 
@@ -170,10 +175,6 @@
             </resource>
 
         </resources>
-
-
-
-
 
         <plugins>
             <plugin>

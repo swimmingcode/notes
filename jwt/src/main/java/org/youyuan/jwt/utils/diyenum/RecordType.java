@@ -13,8 +13,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public enum  RecordType {
 
-    SCHEDULED("预定"),
-    WITHDRAW("退回");
+    SCHEDULED("预订"),
+    WITHDRAW("退订");
 
     @Setter
     @Getter

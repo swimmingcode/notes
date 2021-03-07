@@ -14,6 +14,7 @@ import org.youyuan.jwt.service.TextBookService;
 import org.youyuan.jwt.utils.common.DateUtils;
 import org.youyuan.jwt.utils.common.web.GlobalHttpUtils;
 import org.youyuan.jwt.vo.request.AddTextBookVO;
+import org.youyuan.jwt.vo.response.TextBookExcel;
 import org.youyuan.jwt.vo.response.TextBookVO;
 import org.youyuan.jwt.vo.response.UserVO;
 
@@ -22,6 +23,8 @@ import java.io.*;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * @Describe: #请描述当前类的功能#
@@ -133,5 +136,20 @@ public class TextBookServiceImpl implements TextBookService {
     public List<TextBookVO> getTextBookList(Integer page, Integer size, String search) {
         List<TextBookVO> textBookList = textBookMapper.getTextBookList((page-1) * size,size,search);
         return textBookList;
+    }
+
+    @Override
+    public List<TextBookExcel> getTextBookExcelList() {
+        List<TextBookPO> textBookPOS = textBookMapper.selectList(null);
+        return textBookPOS.stream().map(textBookPO -> {
+            return TextBookExcel.builder()
+                    .textName(textBookPO.getTextName())
+                    .bookDescribe(textBookPO.getBookDescribe())
+                    .bookNumber(textBookPO.getBookNumber())
+                    .createTime(textBookPO.getCreateTime())
+                    .professional(textBookPO.getProfessional().name())
+                    .updateTime(textBookPO.getUpdateTime())
+                    .build();
+        }).collect(Collectors.toList());
     }
 }
