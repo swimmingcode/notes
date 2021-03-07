@@ -17,4 +17,12 @@ public interface RecordService {
      * @param token
      */
     void textBookReserve(ReserveBookVO reserveBookVO, Token token);
+
+    /**
+     * 教材退订
+     *
+     * @param reserveBookVO
+     * @param token
+     */
+    void textBookUnSubscribe(ReserveBookVO reserveBookVO, Token token);
 }

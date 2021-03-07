@@ -40,14 +40,27 @@ public class RecordApi {
     @ApiOperation(value = "教材预定")
     @PostMapping("/reserve")
     public Response<Void> textBookReserve(@ApiIgnore @Token org.youyuan.jwt.utils.jwt.Token token,
-                                          @ApiParam(value = "预定教材实体类") @RequestBody  ReserveBookVO reserveBookVO) {
+                                          @ApiParam(value = "预定教材实体类") @RequestBody ReserveBookVO reserveBookVO) {
         //使用redis做分布式锁
+        recordService.textBookReserve(reserveBookVO, token);
         // TODO: 2021/3/6 使用线程模拟
-        for (int i = 0; i < 5; i++) {
-            threadPoolTaskExecutor.submit(()->{
-                recordService.textBookReserve(reserveBookVO, token);
-            });
+//        for (int i = 0; i < 10; i++) {
+//            threadPoolTaskExecutor.submit(()->{
+//                recordService.textBookReserve(reserveBookVO, token);
+//            });
+//        }
+        return ResponseFactory.<Void>productEmptyResult(ResponseCode.OK);
+    }
+
+    @AccessPermission(roleName = "user")
+    @ApiOperation(value = "教材退订")
+    @PostMapping("/unSubscribe")
+    public Response<Void> textBookUnSubscribe(@ApiIgnore @Token org.youyuan.jwt.utils.jwt.Token token,
+                                              @ApiParam(value = "退订教材实体类") @RequestBody ReserveBookVO reserveBookVO) {
+        synchronized (this) {
+            recordService.textBookUnSubscribe(reserveBookVO, token);
         }
         return ResponseFactory.<Void>productEmptyResult(ResponseCode.OK);
     }
+
 }

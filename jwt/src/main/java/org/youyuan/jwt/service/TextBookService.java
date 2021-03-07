@@ -2,6 +2,7 @@ package org.youyuan.jwt.service;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.youyuan.jwt.vo.request.AddTextBookVO;
+import org.youyuan.jwt.vo.response.TextBookExcel;
 import org.youyuan.jwt.vo.response.TextBookVO;
 
 import java.util.List;
@@ -59,4 +60,12 @@ public interface TextBookService {
      * @return
      */
     List<TextBookVO> getTextBookList(Integer page, Integer size, String search);
+
+    /**
+     * 获取教材excel列表
+     *
+     * @return
+     */
+    List<TextBookExcel> getTextBookExcelList();
+
 }
