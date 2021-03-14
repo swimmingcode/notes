@@ -16,7 +16,7 @@ public class ObjectTest {
         integers.add(43);
         Object o = integers;
         System.out.println(o);
-         ArrayList<Integer> res= (ArrayList<Integer>) o;
+        ArrayList<Integer> res= (ArrayList<Integer>) o;
         System.out.println(res);
     }
 }
