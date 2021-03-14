@@ -9,18 +9,13 @@ import java.util.Random;
  */
 public class Test {
     public static void main(String[] args) {
-//        Class<? extends Test> aClass = new Test().getClass();
-//        ClassLoader classLoader = aClass.getClassLoader();
-//        System.out.println(classLoader.getParent());
-//        Object o = new Object();
-//        System.out.println(o.toString());
+//        Double res = 1244.3456;
+//        System.out.println(String.format("%s %10.5f ", res,112.1111));
+//        double n = 1234.2;
+//        System.out.println(String.format("%.2f", n));
+        String message = "queue";
+        String s = message.toString();
+        String s1 = "1" + "2";
 
-        Random random = new Random();
-        String result="";
-        for (int i=0;i<6;i++)
-        {
-            result+=random.nextInt(10);
-        }
-        System.out.println(result);
     }
 }

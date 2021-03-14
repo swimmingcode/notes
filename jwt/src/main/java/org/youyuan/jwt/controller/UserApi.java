@@ -16,6 +16,7 @@ import org.youyuan.jwt.utils.common.response.ResponseCode;
 import org.youyuan.jwt.utils.common.response.ResponseFactory;
 import org.youyuan.jwt.utils.jwt.Token;
 import org.youyuan.jwt.utils.jwt.annotation.AccessPermission;
+import org.youyuan.jwt.utils.jwt.annotation.RequestToken;
 import org.youyuan.jwt.utils.jwt.annotation.UnLogin;
 import org.youyuan.jwt.vo.request.*;
 import org.youyuan.jwt.vo.response.AccountVO;
@@ -55,7 +56,7 @@ public class UserApi {
     })
     @ApiOperation(value = "登录接口", notes = "返回Token")
     @PostMapping("/account/login")
-    public Response<String> login(@ApiIgnore @org.youyuan.jwt.utils.jwt.annotation.Token Token tokenDetail,
+    public Response<String> login(@ApiIgnore @RequestToken Token tokenDetail,
                                   @ApiParam(value = "用户名/密码") @RequestBody @Validated UserAccountVO userAccountVO,
                                   HttpServletResponse response) {
         UserPO userPO = userService.verifyUserNameAndPassword(userAccountVO.getUsername(), userAccountVO.getPassword());
@@ -81,7 +82,7 @@ public class UserApi {
     @ApiResponse(code = 200, message = "成功")
     @ApiOperation(value = "创建用户账号")
     @PostMapping("/account/create")
-    public Response<UserAccountVO> createAccount(@ApiIgnore @org.youyuan.jwt.utils.jwt.annotation.Token Token token) {
+    public Response<UserAccountVO> createAccount(@ApiIgnore @RequestToken Token token) {
         UserAccountVO userAccount = userService.createAccount();
         return ResponseFactory.<UserAccountVO>productResult(ResponseCode.OK, userAccount);
     }

@@ -11,5 +11,5 @@ import java.lang.annotation.*;
 @Target(value = {ElementType.PARAMETER})
 @Documented
 @Inherited
-public @interface Token {
+public @interface RequestToken {
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.youyuan.jwt.service.RecordService;
-import org.youyuan.jwt.utils.jwt.annotation.Token;
+import org.youyuan.jwt.utils.jwt.annotation.RequestToken;
 import org.youyuan.jwt.utils.common.response.Response;
 import org.youyuan.jwt.utils.common.response.ResponseCode;
 import org.youyuan.jwt.utils.common.response.ResponseFactory;
@@ -39,7 +39,7 @@ public class RecordApi {
     @AccessPermission(roleName = "user")
     @ApiOperation(value = "教材预定")
     @PostMapping("/reserve")
-    public Response<Void> textBookReserve(@ApiIgnore @Token org.youyuan.jwt.utils.jwt.Token token,
+    public Response<Void> textBookReserve(@ApiIgnore @RequestToken org.youyuan.jwt.utils.jwt.Token token,
                                           @ApiParam(value = "预定教材实体类") @RequestBody ReserveBookVO reserveBookVO) {
         //使用redis做分布式锁
         recordService.textBookReserve(reserveBookVO, token);
@@ -55,7 +55,7 @@ public class RecordApi {
     @AccessPermission(roleName = "user")
     @ApiOperation(value = "教材退订")
     @PostMapping("/unSubscribe")
-    public Response<Void> textBookUnSubscribe(@ApiIgnore @Token org.youyuan.jwt.utils.jwt.Token token,
+    public Response<Void> textBookUnSubscribe(@ApiIgnore @RequestToken org.youyuan.jwt.utils.jwt.Token token,
                                               @ApiParam(value = "退订教材实体类") @RequestBody ReserveBookVO reserveBookVO) {
         synchronized (this) {
             recordService.textBookUnSubscribe(reserveBookVO, token);
