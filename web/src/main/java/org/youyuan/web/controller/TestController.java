@@ -1,7 +1,6 @@
 package org.youyuan.web.controller;
 
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import lombok.extern.slf4j.Slf4j;
@@ -11,12 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.youyuan.web.bean.Person;
 import org.youyuan.web.bean.User;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -77,5 +73,21 @@ public class TestController {
         System.out.println(data);
 
     }
+
+//    private HashMap<Integer, Integer> hashMap = new HashMap<>();
+
+    @GetMapping("/test/hashmap")
+    public void testHash() {
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < 10; i++) {
+            int finalI = i;
+            int finalI1 = i;
+            new Thread(()->{
+                hashMap.put(finalI, finalI1);
+            }).start();
+        }
+
+    }
+
 
 }
