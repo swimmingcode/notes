@@ -114,7 +114,7 @@ public class TextBookApi {
 
     @AccessPermission(roleName = "admin")
     @ApiResponse(code = 200, message = "成功")
-    @ApiOperation(value = "下载教材列表")
+    @ApiOperation(value = "下载教材列表Excel")
     @GetMapping("/download/excel")
     public void downloadExcelTextBookList(HttpServletResponse response) throws IOException {
         List<TextBookExcel> textBookExcels = textBookService.getTextBookExcelList();
