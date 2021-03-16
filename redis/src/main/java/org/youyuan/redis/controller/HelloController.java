@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.youyuan.redis.bean.Message;
 import org.youyuan.redis.mq.ProduceFactory;
 
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
