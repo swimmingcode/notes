@@ -1,7 +1,9 @@
 package org.youyuan.websocket.websocket.singlechat;
 
+
 /**
- * Created by sang on 16-12-22.
+ *
+ * @author YJP
  */
 public class RequestMessage {
 

@@ -1,16 +1,14 @@
 package org.youyuan.websocket.websocket.singlechat;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+
 /**
- * Created by sang on 16-12-22.
+ * @author YJP
  */
+@Data
+@AllArgsConstructor
 public class ResponseMessage {
     private String responseMessage;
-
-    public ResponseMessage(String responseMessage) {
-        this.responseMessage = responseMessage;
-    }
-
-    public String getResponseMessage() {
-        return responseMessage;
-    }
 }

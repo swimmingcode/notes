@@ -30,17 +30,20 @@
 //        $("#disconnect").disabled = !connected;
         $("#response").html();
     }
+    //客户端发起连接socket请求
     function connect() {
         var socket = new SockJS('/endpointSang');
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function (frame) {
             setConnected(true);
             console.log('Connected:' + frame);
+            //订阅服务端发送回来的消息
             stompClient.subscribe('/topic/getResponse', function (response) {
                 showResponse(JSON.parse(response.body).responseMessage);
             })
         });
     }
+    //断开socket连接
     function disconnect() {
         if (stompClient != null) {
             stompClient.disconnect();
