@@ -38,7 +38,7 @@
             setConnected(true);
             console.log('Connected:' + frame);
             //订阅服务端发送回来的消息
-            stompClient.subscribe('/topic/getResponse', function (response) {
+            stompClient.subscribe('/app/getResponse', function (response) {
                 showResponse(JSON.parse(response.body).responseMessage);
             })
         });
