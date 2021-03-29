@@ -12,12 +12,14 @@
         <module name="websocket" />
         <module name="web" />
         <module name="myspring" />
+        <module name="chat" />
         <module name="mybatis-plus" />
         <module name="redis" />
         <module name="upload" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="chat" target="1.8" />
       <module name="java" target="1.8" />
       <module name="jwt" target="1.8" />
       <module name="mybatis-plus" target="1.8" />
@@ -30,6 +32,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="chat" options="-parameters" />
       <module name="java" options="" />
       <module name="jwt" options="-parameters" />
       <module name="mybatis-plus" options="-parameters" />
