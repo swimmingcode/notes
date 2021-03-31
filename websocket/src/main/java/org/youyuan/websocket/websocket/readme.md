@@ -2,3 +2,4 @@
 - 关闭websocket
 - 实现消息的主动推送
 - session的使用
+-registry.setApplicationDestinationPrefixes("/app")服务端无法接收客户端的消息
