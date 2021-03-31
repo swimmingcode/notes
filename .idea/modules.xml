@@ -3,12 +3,16 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/chat/chat.iml" filepath="$PROJECT_DIR$/chat/chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FreeWebChat/demo.iml" filepath="$PROJECT_DIR$/FreeWebChat/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/javase/javase.iml" filepath="$PROJECT_DIR$/javase/javase.iml" />
       <module fileurl="file://$PROJECT_DIR$/jwt/jwt.iml" filepath="$PROJECT_DIR$/jwt/jwt.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis-plus/mybatis-plus.iml" filepath="$PROJECT_DIR$/mybatis-plus/mybatis-plus.iml" />
       <module fileurl="file://$PROJECT_DIR$/myspring/myspring.iml" filepath="$PROJECT_DIR$/myspring/myspring.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/notes.iml" filepath="$PROJECT_DIR$/.idea/notes.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis/redis.iml" filepath="$PROJECT_DIR$/redis/redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stomp-websockets-java-client/stomp-greeting-server/stomp-greeting-server.iml" filepath="$PROJECT_DIR$/stomp-websockets-java-client/stomp-greeting-server/stomp-greeting-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stomp-websockets-java-client/stomp-java-client/stomp-java-client.iml" filepath="$PROJECT_DIR$/stomp-websockets-java-client/stomp-java-client/stomp-java-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stomp-websockets-java-client/stomp-websockets-java-client.iml" filepath="$PROJECT_DIR$/stomp-websockets-java-client/stomp-websockets-java-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/upload/upload.iml" filepath="$PROJECT_DIR$/upload/upload.iml" />
       <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
       <module fileurl="file://$PROJECT_DIR$/websocket/websocket.iml" filepath="$PROJECT_DIR$/websocket/websocket.iml" />
