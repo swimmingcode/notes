@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/FreeWebChat" />
     <file type="web" url="file://$PROJECT_DIR$/myspring" />
   </component>
   <component name="JavaScriptSettings">
@@ -16,6 +17,9 @@
         <option value="$PROJECT_DIR$/mybatis-plus/pom.xml" />
         <option value="$PROJECT_DIR$/websocket/pom.xml" />
         <option value="$PROJECT_DIR$/upload/pom.xml" />
+        <option value="$PROJECT_DIR$/chat/pom.xml" />
+        <option value="$PROJECT_DIR$/FreeWebChat/pom.xml" />
+        <option value="$PROJECT_DIR$/stomp-websockets-java-client/pom.xml" />
       </list>
     </option>
   </component>

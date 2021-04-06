@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.youyuan.jwt.mapper.UserMapper">
+    
+    <sql id="user">
+        id,name, create_time as createTime,email
+    </sql>
+
+    <insert id="insertGeneratedPrimaryKey" useGeneratedKeys="true" keyProperty="id" parameterType="org.youyuan.jwt.domain.UserPO" >
+        insert into user (id,name,password,create_time,update_time,email) values (#{id},#{name},#{password},#{createTime},#{updateTime},#{email})
+    </insert>
+
+    <insert id="insertUserRoleRel">
+        insert into user_role_rel (user_id,role_id) values (#{userId},#{roleId})
+    </insert>
+
+    <resultMap id="userInfo" type="org.youyuan.jwt.vo.response.UserInfo">
+        <id column="uid" property="uid"></id>
+        <result column="user_name" property="userName" ></result>
+        <result column="email" property="email"></result>
+        <collection property="rolePOS" ofType="org.youyuan.jwt.vo.response.Role">
+            <id column="rid" property="rid" ></id>
+            <result column="role_name" property="roleName" ></result>
+            <result column="description" property="description"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getUserInfo" resultMap="userInfo">
+        SELECT u.id as uid ,u.`name` as user_name, u.email as email, r.id as rid,r.description,r.role_name
+        from  role r,user u,user_role_rel ur
+        WHERE u.id = ur.user_id AND ur.role_id = r.id AND u.id = #{userId}
+    </select>
+    
+    
+    <select id="getUserInfoList" resultType="org.youyuan.jwt.vo.response.UserVO">
+        select <include refid="user"/>  from user u
+        <where>
+            <if test="search!=null and search!=''">
+                u.name like concat('%',#{search},'%')
+                or u.email like concat('%',#{search},'%')
+            </if>
+        </where>
+        limit #{page},#{size}
+    </select>
+
+ 
+
+</mapper>

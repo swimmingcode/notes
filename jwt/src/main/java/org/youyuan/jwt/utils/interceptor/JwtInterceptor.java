@@ -68,6 +68,7 @@ public class JwtInterceptor implements HandlerInterceptor {
             "/webjars/springfox-swagger-ui/**",
             "/img/**",
             "/static/**",
+            "/email.html"
     };
 
     @Override

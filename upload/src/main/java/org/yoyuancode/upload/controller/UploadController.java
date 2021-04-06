@@ -49,7 +49,6 @@ public class UploadController {
                 outputStream.write(bytes);
             }
             log.info("文件路径为=" + path + fileName);
-            // TODO: 2021/2/28 有问题
             String url= request.getScheme() + "://"+request.getServerName() +":" + request.getServerPort()+"/img/" + fileName;
             log.info(url);
             return url;

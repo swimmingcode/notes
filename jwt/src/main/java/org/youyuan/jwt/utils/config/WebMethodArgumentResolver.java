@@ -8,6 +8,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 import org.youyuan.jwt.utils.jwt.Token;
+import org.youyuan.jwt.utils.jwt.annotation.RequestToken;
 
 /**
  * @Describe: #请描述当前类的功能#
@@ -20,7 +21,7 @@ public class WebMethodArgumentResolver implements HandlerMethodArgumentResolver 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         return parameter.getParameterType().isAssignableFrom(Token.class)
-                && parameter.hasParameterAnnotation(org.youyuan.jwt.utils.jwt.annotation.Token.class);
+                && parameter.hasParameterAnnotation(RequestToken.class);
     }
 
     @Override

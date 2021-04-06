@@ -1,6 +1,7 @@
 package org.youyuan.stream;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,10 +23,11 @@ public class NonNullDemo {
     }
     public static void main(String[] args) {
 
-
         List<String> ids = new ArrayList<>();
 
-        ids.stream().collect(Collectors.toList());
+        List<String> collect = ids.stream().collect(Collectors.toList());
+
+        HashMap<Object, Object> objectObjectHashMap = new HashMap<>(11);
     }
 
 }

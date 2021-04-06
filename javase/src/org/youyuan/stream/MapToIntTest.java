@@ -20,6 +20,5 @@ public class MapToIntTest {
 
         list.stream().map(num -> Integer.parseInt(num)).count();
         List<Integer> collect = list.stream().mapToInt(num -> Integer.parseInt(num)).boxed().collect(Collectors.toList());
-
     }
 }

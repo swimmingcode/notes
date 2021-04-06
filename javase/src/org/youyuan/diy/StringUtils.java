@@ -5,9 +5,11 @@ package org.youyuan.diy;
  * @Date 2021/1/19 16:21
  */
 
-public class StringUtils {
+public final class StringUtils  implements java.io.Serializable, Comparable<String>{
 
-    public static void main(String[] args) {
 
+    @Override
+    public int compareTo(String o) {
+        return 0;
     }
 }

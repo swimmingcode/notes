@@ -9,20 +9,28 @@
         <outputRelativeToContentRoot value="true" />
         <module name="jwt" />
         <module name="java" />
+        <module name="demo" />
         <module name="websocket" />
         <module name="web" />
         <module name="myspring" />
+        <module name="chat" />
+        <module name="stomp-greeting-server" />
         <module name="mybatis-plus" />
         <module name="redis" />
         <module name="upload" />
+        <module name="stomp-java-client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="java" target="1.8" />
+      <module name="chat" target="1.8" />
+      <module name="demo" target="1.8" />
       <module name="jwt" target="1.8" />
       <module name="mybatis-plus" target="1.8" />
       <module name="myspring" target="6" />
       <module name="redis" target="1.8" />
+      <module name="stomp-greeting-server" target="1.8" />
+      <module name="stomp-java-client" target="1.8" />
+      <module name="stomp-websockets-java-client" target="1.5" />
       <module name="upload" target="1.8" />
       <module name="web" target="1.8" />
       <module name="websocket" target="1.8" />
@@ -30,7 +38,8 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="java" options="" />
+      <module name="chat" options="-parameters" />
+      <module name="demo" options="-parameters" />
       <module name="jwt" options="-parameters" />
       <module name="mybatis-plus" options="-parameters" />
       <module name="redis" options="-parameters" />

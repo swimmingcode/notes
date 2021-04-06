@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.youyuan.web.bean.Person;
 import org.youyuan.web.bean.User;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @Describe
@@ -57,9 +57,37 @@ public class TestController {
 
     @GetMapping("/test/encode")
     public void testEncode(HttpServletResponse response, HttpServletRequest request) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyyMMddHHmmss");
-        String filename = "视频分析任务结果导出_"+ sdf.format(new Date()) +".xlsx";
+        ArrayList<Person> people = new ArrayList<>();
+        Person zs = new Person(1,"zs");
+        Person ls = new Person(2,"ls");
+        people.add(zs);
+        people.add(ls);
+        String msg = JSONObject.toJSONString(people);
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("data",msg);
+
+        JSONObject jsonObject = JSONObject.parseObject(JSONObject.toJSONString(hashMap));
+
+        List<Person> data = JSONObject.parseArray(jsonObject.getJSONArray("data").toString(), Person.class);
+        System.out.println(data);
 
     }
+
+//    private HashMap<Integer, Integer> hashMap = new HashMap<>();
+
+    @GetMapping("/test/hashmap")
+    public void testHash() {
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < 10; i++) {
+            int finalI = i;
+            int finalI1 = i;
+            new Thread(()->{
+                hashMap.put(finalI, finalI1);
+            }).start();
+        }
+
+    }
+
 
 }
