@@ -145,15 +145,13 @@ public class MyAnnotationConfigApplicationContext {
                                     String methodName = "set" + field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1, field.getName().length());
                                     Method method = aClass.getMethod(methodName,field.getType());
                                     //                        System.out.println(field.getType().getName());
-                                    switch (field.getType().getName()) {
-                                        case "java.lang.Integer":
-                                            int i = Integer.parseInt(value);
-                                            method.invoke(o,i);
-                                            break;
-                                        case "java.lang.String":
-                                            String s = String.valueOf(value);
-                                            method.invoke(o,s);
-                                            break;
+                                    String name = field.getType().getName();
+                                    if ("java.lang.Integer".equals(name)) {
+                                        int i = Integer.parseInt(value);
+                                        method.invoke(o, i);
+                                    } else if ("java.lang.String".equals(name)) {
+                                        String s = String.valueOf(value);
+                                        method.invoke(o, s);
                                     }
                                 }
                             } catch (IllegalAccessException e) {
