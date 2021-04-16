@@ -5,5 +5,6 @@ package org.youyuan.diy;
  * @Date 2021/1/19 21:48
  */
 public class HashMapUtils {
-    
+    public static void main(String[] args) {
+    }
 }

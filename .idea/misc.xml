@@ -20,6 +20,20 @@
         <option value="$PROJECT_DIR$/chat/pom.xml" />
         <option value="$PROJECT_DIR$/FreeWebChat/pom.xml" />
         <option value="$PROJECT_DIR$/stomp-websockets-java-client/pom.xml" />
+        <option value="$PROJECT_DIR$/elasticsearch/pom.xml" />
+        <option value="$PROJECT_DIR$/契约锁测试题/pom.xml" />
+        <option value="$PROJECT_DIR$/契约锁测试题/client/pom.xml" />
+        <option value="$PROJECT_DIR$/契约锁测试题/servers/pom.xml" />
+        <option value="$PROJECT_DIR$/mongodb/pom.xml" />
+        <option value="$PROJECT_DIR$/httpfilesystem/pom.xml" />
+        <option value="$PROJECT_DIR$/httpfilesystem/client/pom.xml" />
+        <option value="$PROJECT_DIR$/httpfilesystem/servers/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloudalibabademo/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloudalibabademo/consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloudalibabademo/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloudalibabademo/pay/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloudalibabademo/provider/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloudalibabademo/order/pom.xml" />
       </list>
     </option>
   </component>
