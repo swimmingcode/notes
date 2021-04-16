@@ -8,26 +8,50 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jwt" />
-        <module name="java" />
-        <module name="demo" />
-        <module name="websocket" />
-        <module name="web" />
-        <module name="myspring" />
-        <module name="chat" />
-        <module name="stomp-greeting-server" />
+        <module name="upload" />
+        <module name="cloudalibaba" />
         <module name="mybatis-plus" />
         <module name="redis" />
-        <module name="upload" />
+        <module name="demo" />
+        <module name="consumer" />
+        <module name="gateway" />
+        <module name="websocket" />
+        <module name="client" />
+        <module name="chat" />
+        <module name="client (1)" />
+        <module name="provider" />
+        <module name="server" />
+        <module name="myspring" />
+        <module name="pay" />
+        <module name="stomp-greeting-server" />
+        <module name="order" />
         <module name="stomp-java-client" />
+        <module name="springcloudalibabademo" />
+        <module name="elasticsearch" />
+        <module name="mongodb" />
+        <module name="web" />
+        <module name="java" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chat" target="1.8" />
+      <module name="client" target="1.8" />
+      <module name="client (1)" target="1.8" />
+      <module name="cloudalibaba" target="8" />
+      <module name="consumer" target="1.5" />
       <module name="demo" target="1.8" />
+      <module name="elasticsearch" target="1.8" />
+      <module name="gateway" target="1.8" />
       <module name="jwt" target="1.8" />
+      <module name="mongodb" target="1.8" />
       <module name="mybatis-plus" target="1.8" />
       <module name="myspring" target="6" />
+      <module name="order" target="1.8" />
+      <module name="pay" target="1.8" />
+      <module name="provider" target="1.8" />
       <module name="redis" target="1.8" />
+      <module name="server" target="1.8" />
+      <module name="springcloudalibabademo" target="1.8" />
       <module name="stomp-greeting-server" target="1.8" />
       <module name="stomp-java-client" target="1.8" />
       <module name="stomp-websockets-java-client" target="1.5" />
@@ -39,10 +63,20 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="chat" options="-parameters" />
+      <module name="client" options="-parameters" />
+      <module name="client (1)" options="-parameters" />
       <module name="demo" options="-parameters" />
+      <module name="elasticsearch" options="-parameters" />
+      <module name="gateway" options="-parameters" />
       <module name="jwt" options="-parameters" />
+      <module name="mongodb" options="-parameters" />
       <module name="mybatis-plus" options="-parameters" />
+      <module name="order" options="-parameters" />
+      <module name="pay" options="-parameters" />
+      <module name="provider" options="-parameters" />
       <module name="redis" options="-parameters" />
+      <module name="server" options="-parameters" />
+      <module name="springcloudalibabademo" options="-parameters" />
       <module name="upload" options="-parameters" />
       <module name="web" options="-parameters" />
       <module name="websocket" options="-parameters" />

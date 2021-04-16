@@ -142,7 +142,7 @@ public class TextBookServiceImpl implements TextBookService {
     public List<TextBookExcel> getTextBookExcelList() {
         List<TextBookPO> textBookPOS = textBookMapper.selectList(null);
         return textBookPOS.stream().map(textBookPO -> {
-            return TextBookExcel.builder()
+             TextBookExcel.builder()
                     .textName(textBookPO.getTextName())
                     .bookDescribe(textBookPO.getBookDescribe())
                     .bookNumber(textBookPO.getBookNumber())
