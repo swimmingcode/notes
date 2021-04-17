@@ -27,6 +27,7 @@
       <module fileurl="file://$PROJECT_DIR$/upload/upload.iml" filepath="$PROJECT_DIR$/upload/upload.iml" />
       <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
       <module fileurl="file://$PROJECT_DIR$/websocket/websocket.iml" filepath="$PROJECT_DIR$/websocket/websocket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whitelist/whitelist.iml" filepath="$PROJECT_DIR$/whitelist/whitelist.iml" />
     </modules>
   </component>
 </project>
