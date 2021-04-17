@@ -39,6 +39,7 @@
         </dependency>
     </dependencies>
 
+    <!--spring cloud 与spring cloud alibaba-->
     <dependencyManagement>
         <dependencies>
             <dependency>
