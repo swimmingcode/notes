@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2021/4/17 14:30
  */
 @Configuration
-//@ConditionalOnClass(WhiteListProperties.class)
+@ConditionalOnClass(WhiteListProperties.class)
 //使@ConfigurationProperties注解生效，如果只配置@ConfigurationProperties注解，在IOC容器中是获取不到properties配置文件转化的bean的
 @EnableConfigurationProperties(value = WhiteListProperties.class)
 public class WhiteListAutoConfigure {
