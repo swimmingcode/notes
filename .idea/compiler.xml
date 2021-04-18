@@ -9,29 +9,30 @@
         <outputRelativeToContentRoot value="true" />
         <module name="jwt" />
         <module name="upload" />
-        <module name="java" />
+        <module name="stomp-greeting-server" />
         <module name="mybatis-plus" />
-        <module name="whitelist" />
+        <module name="redis" />
         <module name="demo" />
+        <module name="server" />
         <module name="gateway" />
         <module name="websocket" />
-        <module name="redis" />
         <module name="chat" />
         <module name="client (1)" />
-        <module name="elasticsearch" />
+        <module name="consumer" />
         <module name="provider" />
-        <module name="server" />
+        <module name="whitelist" />
         <module name="mongodb" />
+        <module name="web" />
         <module name="myspring" />
-        <module name="pay" />
         <module name="order" />
         <module name="stomp-java-client" />
-        <module name="web" />
+        <module name="pay" />
         <module name="springcloudalibabademo" />
-        <module name="consumer" />
+        <module name="elasticsearch" />
         <module name="client" />
         <module name="cloudalibaba" />
-        <module name="stomp-greeting-server" />
+        <module name="java" />
+        <module name="whitelist-test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -60,6 +61,7 @@
       <module name="web" target="1.8" />
       <module name="websocket" target="1.8" />
       <module name="whitelist" target="1.8" />
+      <module name="whitelist-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -84,6 +86,7 @@
       <module name="web" options="-parameters" />
       <module name="websocket" options="-parameters" />
       <module name="whitelist" options="-parameters" />
+      <module name="whitelist-test" options="-parameters" />
     </option>
   </component>
 </project>

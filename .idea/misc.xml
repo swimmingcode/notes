@@ -35,6 +35,7 @@
         <option value="$PROJECT_DIR$/springcloudalibabademo/provider/pom.xml" />
         <option value="$PROJECT_DIR$/springcloudalibabademo/order/pom.xml" />
         <option value="$PROJECT_DIR$/whitelist/pom.xml" />
+        <option value="$PROJECT_DIR$/whitelist-test/pom.xml" />
       </list>
     </option>
   </component>
