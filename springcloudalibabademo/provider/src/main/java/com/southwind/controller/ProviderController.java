@@ -21,12 +21,13 @@ public class ProviderController {
 
     int i=0;
 
+    //随机抛异常
     @GetMapping("/index")
     public String index(){
-        i++;
-        if(i%2==0) {
-            throw new RuntimeException();
-        }
+//        i++;
+//        if(i%2==0) {
+//            throw new RuntimeException();
+//        }
         return this.port;
     }
 
