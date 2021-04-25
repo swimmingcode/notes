@@ -28,6 +28,7 @@ public class ConsumerController {
         return provider;
     }
 
+    //负载均衡随机调用
 //    @GetMapping("/index")
 //    public String index(){
 //        //调用provider服务的index方法
@@ -41,6 +42,7 @@ public class ConsumerController {
 //        return "调用了端口为："+serviceInstance.getPort()+"的服务，返回结果是："+this.restTemplate.getForObject(url, String.class);
 //    }
 
+    //通过ribbon随机调用
     @GetMapping("/index")
     public String index(){
         return this.restTemplate.getForObject("http://provider/index", String.class);
