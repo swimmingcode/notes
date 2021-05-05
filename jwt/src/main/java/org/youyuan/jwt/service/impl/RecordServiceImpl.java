@@ -47,7 +47,6 @@ public class RecordServiceImpl implements RecordService {
     @Autowired
     RecordMapper recordMapper;
 
-
     @Override
     public void textBookReserve(ReserveBookVO reserveBookVO, Token token) {
         while (true) {
@@ -57,11 +56,6 @@ public class RecordServiceImpl implements RecordService {
             if (ok) {
                 Object o = redisTemplate.opsForValue().get(KEY);
                 log.info("开始进入,value为",o);
-//                try {
-//                    TimeUnit.SECONDS.sleep(10L);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
                 //查询原有的数量
                 TextBookPO textBookPO = textBookMapper.selectById(reserveBookVO.getTextId());
                 log.info("库存为：{}",textBookPO);
@@ -83,9 +77,7 @@ public class RecordServiceImpl implements RecordService {
                 recordPO.setUserName(token.getName());
                 recordPO.setRecordType(RecordType.SCHEDULED);
                 recordPO.setTextBookName(textBookPO.getTextName());
-
                 textBookReserveUpdateDB(recordPO,textBookPO,reserveBookVO);
-
                 TextBookPO textBookPO1 = textBookMapper.selectById(reserveBookVO.getTextId());
                 log.info("==========textBookPO1={}===========",textBookPO1);
                 //释放锁
@@ -103,11 +95,11 @@ public class RecordServiceImpl implements RecordService {
                     log.error("except：解锁失败");
                     e.printStackTrace();
                 }
+
                 Object o1 = redisTemplate.opsForValue().get(KEY);
                 log.info("后面进入,value为",o1);
                 break;
             } else {
-
                 try {
                     TimeUnit.MICROSECONDS.sleep(1000L);
                 } catch (  Exception e) {
@@ -115,8 +107,24 @@ public class RecordServiceImpl implements RecordService {
                 }
                 log.debug("================排队中========================");
             }
-
         }
+    }
+
+    /**
+     * 使用lua脚本解锁
+     *
+     * @param key
+     * @param value
+     * @return
+     */
+    private Boolean unlock(String key, String value) {
+        String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
+        DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>(script,Long.class);
+        Object result = redisTemplate.execute(redisScript, Arrays.asList(key),value);
+        if(SUCCESS.equals(result)) {
+            return true;
+        }
+        return false;
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -154,21 +162,6 @@ public class RecordServiceImpl implements RecordService {
     }
 
 
-    /**
-     * 使用lua脚本解锁
-     *
-     * @param key
-     * @param value
-     * @return
-     */
-    private Boolean unlock(String key, String value) {
-        String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
-        DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>(script,Long.class);
-        Object result = redisTemplate.execute(redisScript, Arrays.asList(key),value);
-        if(SUCCESS.equals(result)) {
-            return true;
-        }
-        return false;
-    }
+
 
 }
