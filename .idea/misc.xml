@@ -37,6 +37,12 @@
         <option value="$PROJECT_DIR$/whitelist/pom.xml" />
         <option value="$PROJECT_DIR$/whitelist-test/pom.xml" />
         <option value="$PROJECT_DIR$/middle-ware-design/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/hystrix/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/whitelist/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/middle-ware-design/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/ratelimiter-test/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/ratelimiter/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/methodext/pom.xml" />
       </list>
     </option>
   </component>

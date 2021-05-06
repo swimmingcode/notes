@@ -22,30 +22,30 @@ public class VirtualMachineHttpTest {
     @PostMapping("/vmbackups")
     public Map test1(@RequestBody VirtualMachineBackup virtualMachineBackup) {
         HashMap<String, String> hashMap = new HashMap();
-        hashMap.put("taskId", UUID.randomUUID().toString().replace("_","").replace("-","").substring(0,10));
+        hashMap.put("taskId", UUID.randomUUID().toString().replace("_", "").replace("-", "").substring(0, 10));
         return hashMap;
     }
 
     @DeleteMapping(value = "/vmbackups/{id}")
     public Map test2(@PathVariable String id) {
         HashMap<String, String> hashMap = new HashMap();
-        hashMap.put("taskId","159368");
+        hashMap.put("taskId", "159368");
         return hashMap;
     }
 
     @GetMapping("/schedulers/{id}")
     public Map test3(@PathVariable String id) {
         HashMap<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("state","已完成");
-        hashMap.put("type","ONCE");
-        hashMap.put("aa","111");
+        hashMap.put("state", "已完成");
+        hashMap.put("type", "ONCE");
+        hashMap.put("aa", "111");
         return hashMap;
     }
 
     @GetMapping("/vms/{id}")
-    public Map test4(){
+    public Map test4() {
         HashMap hashMap = new HashMap();
-        hashMap.put("hostIp","127.0.0.1");
+        hashMap.put("hostIp", "127.0.0.1");
         Cdrom value = new Cdrom();
         CifsDto cifsDto = new CifsDto();
         cifsDto.setPassword("123");
@@ -57,9 +57,9 @@ public class VirtualMachineHttpTest {
 
     @PutMapping("/vms/{id}")
     public Map test5(@PathVariable String id) {
-        log.info("{}",id);
+        log.info("{}", id);
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("taskId", UUID.randomUUID().toString().replace("_","").replace("-","").substring(0,10));
+        hashMap.put("taskId", UUID.randomUUID().toString().replace("_", "").replace("-", "").substring(0, 10));
         return hashMap;
     }
 
@@ -71,7 +71,7 @@ public class VirtualMachineHttpTest {
         System.out.println(templateName);
         System.out.println(templateDesc);
         HashMap hashMap = new HashMap();
-        hashMap.put("taskId", UUID.randomUUID().toString().replace("_","").replace("-","").substring(0,10));
+        hashMap.put("taskId", UUID.randomUUID().toString().replace("_", "").replace("-", "").substring(0, 10));
         return hashMap;
     }
 }

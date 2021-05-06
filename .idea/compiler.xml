@@ -7,33 +7,37 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="jwt" />
-        <module name="upload" />
-        <module name="java" />
-        <module name="spring-cloud-alibaba-demo" />
-        <module name="mybatis-plus" />
-        <module name="whitelist" />
-        <module name="demo" />
-        <module name="gateway" />
-        <module name="middle-ware-design" />
         <module name="websocket" />
-        <module name="redis" />
-        <module name="chat" />
-        <module name="client (1)" />
-        <module name="elasticsearch" />
-        <module name="provider" />
-        <module name="server" />
-        <module name="web" />
-        <module name="myspring" />
-        <module name="order" />
-        <module name="stomp-java-client" />
-        <module name="pay" />
         <module name="client" />
-        <module name="consumer" />
-        <module name="mongodb" />
-        <module name="cloudalibaba" />
-        <module name="stomp-greeting-server" />
+        <module name="demo" />
+        <module name="elasticsearch" />
+        <module name="hystrix" />
+        <module name="upload" />
+        <module name="mybatis-plus" />
         <module name="whitelist-test" />
+        <module name="consumer" />
+        <module name="methodext" />
+        <module name="cloudalibaba" />
+        <module name="order" />
+        <module name="whitelist" />
+        <module name="stomp-greeting-server" />
+        <module name="middle-ware-design" />
+        <module name="jwt" />
+        <module name="server" />
+        <module name="ratelimiter-test" />
+        <module name="provider" />
+        <module name="stomp-java-client" />
+        <module name="myspring" />
+        <module name="web" />
+        <module name="chat" />
+        <module name="mongodb" />
+        <module name="ratelimiter" />
+        <module name="java" />
+        <module name="redis" />
+        <module name="spring-cloud-alibaba-demo" />
+        <module name="client (1)" />
+        <module name="gateway" />
+        <module name="pay" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -45,7 +49,9 @@
       <module name="demo" target="1.8" />
       <module name="elasticsearch" target="1.8" />
       <module name="gateway" target="1.8" />
+      <module name="hystrix" target="1.8" />
       <module name="jwt" target="1.8" />
+      <module name="methodext" target="1.8" />
       <module name="middle-ware-design" target="1.8" />
       <module name="mongodb" target="1.8" />
       <module name="mybatis-plus" target="1.8" />
@@ -53,6 +59,8 @@
       <module name="order" target="1.8" />
       <module name="pay" target="1.8" />
       <module name="provider" target="1.8" />
+      <module name="ratelimiter" target="1.8" />
+      <module name="ratelimiter-test" target="1.8" />
       <module name="redis" target="1.8" />
       <module name="server" target="1.8" />
       <module name="spring-cloud-alibaba-demo" target="1.8" />
@@ -75,13 +83,17 @@
       <module name="demo" options="-parameters" />
       <module name="elasticsearch" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="hystrix" options="-parameters" />
       <module name="jwt" options="-parameters" />
+      <module name="methodext" options="-parameters" />
       <module name="middle-ware-design" options="-parameters" />
       <module name="mongodb" options="-parameters" />
       <module name="mybatis-plus" options="-parameters" />
       <module name="order" options="-parameters" />
       <module name="pay" options="-parameters" />
       <module name="provider" options="-parameters" />
+      <module name="ratelimiter" options="-parameters" />
+      <module name="ratelimiter-test" options="-parameters" />
       <module name="redis" options="-parameters" />
       <module name="server" options="-parameters" />
       <module name="spring-cloud-alibaba-demo" options="-parameters" />

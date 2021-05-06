@@ -116,12 +116,12 @@ public class DoJoinPoint {
      * @param jp
      * @return
      */
-    public Map<String,Object> getParamNameAndValue(ProceedingJoinPoint jp) {
+    public Map<String, Object> getParamNameAndValue(ProceedingJoinPoint jp) {
         HashMap<String, Object> param = new HashMap<>();
         Object[] paramValue = jp.getArgs();
         String[] parameterNames = ((MethodSignature) jp.getSignature()).getParameterNames();
         for (int i = 0; i < parameterNames.length; i++) {
-            param.put(parameterNames[i],paramValue[i]);
+            param.put(parameterNames[i], paramValue[i]);
         }
         return param;
     }
