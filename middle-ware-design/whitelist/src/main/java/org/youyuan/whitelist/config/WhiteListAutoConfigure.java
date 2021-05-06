@@ -27,7 +27,7 @@ public class WhiteListAutoConfigure {
 
     @Bean("whiteListConfig")
     @ConditionalOnMissingBean
-    public String whiteListConfig(@Autowired  WhiteListProperties properties) {
+    public String whiteListConfig(@Autowired WhiteListProperties properties) {
         return properties.getUser();
     }
 }

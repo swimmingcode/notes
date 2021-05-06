@@ -13,5 +13,6 @@ import java.lang.annotation.*;
 @Inherited
 public @interface DoWhiteList {
     String key() default "";
+
     String returnJson() default "";
 }
