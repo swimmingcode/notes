@@ -4,6 +4,7 @@ package org.youyuan.web.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -88,6 +89,17 @@ public class TestController {
         }
 
     }
+
+//    @Value("${person.name}")
+//    private String name;
+//
+//
+//    @GetMapping("/yaml")
+//    public String yaml() {
+//        return this.name;
+//    }
+
+
 
 
 }

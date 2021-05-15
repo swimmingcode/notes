@@ -26,6 +26,7 @@
       <module fileurl="file://$PROJECT_DIR$/redis/redis.iml" filepath="$PROJECT_DIR$/redis/redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/httpfilesystem/servers/server.iml" filepath="$PROJECT_DIR$/httpfilesystem/servers/server.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-alibaba-demo/spring-cloud-alibaba-demo.iml" filepath="$PROJECT_DIR$/spring-cloud-alibaba-demo/spring-cloud-alibaba-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssmpermissioncopy/ssmpermissioncopy.iml" filepath="$PROJECT_DIR$/ssmpermissioncopy/ssmpermissioncopy.iml" />
       <module fileurl="file://$PROJECT_DIR$/stomp-websockets-java-client/stomp-greeting-server/stomp-greeting-server.iml" filepath="$PROJECT_DIR$/stomp-websockets-java-client/stomp-greeting-server/stomp-greeting-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/stomp-websockets-java-client/stomp-java-client/stomp-java-client.iml" filepath="$PROJECT_DIR$/stomp-websockets-java-client/stomp-java-client/stomp-java-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/stomp-websockets-java-client/stomp-websockets-java-client.iml" filepath="$PROJECT_DIR$/stomp-websockets-java-client/stomp-websockets-java-client.iml" />

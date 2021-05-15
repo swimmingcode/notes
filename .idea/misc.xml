@@ -3,6 +3,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/FreeWebChat" />
     <file type="web" url="file://$PROJECT_DIR$/myspring" />
+    <file type="web" url="file://$PROJECT_DIR$/ssmpermissioncopy" />
   </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
@@ -43,6 +44,7 @@
         <option value="$PROJECT_DIR$/middle-ware-design/ratelimiter-test/pom.xml" />
         <option value="$PROJECT_DIR$/middle-ware-design/ratelimiter/pom.xml" />
         <option value="$PROJECT_DIR$/middle-ware-design/methodext/pom.xml" />
+        <option value="$PROJECT_DIR$/ssmpermissioncopy/pom.xml" />
       </list>
     </option>
   </component>

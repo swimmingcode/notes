@@ -11,6 +11,7 @@
         <module name="client" />
         <module name="demo" />
         <module name="elasticsearch" />
+        <module name="ssmpermissioncopy" />
         <module name="hystrix" />
         <module name="upload" />
         <module name="mybatis-plus" />
@@ -64,9 +65,10 @@
       <module name="redis" target="1.8" />
       <module name="server" target="1.8" />
       <module name="spring-cloud-alibaba-demo" target="1.8" />
+      <module name="ssmpermissioncopy" target="1.8" />
       <module name="stomp-greeting-server" target="1.8" />
       <module name="stomp-java-client" target="1.8" />
-      <module name="stomp-websockets-java-client" target="1.5" />
+      <module name="stomp-websockets-java-client" target="1.8" />
       <module name="upload" target="1.8" />
       <module name="web" target="1.8" />
       <module name="websocket" target="1.8" />

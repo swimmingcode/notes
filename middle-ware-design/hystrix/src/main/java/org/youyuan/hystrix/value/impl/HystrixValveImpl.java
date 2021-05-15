@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.youyuan.hystrix.anno.DoHystrix;
 import org.youyuan.hystrix.value.IValveService;
 
+import java.beans.Transient;
 import java.lang.reflect.Method;
 
 /**
@@ -23,7 +24,7 @@ public class HystrixValveImpl extends HystrixCommand<Object> implements IValveSe
 
 
     public HystrixValveImpl() {
-        /*********************************************************************************************
+        /***********************o**********************************************************************
          * 置HystrixCommand的属性
          * GroupKey：            该命令属于哪一个组，可以帮助我们更好的组织命令。
          * CommandKey：          该命令的名称
