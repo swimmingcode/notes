@@ -40,7 +40,7 @@
             <artifactId>commons-beanutils</artifactId>
             <version>1.8.3</version>
         </dependency>
-        <!-- RateLimiter -->
+        <!-- RateLimiter 限流（单机）-->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itlike.mapper.MenuMapper" >
+
+  <resultMap id="BaseResultMap" type="com.itlike.domain.Menu" >
+      <id column="id" property="id" jdbcType="BIGINT" />
+      <result column="text" property="text" jdbcType="VARCHAR" />
+      <result column="url" property="url" jdbcType="VARCHAR" />
+      <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+
+    <!--父菜单-->
+    <association property="parent" javaType="com.itlike.domain.Menu" columnPrefix="p_">
+      <id column="id" property="id" jdbcType="BIGINT" />
+      <result column="text" property="text" jdbcType="VARCHAR"/>
+      <result column="url" property="url" jdbcType="VARCHAR"/>
+    </association>
+
+    <!--所拥有的权限-->
+    <association property="permission" javaType="com.itlike.domain.Permission">
+      <id column="pid" property="pid"/>
+      <result column="pname" property="pname"/>
+      <result column="presource" property="presource"/>
+    </association>
+
+    <!--子菜单-->
+    <collection property="children"
+                ofType="com.itlike.domain.Menu"
+                select="selectMenuChild"
+                column="id">
+    </collection>
+
+
+
+  </resultMap>
+
+
+  <!--查询所有根菜单-->
+  <select id="getALlTreeData" resultMap="BaseResultMap">
+    SELECT * FROM menu as  m
+    LEFT JOIN permission as p
+    on  m.permission_id = p.pid where m.parent_id is NULL
+  </select>
+
+  <!-- 查询所有子菜单 -->
+  <select id="selectMenuChild" resultMap="BaseResultMap">
+    SELECT * FROM menu as m
+    LEFT JOIN permission  as p
+    on  m.permission_id = p.pid where m.parent_id = #{id}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from menu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="com.itlike.domain.Menu" >
+    insert into menu (id, text, url, 
+      parent_id)
+    values (#{id,jdbcType=BIGINT}, #{text,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=BIGINT})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.itlike.domain.Menu" >
+    update menu
+    set text = #{text,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      parent_id = #{parent.id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, text, url, parent_id
+    from menu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    SELECT  m1.id, m1.text, m1.url , m1.parent_id,
+    m2.id AS p_id, m2.text AS p_text, m2.url AS p_url
+    FROM menu AS m1
+    LEFT JOIN menu AS m2
+    ON m2.id = m1.parent_id
+  </select>
+
+  <!-- 取出自己的父菜单id-->
+  <select id="getParentId" resultType="java.lang.Long">
+    SELECT parent_id FROM menu WHERE id = #{parentId}
+  </select>
+
+  <!--添加菜单-->
+  <insert id="insertMenu" parameterType="com.itlike.domain.Menu">
+    INSERT INTO menu (text,url,parent_id) VALUES(#{text},#{url},#{parent.id})
+  </insert>
+
+  <!--删除其子菜单-->
+  <delete id="deleteChildrenMenu" parameterType="long">
+        UPDATE menu SET parent_id = null WHERE  parent_id= #{param1};
+  </delete>
+
+</mapper>

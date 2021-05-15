@@ -24,21 +24,23 @@ import java.lang.reflect.Method;
 @Component
 public class DoMethodExtPoint {
 
-
     @Pointcut("@annotation(org.youyuan.methodext.annotation.DoMethodExt)")
     public void aopPoint() {
     }
 
     @Around("aopPoint()")
     public Object doRouter(ProceedingJoinPoint jp) throws Throwable {
-        // 获取内容
+        // 获取进入的方法
         Method method = getMethod(jp);
         DoMethodExt doMethodExt = method.getAnnotation(DoMethodExt.class);
         // 获取拦截方法
+        // 如何调用？ 反射
         String methodName = doMethodExt.method();
         // 功能处理
         // 获取Controller的class
-        Method methodExt = getClass(jp).getMethod(methodName, method.getParameterTypes());
+        //确定方法名称、以及参数类型
+        // TODO: 2021/5/6 若 method.getParameterTypes()类型不一致怎么处理
+        Method methodExt = getClass(jp).getMethod(methodName,method.getParameterTypes());
         Class<?> returnType = methodExt.getReturnType();
 
         // 判断方法返回类型

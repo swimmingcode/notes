@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itlike.mapper.EmployeeMapper" >
+
+  <resultMap id="BaseResultMap" type="com.itlike.domain.Employee" >
+    <id column="emp_id" property="empId" jdbcType="BIGINT" />
+    <result column="emp_username" property="empUsername" jdbcType="VARCHAR" />
+    <result column="emp_inputtime" property="empInputtime" jdbcType="TIMESTAMP" />
+    <result column="emp_tel" property="empTel" jdbcType="VARCHAR" />
+    <result column="emp_email" property="empEmail" jdbcType="VARCHAR" />
+    <result column="emp_state" property="empState" jdbcType="BIT" />
+    <result column="emp_admin" property="empAdmin" jdbcType="BIT" />
+    <result column="emp_dep_id" property="empDepId" jdbcType="INTEGER" />
+    <result column="emp_password" property="empPassword" jdbcType="VARCHAR" />
+    <association property="department" javaType="com.itlike.domain.Department">
+      <id column="dep_id" property="depId"></id>
+      <result column="dep_name" property="depName"></result>
+    </association>
+  </resultMap>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from employee
+    where emp_id = #{empId,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="com.itlike.domain.Employee"  useGeneratedKeys="true" keyProperty="empId">
+    insert into employee (emp_id, emp_username, emp_inputtime, 
+      emp_tel, emp_email, emp_state, 
+      emp_admin, emp_dep_id, emp_password)
+    values (#{empId,jdbcType=BIGINT}, #{empUsername,jdbcType=VARCHAR}, #{empInputtime,jdbcType=TIMESTAMP}, 
+      #{empTel,jdbcType=VARCHAR}, #{empEmail,jdbcType=VARCHAR}, #{empState,jdbcType=BIT}, 
+      #{empAdmin,jdbcType=BIT}, #{empDepId,jdbcType=INTEGER}, #{empPassword,jdbcType=VARCHAR})
+  </insert>
+
+    <!--设置员工角色关系-->
+
+    <insert id="insertEmployeeRoleRel">
+        INSERT INTO employee_role_rel (eid,rid) VALUES (#{param1},#{param2});
+    </insert>
+
+
+    <update id="updateByPrimaryKey" parameterType="com.itlike.domain.Employee" >
+    update employee
+    set emp_username = #{empUsername},
+      emp_inputtime = #{empInputtime},
+      emp_tel = #{empTel},
+      emp_email = #{empEmail},
+      emp_state = #{empState},
+      emp_admin = #{empAdmin},
+      emp_dep_id = #{department.depId},
+      emp_password = #{empPassword}
+    where emp_id = #{empId}
+  </update>
+
+  <!--设置离职-->
+  <update id="updateEmployeeState">
+    UPDATE employee SET emp_state = 0 WHERE emp_Id = #{empId};
+  </update>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select emp_id, emp_username, emp_inputtime, emp_tel, emp_email, emp_state, emp_admin, 
+    emp_dep_id, emp_password
+    from employee
+    where emp_id = #{empId,jdbcType=BIGINT}
+  </select>
+
+  <sql id="sql_where" >
+    <where>
+      <if test="keyword != null and keyword != ''">
+        and emp_username like concat ('%',#{keyword},'%')
+      </if>
+    </where>
+  </sql>
+
+  <!--查询/搜索-->
+  <select id="selectAll" resultMap="BaseResultMap" >
+     select *
+    from employee
+    LEFT  JOIN department
+    ON  emp_dep_id =  dep_id
+    <include refid="sql_where"></include>
+    order by emp_id desc
+  </select>
+
+  <!-- /*根据员工eid获取角色*/-->
+  <select id="getRoleByEmployeeEid" resultType="java.lang.Long">
+    SELECT rid FROM employee_role_rel WHERE eid = #{empId}
+  </select>
+
+  <!-- 根据员工姓名查询员工-->
+  <select id="getEmployeeByUsername"  resultMap="BaseResultMap">
+    SELECT * FROM employee WHERE emp_username = #{username}
+  </select>
+
+  <!--/*根据员工id查询所有角色*/-->
+  <select id="getAllRolesByEid" resultType="java.lang.String">
+    SELECT rnum FROM role WHERE rid in (SELECT rid FROM employee_role_rel WHERE eid = #{param1})
+  </select>
+
+  <!-- /*根据员工id查询所有权限*/-->
+  <select id="getAllPermissionsByEid" resultType="java.lang.String">
+    SELECT presource FROM permission WHERE pid in(
+    SELECT DISTINCT(pid) FROM role_permission_rel WHERE rid in
+    (SELECT rid FROM employee_role_rel WHERE eid = #{param1}))
+  </select>
+
+</mapper>
