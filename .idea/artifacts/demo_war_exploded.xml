@@ -11,7 +11,7 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="demo" />
+          <element id="module-output" name="FreeWebChat" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE" />
@@ -55,7 +55,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/FreeWebChat/target/demo-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="demo/web/Web" />
+      <element id="javaee-facet-resources" facet="FreeWebChat/web/Web" />
     </root>
   </artifact>
 </component>

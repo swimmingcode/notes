@@ -45,6 +45,12 @@
         <option value="$PROJECT_DIR$/middle-ware-design/ratelimiter/pom.xml" />
         <option value="$PROJECT_DIR$/middle-ware-design/methodext/pom.xml" />
         <option value="$PROJECT_DIR$/ssmpermissioncopy/pom.xml" />
+        <option value="$PROJECT_DIR$/vhr/mailserver/pom.xml" />
+        <option value="$PROJECT_DIR$/vhr/pom.xml" />
+        <option value="$PROJECT_DIR$/starter/pom.xml" />
+        <option value="$PROJECT_DIR$/starter/youyuancode_spring_boot_starter_autoconfigurer/pom.xml" />
+        <option value="$PROJECT_DIR$/starter/starter-test/pom.xml" />
+        <option value="$PROJECT_DIR$/starter/code-spring-boot-starter/pom.xml" />
       </list>
     </option>
   </component>

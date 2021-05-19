@@ -13,9 +13,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>upload</name>
     <description>Demo project for Spring Boot</description>
+
+    <!--修改依赖版本-->
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -32,6 +35,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--引入jquery‐webjar‐‐>在访问的时候只需要写webjars下面资源的名称即可-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>

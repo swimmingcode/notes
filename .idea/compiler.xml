@@ -7,37 +7,47 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="vhr-model" />
         <module name="websocket" />
         <module name="client" />
-        <module name="demo" />
         <module name="elasticsearch" />
         <module name="ssmpermissioncopy" />
         <module name="hystrix" />
+        <module name="ratelimiter" />
         <module name="upload" />
+        <module name="mongodb" />
         <module name="mybatis-plus" />
-        <module name="whitelist-test" />
         <module name="consumer" />
         <module name="methodext" />
-        <module name="cloudalibaba" />
+        <module name="FreeWebChat" />
+        <module name="mailserver" />
         <module name="order" />
         <module name="whitelist" />
-        <module name="stomp-greeting-server" />
         <module name="middle-ware-design" />
         <module name="jwt" />
         <module name="server" />
+        <module name="vhr-web" />
         <module name="ratelimiter-test" />
         <module name="provider" />
+        <module name="httpfilesystem" />
         <module name="stomp-java-client" />
         <module name="myspring" />
         <module name="web" />
         <module name="chat" />
-        <module name="mongodb" />
-        <module name="ratelimiter" />
+        <module name="vhr-mapper" />
+        <module name="code-spring-boot-starter" />
+        <module name="starter-test" />
+        <module name="cloudalibaba" />
+        <module name="vhr-commons" />
+        <module name="youyuancode‐spring‐boot‐starter‐autoconfigurer" />
         <module name="java" />
-        <module name="redis" />
+        <module name="stomp-greeting-server" />
+        <module name="whitelist-test" />
         <module name="spring-cloud-alibaba-demo" />
         <module name="client (1)" />
+        <module name="vhr-service" />
         <module name="gateway" />
+        <module name="redis" />
         <module name="pay" />
       </profile>
     </annotationProcessing>
@@ -46,12 +56,15 @@
       <module name="client" target="1.8" />
       <module name="client (1)" target="1.8" />
       <module name="cloudalibaba" target="8" />
+      <module name="code-spring-boot-starter" target="1.8" />
       <module name="consumer" target="1.8" />
-      <module name="demo" target="1.8" />
       <module name="elasticsearch" target="1.8" />
+      <module name="FreeWebChat" target="1.8" />
       <module name="gateway" target="1.8" />
+      <module name="httpfilesystem" target="1.8" />
       <module name="hystrix" target="1.8" />
       <module name="jwt" target="1.8" />
+      <module name="mailserver" target="1.8" />
       <module name="methodext" target="1.8" />
       <module name="middle-ware-design" target="1.8" />
       <module name="mongodb" target="1.8" />
@@ -66,27 +79,41 @@
       <module name="server" target="1.8" />
       <module name="spring-cloud-alibaba-demo" target="1.8" />
       <module name="ssmpermissioncopy" target="1.8" />
+      <module name="starter" target="1.8" />
+      <module name="starter-test" target="1.8" />
       <module name="stomp-greeting-server" target="1.8" />
       <module name="stomp-java-client" target="1.8" />
       <module name="stomp-websockets-java-client" target="1.8" />
       <module name="upload" target="1.8" />
+      <module name="vhr" target="1.8" />
+      <module name="vhr-commons" target="1.8" />
+      <module name="vhr-mapper" target="1.8" />
+      <module name="vhr-model" target="1.8" />
+      <module name="vhr-service" target="1.8" />
+      <module name="vhr-web" target="1.8" />
       <module name="web" target="1.8" />
       <module name="websocket" target="1.8" />
       <module name="whitelist" target="1.8" />
       <module name="whitelist-test" target="1.8" />
+      <module name="youyuancode-spring-boot-starter-autoconfigurer" target="1.8" />
+      <module name="youyuancode‐spring‐boot‐starter‐autoconfigurer" target="1.8" />
+      <module name="youyuan‐spring‐boot‐starter" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="FreeWebChat" options="-parameters" />
       <module name="chat" options="-parameters" />
       <module name="client" options="-parameters" />
       <module name="client (1)" options="-parameters" />
+      <module name="code-spring-boot-starter" options="-parameters" />
       <module name="consumer" options="-parameters" />
-      <module name="demo" options="-parameters" />
       <module name="elasticsearch" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="httpfilesystem" options="-parameters" />
       <module name="hystrix" options="-parameters" />
       <module name="jwt" options="-parameters" />
+      <module name="mailserver" options="-parameters" />
       <module name="methodext" options="-parameters" />
       <module name="middle-ware-design" options="-parameters" />
       <module name="mongodb" options="-parameters" />
@@ -99,11 +126,19 @@
       <module name="redis" options="-parameters" />
       <module name="server" options="-parameters" />
       <module name="spring-cloud-alibaba-demo" options="-parameters" />
+      <module name="starter-test" options="-parameters" />
       <module name="upload" options="-parameters" />
+      <module name="vhr-commons" options="-parameters" />
+      <module name="vhr-mapper" options="-parameters" />
+      <module name="vhr-model" options="-parameters" />
+      <module name="vhr-service" options="-parameters" />
+      <module name="vhr-web" options="-parameters" />
       <module name="web" options="-parameters" />
       <module name="websocket" options="-parameters" />
       <module name="whitelist" options="-parameters" />
       <module name="whitelist-test" options="-parameters" />
+      <module name="youyuancode-spring-boot-starter-autoconfigurer" options="-parameters" />
+      <module name="youyuancode‐spring‐boot‐starter‐autoconfigurer" options="-parameters" />
     </option>
   </component>
 </project>

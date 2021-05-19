@@ -13,6 +13,10 @@ public class Menu {
     private Long parentId;
     private Menu parent;
     private Permission permission;
+    /**
+     * Menu应该抽象成接口
+     * 组合模式
+     */
     private List<Menu> children = new ArrayList<>();
 
 }
