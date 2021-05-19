@@ -16,8 +16,6 @@ public class SpringBootApi {
     @Autowired
     private MyPerson myPerson;
 
-
-
     @GetMapping("/properties")
     public String test() {
         return this.myPerson.toString();

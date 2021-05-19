@@ -142,14 +142,14 @@ public class TextBookServiceImpl implements TextBookService {
     public List<TextBookExcel> getTextBookExcelList() {
         List<TextBookPO> textBookPOS = textBookMapper.selectList(null);
         return textBookPOS.stream().map(textBookPO -> {
-             TextBookExcel.builder()
-                    .textName(textBookPO.getTextName())
-                    .bookDescribe(textBookPO.getBookDescribe())
-                    .bookNumber(textBookPO.getBookNumber())
-                    .createTime(textBookPO.getCreateTime())
-                    .professional(textBookPO.getProfessional().name())
-                    .updateTime(textBookPO.getUpdateTime())
-                    .build();
+            return TextBookExcel.builder()
+                   .textName(textBookPO.getTextName())
+                   .bookDescribe(textBookPO.getBookDescribe())
+                   .bookNumber(textBookPO.getBookNumber())
+                   .createTime(textBookPO.getCreateTime())
+                   .professional(textBookPO.getProfessional().name())
+                   .updateTime(textBookPO.getUpdateTime())
+                   .build();
         }).collect(Collectors.toList());
     }
 }
