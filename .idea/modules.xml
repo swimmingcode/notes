@@ -34,6 +34,7 @@
       <module fileurl="file://$PROJECT_DIR$/stomp-websockets-java-client/stomp-greeting-server/stomp-greeting-server.iml" filepath="$PROJECT_DIR$/stomp-websockets-java-client/stomp-greeting-server/stomp-greeting-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/stomp-websockets-java-client/stomp-java-client/stomp-java-client.iml" filepath="$PROJECT_DIR$/stomp-websockets-java-client/stomp-java-client/stomp-java-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/stomp-websockets-java-client/stomp-websockets-java-client.iml" filepath="$PROJECT_DIR$/stomp-websockets-java-client/stomp-websockets-java-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomcat/tomcat.iml" filepath="$PROJECT_DIR$/tomcat/tomcat.iml" />
       <module fileurl="file://$PROJECT_DIR$/upload/upload.iml" filepath="$PROJECT_DIR$/upload/upload.iml" />
       <module fileurl="file://$PROJECT_DIR$/vhr/vhr.iml" filepath="$PROJECT_DIR$/vhr/vhr.iml" />
       <module fileurl="file://$PROJECT_DIR$/vhr/vhrserver/vhr-commons/vhr-commons.iml" filepath="$PROJECT_DIR$/vhr/vhrserver/vhr-commons/vhr-commons.iml" />

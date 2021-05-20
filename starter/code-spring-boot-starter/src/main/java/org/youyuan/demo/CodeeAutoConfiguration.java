@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2021/5/19 11:42
  */
 @Configuration
-//@ConditionalOnWebApplication
+@ConditionalOnWebApplication
 @EnableConfigurationProperties(CodeProperties.class)
 public class CodeeAutoConfiguration {
 

@@ -4,6 +4,7 @@
     <file type="web" url="file://$PROJECT_DIR$/FreeWebChat" />
     <file type="web" url="file://$PROJECT_DIR$/myspring" />
     <file type="web" url="file://$PROJECT_DIR$/ssmpermissioncopy" />
+    <file type="web" url="file://$PROJECT_DIR$/tomcat" />
   </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
@@ -51,6 +52,7 @@
         <option value="$PROJECT_DIR$/starter/youyuancode_spring_boot_starter_autoconfigurer/pom.xml" />
         <option value="$PROJECT_DIR$/starter/starter-test/pom.xml" />
         <option value="$PROJECT_DIR$/starter/code-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/tomcat/pom.xml" />
       </list>
     </option>
   </component>
