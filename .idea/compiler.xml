@@ -7,35 +7,36 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="client" />
         <module name="vhr-model" />
         <module name="websocket" />
-        <module name="client" />
+        <module name="ratelimiter" />
         <module name="elasticsearch" />
         <module name="ssmpermissioncopy" />
         <module name="hystrix" />
-        <module name="ratelimiter" />
         <module name="upload" />
-        <module name="mongodb" />
+        <module name="provider" />
         <module name="mybatis-plus" />
-        <module name="consumer" />
+        <module name="code-spring-boot-starter" />
         <module name="methodext" />
         <module name="FreeWebChat" />
         <module name="mailserver" />
-        <module name="order" />
         <module name="whitelist" />
+        <module name="consumer" />
+        <module name="vhr-mapper" />
         <module name="middle-ware-design" />
         <module name="jwt" />
-        <module name="server" />
         <module name="vhr-web" />
         <module name="ratelimiter-test" />
-        <module name="provider" />
+        <module name="order" />
         <module name="httpfilesystem" />
         <module name="stomp-java-client" />
         <module name="myspring" />
         <module name="web" />
         <module name="chat" />
-        <module name="vhr-mapper" />
-        <module name="code-spring-boot-starter" />
+        <module name="client (1)" />
+        <module name="mongodb" />
+        <module name="tomcat" />
         <module name="starter-test" />
         <module name="cloudalibaba" />
         <module name="vhr-commons" />
@@ -44,7 +45,7 @@
         <module name="stomp-greeting-server" />
         <module name="whitelist-test" />
         <module name="spring-cloud-alibaba-demo" />
-        <module name="client (1)" />
+        <module name="server" />
         <module name="vhr-service" />
         <module name="gateway" />
         <module name="redis" />
@@ -84,6 +85,7 @@
       <module name="stomp-greeting-server" target="1.8" />
       <module name="stomp-java-client" target="1.8" />
       <module name="stomp-websockets-java-client" target="1.8" />
+      <module name="tomcat" target="1.8" />
       <module name="upload" target="1.8" />
       <module name="vhr" target="1.8" />
       <module name="vhr-commons" target="1.8" />
@@ -127,6 +129,7 @@
       <module name="server" options="-parameters" />
       <module name="spring-cloud-alibaba-demo" options="-parameters" />
       <module name="starter-test" options="-parameters" />
+      <module name="tomcat" options="-parameters" />
       <module name="upload" options="-parameters" />
       <module name="vhr-commons" options="-parameters" />
       <module name="vhr-mapper" options="-parameters" />
