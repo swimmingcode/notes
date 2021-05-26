@@ -15,28 +15,31 @@
         <module name="ssmpermissioncopy" />
         <module name="hystrix" />
         <module name="upload" />
+        <module name="dubbo-zk" />
         <module name="provider" />
         <module name="mybatis-plus" />
+        <module name="dubbo" />
         <module name="code-spring-boot-starter" />
         <module name="methodext" />
         <module name="FreeWebChat" />
         <module name="mailserver" />
         <module name="whitelist" />
         <module name="consumer" />
-        <module name="vhr-mapper" />
         <module name="middle-ware-design" />
         <module name="jwt" />
+        <module name="server" />
         <module name="vhr-web" />
         <module name="ratelimiter-test" />
         <module name="order" />
-        <module name="httpfilesystem" />
-        <module name="stomp-java-client" />
+        <module name="minio" />
+        <module name="vhr-mapper" />
         <module name="myspring" />
         <module name="web" />
         <module name="chat" />
         <module name="client (1)" />
         <module name="mongodb" />
         <module name="tomcat" />
+        <module name="virmachine" />
         <module name="starter-test" />
         <module name="cloudalibaba" />
         <module name="vhr-commons" />
@@ -45,9 +48,12 @@
         <module name="stomp-greeting-server" />
         <module name="whitelist-test" />
         <module name="spring-cloud-alibaba-demo" />
-        <module name="server" />
+        <module name="consumer-server" />
+        <module name="provider-server" />
         <module name="vhr-service" />
         <module name="gateway" />
+        <module name="stomp-java-client" />
+        <module name="httpfilesystem" />
         <module name="redis" />
         <module name="pay" />
       </profile>
@@ -59,6 +65,11 @@
       <module name="cloudalibaba" target="8" />
       <module name="code-spring-boot-starter" target="1.8" />
       <module name="consumer" target="1.8" />
+      <module name="consumer-server" target="1.8" />
+      <module name="consumer-server (1)" target="1.8" />
+      <module name="dubbo" target="1.8" />
+      <module name="dubbo-server" target="1.8" />
+      <module name="dubbo-zk" target="1.8" />
       <module name="elasticsearch" target="1.8" />
       <module name="FreeWebChat" target="1.8" />
       <module name="gateway" target="1.8" />
@@ -68,12 +79,15 @@
       <module name="mailserver" target="1.8" />
       <module name="methodext" target="1.8" />
       <module name="middle-ware-design" target="1.8" />
+      <module name="minio" target="1.8" />
       <module name="mongodb" target="1.8" />
       <module name="mybatis-plus" target="1.8" />
       <module name="myspring" target="6" />
       <module name="order" target="1.8" />
       <module name="pay" target="1.8" />
       <module name="provider" target="1.8" />
+      <module name="provider-server" target="1.8" />
+      <module name="provider-server (1)" target="1.8" />
       <module name="ratelimiter" target="1.8" />
       <module name="ratelimiter-test" target="1.8" />
       <module name="redis" target="1.8" />
@@ -93,6 +107,7 @@
       <module name="vhr-model" target="1.8" />
       <module name="vhr-service" target="1.8" />
       <module name="vhr-web" target="1.8" />
+      <module name="virmachine" target="1.8" />
       <module name="web" target="1.8" />
       <module name="websocket" target="1.8" />
       <module name="whitelist" target="1.8" />
@@ -110,6 +125,11 @@
       <module name="client (1)" options="-parameters" />
       <module name="code-spring-boot-starter" options="-parameters" />
       <module name="consumer" options="-parameters" />
+      <module name="consumer-server" options="-parameters" />
+      <module name="consumer-server (1)" options="-parameters" />
+      <module name="dubbo" options="-parameters" />
+      <module name="dubbo-server" options="-parameters" />
+      <module name="dubbo-zk" options="-parameters" />
       <module name="elasticsearch" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="httpfilesystem" options="-parameters" />
@@ -118,11 +138,14 @@
       <module name="mailserver" options="-parameters" />
       <module name="methodext" options="-parameters" />
       <module name="middle-ware-design" options="-parameters" />
+      <module name="minio" options="-parameters" />
       <module name="mongodb" options="-parameters" />
       <module name="mybatis-plus" options="-parameters" />
       <module name="order" options="-parameters" />
       <module name="pay" options="-parameters" />
       <module name="provider" options="-parameters" />
+      <module name="provider-server" options="-parameters" />
+      <module name="provider-server (1)" options="-parameters" />
       <module name="ratelimiter" options="-parameters" />
       <module name="ratelimiter-test" options="-parameters" />
       <module name="redis" options="-parameters" />
@@ -136,6 +159,7 @@
       <module name="vhr-model" options="-parameters" />
       <module name="vhr-service" options="-parameters" />
       <module name="vhr-web" options="-parameters" />
+      <module name="virmachine" options="-parameters" />
       <module name="web" options="-parameters" />
       <module name="websocket" options="-parameters" />
       <module name="whitelist" options="-parameters" />
