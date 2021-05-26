@@ -53,6 +53,14 @@
         <option value="$PROJECT_DIR$/starter/starter-test/pom.xml" />
         <option value="$PROJECT_DIR$/starter/code-spring-boot-starter/pom.xml" />
         <option value="$PROJECT_DIR$/tomcat/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo/provider-server/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo/consumer-server/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-zk/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-zk/consumer-server/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-zk/provider-server/pom.xml" />
+        <option value="$PROJECT_DIR$/minio/pom.xml" />
+        <option value="$PROJECT_DIR$/virmachine/pom.xml" />
       </list>
     </option>
   </component>
