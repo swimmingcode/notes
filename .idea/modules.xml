@@ -32,6 +32,7 @@
       <module fileurl="file://$PROJECT_DIR$/redis/redis.iml" filepath="$PROJECT_DIR$/redis/redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/httpfilesystem/server/server.iml" filepath="$PROJECT_DIR$/httpfilesystem/server/server.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-alibaba-demo/spring-cloud-alibaba-demo.iml" filepath="$PROJECT_DIR$/spring-cloud-alibaba-demo/spring-cloud-alibaba-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-alibaba-demo/springcloudalibabademo.iml" filepath="$PROJECT_DIR$/spring-cloud-alibaba-demo/springcloudalibabademo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssmpermissioncopy/ssmpermissioncopy.iml" filepath="$PROJECT_DIR$/ssmpermissioncopy/ssmpermissioncopy.iml" />
       <module fileurl="file://$PROJECT_DIR$/starter/starter.iml" filepath="$PROJECT_DIR$/starter/starter.iml" />
       <module fileurl="file://$PROJECT_DIR$/starter/starter-test/starter-test.iml" filepath="$PROJECT_DIR$/starter/starter-test/starter-test.iml" />

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FilterConfiguration {
 
+    //对所有的请求进行过滤
     @Bean
     public FilterRegistrationBean registrationBean(){
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
