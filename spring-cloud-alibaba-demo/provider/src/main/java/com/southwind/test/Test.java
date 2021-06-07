@@ -10,13 +10,13 @@ public class Test {
         //创建消息生产者
         DefaultMQProducer producer = new DefaultMQProducer("myproducer-group");
         //设置NameServer
-        producer.setNamesrvAddr("192.168.248.129:9876");
+        producer.setNamesrvAddr("114.55.25.57:9876");
         //启动生产者
         producer.start();
         //构建消息对象
         Message message = new Message("myTopic","myTag",("Test MQ").getBytes());
         //发送消息
-        SendResult result = producer.send(message, 1000);
+        SendResult result = producer.send(message, 10000);
         System.out.println(result);
         //关闭生产者
         producer.shutdown();

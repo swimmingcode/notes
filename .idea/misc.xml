@@ -61,6 +61,8 @@
         <option value="$PROJECT_DIR$/dubbo-zk/provider-server/pom.xml" />
         <option value="$PROJECT_DIR$/minio/pom.xml" />
         <option value="$PROJECT_DIR$/virmachine/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-alibaba-demo/provider/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-alibaba-demo/pom.xml" />
       </list>
     </option>
   </component>

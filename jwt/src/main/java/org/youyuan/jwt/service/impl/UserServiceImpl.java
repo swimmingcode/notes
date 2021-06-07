@@ -237,7 +237,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
     @Override
     public List<UserVO> getUserList(int page, int size, String search) {
         List<UserVO> userInfos = userMapper.getUserInfoList((page-1) * size,size,search);

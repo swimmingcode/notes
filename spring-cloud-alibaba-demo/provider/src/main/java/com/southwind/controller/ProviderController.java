@@ -19,8 +19,10 @@ public class ProviderController {
     @Value("${server.port}")
     private String port;
 
-    int i=0;
+    private int i = 0;
 
+    /*********************************************************/
+    //流控 关联限流 /index与/list关联
     //随机抛异常
     @GetMapping("/index")
     public String index(){
@@ -36,6 +38,9 @@ public class ProviderController {
         return "list";
     }
 
+
+    /*********************************************************/
+    //流控 链路限流  限制service，而不是限制controller
     @Autowired
     private ProviderService providerService;
 
@@ -50,7 +55,8 @@ public class ProviderController {
         this.providerService.test();
         return "test2";
     }
-
+    /*********************************************************/
+    //热点规则 参数限流
     @GetMapping("/hot")
     @SentinelResource("hot")
     public String hot(
@@ -75,6 +81,8 @@ public class ProviderController {
 //        return order;
 //    }
 
+    /*********************************************************/
+    //网关
     @GetMapping("/api1/demo1")
     public String demo1(){
         return "demo";

@@ -16,7 +16,7 @@ public class ConsumerTest {
         //创建消息消费者
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("myconsumer-group");
         //设置NameServer
-        consumer.setNamesrvAddr("192.168.248.129:9876");
+        consumer.setNamesrvAddr("114.55.25.57:9876");
         //指定订阅的主题和标签
         consumer.subscribe("myTopic","*");
         //回调函数

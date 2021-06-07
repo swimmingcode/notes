@@ -5,6 +5,9 @@ import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * sentinel授权配置
+ */
 public class RequestOriginParserDefinition implements RequestOriginParser {
     @Override
     public String parseOrigin(HttpServletRequest httpServletRequest) {

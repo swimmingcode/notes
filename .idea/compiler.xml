@@ -11,35 +11,36 @@
         <module name="vhr-model" />
         <module name="websocket" />
         <module name="ratelimiter" />
-        <module name="elasticsearch" />
+        <module name="code-spring-boot-starter" />
         <module name="ssmpermissioncopy" />
         <module name="hystrix" />
         <module name="upload" />
         <module name="dubbo-zk" />
-        <module name="provider" />
+        <module name="mongodb" />
         <module name="mybatis-plus" />
         <module name="dubbo" />
-        <module name="code-spring-boot-starter" />
+        <module name="consumer" />
         <module name="methodext" />
         <module name="FreeWebChat" />
         <module name="mailserver" />
-        <module name="whitelist" />
-        <module name="consumer" />
+        <module name="order" />
+        <module name="chat" />
         <module name="middle-ware-design" />
         <module name="jwt" />
+        <module name="whitelist" />
         <module name="server" />
         <module name="vhr-web" />
         <module name="ratelimiter-test" />
-        <module name="order" />
+        <module name="provider" />
         <module name="minio" />
         <module name="vhr-mapper" />
         <module name="myspring" />
         <module name="web" />
-        <module name="chat" />
-        <module name="client (1)" />
-        <module name="mongodb" />
+        <module name="springcloudalibabademo" />
+        <module name="elasticsearch" />
         <module name="tomcat" />
         <module name="virmachine" />
+        <module name="consumer-server" />
         <module name="starter-test" />
         <module name="cloudalibaba" />
         <module name="vhr-commons" />
@@ -48,7 +49,7 @@
         <module name="stomp-greeting-server" />
         <module name="whitelist-test" />
         <module name="spring-cloud-alibaba-demo" />
-        <module name="consumer-server" />
+        <module name="client (1)" />
         <module name="provider-server" />
         <module name="vhr-service" />
         <module name="gateway" />
@@ -93,6 +94,7 @@
       <module name="redis" target="1.8" />
       <module name="server" target="1.8" />
       <module name="spring-cloud-alibaba-demo" target="1.8" />
+      <module name="springcloudalibabademo" target="1.8" />
       <module name="ssmpermissioncopy" target="1.8" />
       <module name="starter" target="1.8" />
       <module name="starter-test" target="1.8" />
@@ -151,6 +153,7 @@
       <module name="redis" options="-parameters" />
       <module name="server" options="-parameters" />
       <module name="spring-cloud-alibaba-demo" options="-parameters" />
+      <module name="springcloudalibabademo" options="-parameters" />
       <module name="starter-test" options="-parameters" />
       <module name="tomcat" options="-parameters" />
       <module name="upload" options="-parameters" />
