@@ -63,6 +63,8 @@
         <option value="$PROJECT_DIR$/virmachine/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-alibaba-demo/provider/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-alibaba-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-alibaba-demo/consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-alibaba-demo/gateway/pom.xml" />
       </list>
     </option>
   </component>

@@ -15,3 +15,5 @@ spring:
 #            - Path=/provider/**
 #          filters:
 #            - StripPrefix=1
+    nacos:
+      server-addr: 114.55.25.57:8848

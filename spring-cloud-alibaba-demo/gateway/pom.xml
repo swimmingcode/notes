@@ -20,6 +20,7 @@
 
     <dependencies>
 
+        <!--不能引入servlet（即Web），会与gateway冲突-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
@@ -32,16 +33,13 @@
             <version>2.2.1.RELEASE</version>
         </dependency>
 
+        <!--网关限流-->
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
             <version>1.8.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

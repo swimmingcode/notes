@@ -15,9 +15,10 @@ import java.util.concurrent.ThreadLocalRandom;
 @Slf4j
 public class ConsumerController {
 
-    //自动转载，所以直接用
+    //自动装载，所以直接用
     @Autowired
     private DiscoveryClient discoveryClient;
+
     //不会自动装载，不能直接用
     @Autowired
     private RestTemplate restTemplate;
