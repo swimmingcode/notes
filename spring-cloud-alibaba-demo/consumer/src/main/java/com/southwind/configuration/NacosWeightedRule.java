@@ -14,12 +14,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * @Describe: #请描述当前类的功能#
+ * @Describe: Nacos权重负载均衡
  * @Author: youjiancheng
  * @date 2021/4/18 19:37
  */
 @Slf4j
 public class NacosWeightedRule extends AbstractLoadBalancerRule {
+
     @Autowired
     private NacosDiscoveryProperties nacosDiscoveryProperties;
 

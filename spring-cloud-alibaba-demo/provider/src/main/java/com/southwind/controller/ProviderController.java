@@ -64,10 +64,12 @@ public class ProviderController {
             @RequestParam(value = "num2",required = false) Integer num2){
         return num1+"-"+num2;
     }
+    /*********************************************************/
+    //RocketMQ
 
 //    @Autowired
 //    private RocketMQTemplate rocketMQTemplate;
-
+//
 //    @GetMapping("/create")
 //    public Order create(){
 //        Order order = new Order(

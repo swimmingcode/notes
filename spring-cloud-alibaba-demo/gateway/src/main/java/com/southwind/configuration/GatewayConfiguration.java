@@ -88,12 +88,12 @@ public class GatewayConfiguration {
         Set<ApiDefinition> definitions = new HashSet<>();
         ApiDefinition api1 = new ApiDefinition("provider_api1")
                 .setPredicateItems(new HashSet<ApiPredicateItem>(){{
-                    add(new ApiPathPredicateItem().setPattern("/p1/api1/**")
+                    add(new ApiPathPredicateItem().setPattern("/provider/api1/**")
                             .setMatchStrategy(SentinelGatewayConstants.URL_MATCH_STRATEGY_PREFIX));
                 }});
         ApiDefinition api2 = new ApiDefinition("provider_api2")
                 .setPredicateItems(new HashSet<ApiPredicateItem>(){{
-                    add(new ApiPathPredicateItem().setPattern("/p1/api2/demo1"));
+                    add(new ApiPathPredicateItem().setPattern("/provider/api2/demo1"));
                 }});
         definitions.add(api1);
         definitions.add(api2);
