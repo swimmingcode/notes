@@ -39,7 +39,6 @@
       <module fileurl="file://$PROJECT_DIR$/stomp-websockets-java-client/stomp-greeting-server/stomp-greeting-server.iml" filepath="$PROJECT_DIR$/stomp-websockets-java-client/stomp-greeting-server/stomp-greeting-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/stomp-websockets-java-client/stomp-java-client/stomp-java-client.iml" filepath="$PROJECT_DIR$/stomp-websockets-java-client/stomp-java-client/stomp-java-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/stomp-websockets-java-client/stomp-websockets-java-client.iml" filepath="$PROJECT_DIR$/stomp-websockets-java-client/stomp-websockets-java-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tomcat/tomcat.iml" filepath="$PROJECT_DIR$/tomcat/tomcat.iml" />
       <module fileurl="file://$PROJECT_DIR$/upload/upload.iml" filepath="$PROJECT_DIR$/upload/upload.iml" />
       <module fileurl="file://$PROJECT_DIR$/vhr/vhr.iml" filepath="$PROJECT_DIR$/vhr/vhr.iml" />
       <module fileurl="file://$PROJECT_DIR$/vhr/vhrserver/vhr-commons/vhr-commons.iml" filepath="$PROJECT_DIR$/vhr/vhrserver/vhr-commons/vhr-commons.iml" />
@@ -47,6 +46,7 @@
       <module fileurl="file://$PROJECT_DIR$/vhr/vhrserver/vhr-model/vhr-model.iml" filepath="$PROJECT_DIR$/vhr/vhrserver/vhr-model/vhr-model.iml" />
       <module fileurl="file://$PROJECT_DIR$/vhr/vhrserver/vhr-service/vhr-service.iml" filepath="$PROJECT_DIR$/vhr/vhrserver/vhr-service/vhr-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/vhr/vhrserver/vhr-web/vhr-web.iml" filepath="$PROJECT_DIR$/vhr/vhrserver/vhr-web/vhr-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vhr/vhrserver/vhrserver.iml" filepath="$PROJECT_DIR$/vhr/vhrserver/vhrserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/virmachine/virmachine.iml" filepath="$PROJECT_DIR$/virmachine/virmachine.iml" />
       <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
       <module fileurl="file://$PROJECT_DIR$/websocket/websocket.iml" filepath="$PROJECT_DIR$/websocket/websocket.iml" />
