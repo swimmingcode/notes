@@ -11,33 +11,33 @@
         <module name="vhr-model" />
         <module name="websocket" />
         <module name="ratelimiter" />
-        <module name="code-spring-boot-starter" />
+        <module name="elasticsearch" />
         <module name="ssmpermissioncopy" />
         <module name="hystrix" />
         <module name="upload" />
         <module name="dubbo-zk" />
-        <module name="mongodb" />
+        <module name="provider" />
         <module name="mybatis-plus" />
         <module name="dubbo" />
-        <module name="consumer" />
+        <module name="code-spring-boot-starter" />
         <module name="methodext" />
         <module name="FreeWebChat" />
         <module name="mailserver" />
-        <module name="order" />
         <module name="chat" />
-        <module name="stomp-greeting-server" />
+        <module name="consumer" />
         <module name="middle-ware-design" />
         <module name="jwt" />
         <module name="whitelist" />
-        <module name="server" />
         <module name="vhr-web" />
         <module name="ratelimiter-test" />
-        <module name="provider" />
+        <module name="order" />
         <module name="minio" />
         <module name="vhr-mapper" />
         <module name="myspring" />
         <module name="web" />
-        <module name="elasticsearch" />
+        <module name="springcloudalibabademo" />
+        <module name="client (1)" />
+        <module name="mongodb" />
         <module name="virmachine" />
         <module name="consumer-server" />
         <module name="starter-test" />
@@ -45,16 +45,16 @@
         <module name="vhr-commons" />
         <module name="youyuancode‐spring‐boot‐starter‐autoconfigurer" />
         <module name="java" />
-        <module name="redis" />
+        <module name="stomp-greeting-server" />
         <module name="whitelist-test" />
         <module name="spring-cloud-alibaba-demo" />
-        <module name="client (1)" />
+        <module name="server" />
         <module name="provider-server" />
         <module name="vhr-service" />
         <module name="gateway" />
         <module name="stomp-java-client" />
         <module name="httpfilesystem" />
-        <module name="springcloudalibabademo" />
+        <module name="redis" />
         <module name="pay" />
       </profile>
     </annotationProcessing>
@@ -77,7 +77,7 @@
       <module name="middle-ware-design" target="1.8" />
       <module name="mongodb" target="1.8" />
       <module name="mybatis-plus" target="1.8" />
-      <module name="myspring" target="8" />
+      <module name="myspring" target="6" />
       <module name="order" target="1.8" />
       <module name="pay" target="1.8" />
       <module name="provider" target="1.8" />
