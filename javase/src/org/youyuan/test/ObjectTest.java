@@ -1,5 +1,7 @@
 package org.youyuan.test;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import java.util.List;
  * @date 2021/3/4 16:06
  */
 public class ObjectTest {
+
     public static void main(String[] args) {
         ArrayList<Integer> integers = new ArrayList<>();
         integers.add(1222);
@@ -18,5 +21,7 @@ public class ObjectTest {
         System.out.println(o);
         ArrayList<Integer> res= (ArrayList<Integer>) o;
         System.out.println(res);
+
+
     }
 }

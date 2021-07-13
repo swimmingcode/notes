@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.youyuan.vhr.mapper.MenuMapper">
+
+    <resultMap id="BaseResultMap" type="org.youyuan.vhr.bean.Menu">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="path" property="path" jdbcType="VARCHAR"/>
+        <result column="component" property="component" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="iconCls" property="iconcls" jdbcType="VARCHAR"/>
+        <result column="parentId" property="parentid" jdbcType="INTEGER"/>
+        <result column="enabled" property="enabled" jdbcType="BIT"/>
+        <!--menu额外属性-->
+        <association property="meta" javaType="org.youyuan.vhr.bean.Meta">
+            <result column="keepAlive" property="keepalive"></result>
+            <result column="requireAuth" property="requireauth"></result>
+        </association>
+    </resultMap>
+
+    <!--根据角色rid获取菜单id-->
+    <select id="getMidsByRid" resultType="java.lang.Integer">
+    SELECT mid FROM menu_role WHERE rid =#{rid}
+  </select>
+
+    <resultMap id="MenuWithChildren" type="org.youyuan.vhr.bean.Menu" extends="BaseResultMap">
+        <id column="id1" property="id"></id>
+        <result column="name1" property="name"></result>
+        <collection property="children" ofType="org.youyuan.vhr.bean.Menu">
+            <id column="id2" property="id"></id>
+            <result column="name2" property="name"></result>
+            <collection property="children" ofType="org.youyuan.vhr.bean.Menu">
+                <id column="id3" property="id"></id>
+                <result column="name3" property="name"></result>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <!--加载菜单权限-->
+    <select id="getAllMenus" resultMap="MenuWithChildren">
+    SELECT m1.id AS id1,
+    m1.`name` AS 'name1',
+    m2.id AS id2 ,
+    m2.`name` AS 'name2',
+    m3.id AS id3,
+    m3.`name` AS 'name3'
+    FROM menu AS m1,menu AS m2,menu AS m3
+    WHERE m1.id=m2.parentId AND m2.id=m3.parentId
+    AND m3.enabled =TRUE
+    ORDER BY m1.id ,m2.id,m3.id
+  </select>
+
+    <!--根据Hr的Id加载menu-->
+    <resultMap id="Menu2" type="org.youyuan.vhr.bean.Menu" extends="BaseResultMap">
+        <collection property="children" ofType="org.youyuan.vhr.bean.Menu">
+            <id column="id2" property="id" jdbcType="INTEGER"/>
+            <result column="url2" property="url" jdbcType="VARCHAR"/>
+            <result column="path2" property="path" jdbcType="VARCHAR"/>
+            <result column="component2" property="component" jdbcType="VARCHAR"/>
+            <result column="name2" property="name" jdbcType="VARCHAR"/>
+            <result column="iconCls2" property="iconcls" jdbcType="VARCHAR"/>
+            <result column="parentId2" property="parentid" jdbcType="INTEGER"/>
+            <result column="enabled2" property="enabled" jdbcType="BIT"/>
+            <collection property="meta" javaType="org.youyuan.vhr.bean.Meta">
+                <result column="keepAlive2" property="keepalive"></result>
+                <result column="requireAuth2" property="requireauth"></result>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="getMenuByHrId" resultMap="Menu2">
+    SELECT distinct m1.* ,
+    m2.id AS 'id2',
+    m2.url AS 'ur2',
+    m2.path AS 'path2',
+    m2.component AS 'component2',
+    m2.`name` AS 'name2',
+    m2.iconCls AS 'iconCls2',
+    m2.keepAlive AS 'keepAlive2',
+    m2.requireAuth AS 'requireAuth2',
+    m2.parentId AS 'parentId2',
+    m2.enabled AS 'enabled2'
+    FROM menu AS m1 ,menu AS m2,
+    hr_role AS hrr ,menu_role AS mr
+    WHERE m1.id = m2.parentId
+    AND hrr.hrid = #{id} AND hrr.rid = mr.rid
+    AND mr.mid = m2.id AND m2.enabled = TRUE and m1.enabled=true
+    order by m1.id,m2.id
+    </select>
+
+    <resultMap id="menuWithRoles" type="org.youyuan.vhr.bean.Menu" extends="BaseResultMap">
+        <collection property="roles" ofType="org.youyuan.vhr.bean.Role">
+            <id column="rid" property="id"/>
+            <result column="rname" property="name"/>
+            <result column="rnameZh" property="namezh"/>
+        </collection>
+    </resultMap>
+
+    <!--获取整个mune菜单与访问所需的角色roles-->
+    <select id="getMenuWithRoles" resultMap="menuWithRoles">
+    SELECT m.* ,r.id AS 'rid',r.`name` AS 'rname',r.nameZh  AS 'rnameZh'
+    FROM menu m,menu_role mr,role r
+    WHERE m.id=mr.mid and mr.rid=r.id
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insert" parameterType="org.youyuan.vhr.bean.Menu">
+    insert into menu (id, url, path, 
+      component, name, iconCls, 
+      keepAlive, requireAuth, parentId, 
+      enabled)
+    values (#{id,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{component,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{iconcls,jdbcType=VARCHAR}, 
+      #{keepalive,jdbcType=BIT}, #{requireauth,jdbcType=BIT}, #{parentid,jdbcType=INTEGER}, 
+      #{enabled,jdbcType=BIT})
+  </insert>
+
+    <update id="updateByPrimaryKey" parameterType="org.youyuan.vhr.bean.Menu">
+    update menu
+    set url = #{url,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      component = #{component,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      iconCls = #{iconcls,jdbcType=VARCHAR},
+      keepAlive = #{keepalive,jdbcType=BIT},
+      requireAuth = #{requireauth,jdbcType=BIT},
+      parentId = #{parentid,jdbcType=INTEGER},
+      enabled = #{enabled,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select id, url, path, component, name, iconCls, keepAlive, requireAuth, parentId, 
+    enabled
+    from menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+    select id, url, path, component, name, iconCls, keepAlive, requireAuth, parentId, 
+    enabled
+    from menu
+  </select>
+
+</mapper>

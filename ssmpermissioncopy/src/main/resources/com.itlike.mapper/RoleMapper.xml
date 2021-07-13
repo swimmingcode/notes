@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itlike.mapper.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.itlike.domain.Role" >
+    <id column="rid" property="rid" jdbcType="BIGINT" />
+    <result column="rnum" property="rnum" jdbcType="VARCHAR" />
+    <result column="rname" property="rname" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from role
+    where rid = #{rid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.itlike.domain.Role" useGeneratedKeys="true" keyProperty="rid">
+    insert into role (rid, rnum, rname
+      )
+    values (#{rid,jdbcType=BIGINT}, #{rnum,jdbcType=VARCHAR}, #{rname,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <!--保存角色权限关系-->
+  <insert id="insertRolePermissionRel" >
+    INSERT INTO role_permission_rel(rid,pid) VALUES (#{arg0},#{arg1})
+  </insert>
+
+  <!-- /*建立员工与角色关系*/-->
+  <insert id="insertEmployeePermissionRel">
+    INSERT INTO employee_role_rel (eid,rid) VALUES (#{arg0},#{arg1});
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.itlike.domain.Role" >
+    update role
+    set rnum = #{rnum,jdbcType=VARCHAR},
+      rname = #{rname,jdbcType=VARCHAR}
+    where rid = #{rid,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select rid, rnum, rname
+    from role
+    where rid = #{rid,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select rid, rnum, rname
+    from role
+  </select>
+
+  <!--/*根据rid显示该角色的所有权限*/-->
+  <select id="getRolePermissionByRid" resultType="com.itlike.domain.Permission">
+    SELECT * FROM permission WHERE pid in (SELECT pid FROM role_permission_rel WHERE rid=#{pid} )
+  </select>
+
+  <!-- /*打破角色与权限关系*/-->
+  <delete id="deleteRolePermissionRel">
+    DELETE FROM role_permission_rel WHERE rid= #{rid}
+  </delete>
+
+  <!--/*删除员工角色关系 byRid**/-->
+  <delete id="deleteEmployeeRoleRel">
+    DELETE FROM employee_role_rel WHERE rid =  #{arg0}
+  </delete>
+
+  <!--/*删除员工角色关系by Eid**/-->
+  <delete id="deleteEmployeeRoleRelByEid">
+    DELETE FROM employee_role_rel WHERE eid = #{empId}
+  </delete>
+
+</mapper>

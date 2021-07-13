@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cico.virmachine.domain.virmachine.mapper.VirtualMachineTemplateMapper">
+
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="com.cico.virmachine.domain.virmachine.entity.po.VirtualMachineTemplatePO">
+    INSERT INTO `virtual_machine`.`virtual_machine_template`
+    (`id`, `machine_type`, `machine_size`, `cpu_cores`, `cpu_memory`, `disk`, `bandwidth`, `rate_limit`, `vm_id`, `description`, `backup_type`, `datastore_id`, `template_name`, `template_desc`)
+    VALUES (#{id},#{machine_type}, #{machine_size}, #{cpu_cores},#{cpu_memory}, #{disk},#{bandwidth}, #{rate_limit}, #{vm_id},#{description},
+     #{backup_type}, #{datastore_id}, #{template_name}, #{template_desc});
+    </insert>
+
+</mapper>

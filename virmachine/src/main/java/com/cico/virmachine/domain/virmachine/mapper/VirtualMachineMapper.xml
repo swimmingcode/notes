@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cico.virmachine.domain.virmachine.mapper.VirtualMachineMapper">
+
+
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="com.cico.virmachine.domain.virmachine.entity.po.VirtualMachinePO">
+        insert into virtual_machine (id,machine_type,machine_size,machine_name,is_notice,cpu_cores,cpu_memory,disk,bandwidth,ip,
+        machine_level,state,apply_time,ics_id,machine_password,machine_user_name,user_id,update_time,deleted,taskId)
+         values (#{id},#{machine_type},#{machine_size},#{machine_name},#{is_notice},#{cpu_cores},#{cpu_memory},#{disk}
+         ,#{bandwidth},#{ip},#{machine_level},#{state},#{apply_time},#{ics_id},#{machine_password},#{machine_user_name},#{user_id},
+         #{update_time},#{deleted},#{task_id})
+    </insert>
+
+</mapper>

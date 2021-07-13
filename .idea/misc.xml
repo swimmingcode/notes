@@ -3,6 +3,8 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/FreeWebChat" />
     <file type="web" url="file://$PROJECT_DIR$/myspring" />
+    <file type="web" url="file://$PROJECT_DIR$/ssmpermissioncopy" />
+    <file type="web" url="file://$PROJECT_DIR$/tomcat" />
   </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
@@ -20,6 +22,50 @@
         <option value="$PROJECT_DIR$/chat/pom.xml" />
         <option value="$PROJECT_DIR$/FreeWebChat/pom.xml" />
         <option value="$PROJECT_DIR$/stomp-websockets-java-client/pom.xml" />
+        <option value="$PROJECT_DIR$/elasticsearch/pom.xml" />
+        <option value="$PROJECT_DIR$/契约锁测试题/pom.xml" />
+        <option value="$PROJECT_DIR$/契约锁测试题/client/pom.xml" />
+        <option value="$PROJECT_DIR$/契约锁测试题/servers/pom.xml" />
+        <option value="$PROJECT_DIR$/mongodb/pom.xml" />
+        <option value="$PROJECT_DIR$/httpfilesystem/pom.xml" />
+        <option value="$PROJECT_DIR$/httpfilesystem/client/pom.xml" />
+        <option value="$PROJECT_DIR$/httpfilesystem/servers/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloudalibabademo/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloudalibabademo/consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloudalibabademo/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloudalibabademo/pay/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloudalibabademo/provider/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloudalibabademo/order/pom.xml" />
+        <option value="$PROJECT_DIR$/whitelist/pom.xml" />
+        <option value="$PROJECT_DIR$/whitelist-test/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/hystrix/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/whitelist/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/middle-ware-design/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/ratelimiter-test/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/ratelimiter/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/methodext/pom.xml" />
+        <option value="$PROJECT_DIR$/ssmpermissioncopy/pom.xml" />
+        <option value="$PROJECT_DIR$/vhr/mailserver/pom.xml" />
+        <option value="$PROJECT_DIR$/vhr/pom.xml" />
+        <option value="$PROJECT_DIR$/starter/pom.xml" />
+        <option value="$PROJECT_DIR$/starter/youyuancode_spring_boot_starter_autoconfigurer/pom.xml" />
+        <option value="$PROJECT_DIR$/starter/starter-test/pom.xml" />
+        <option value="$PROJECT_DIR$/starter/code-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/tomcat/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo/provider-server/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo/consumer-server/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-zk/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-zk/consumer-server/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-zk/provider-server/pom.xml" />
+        <option value="$PROJECT_DIR$/minio/pom.xml" />
+        <option value="$PROJECT_DIR$/virmachine/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-alibaba-demo/provider/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-alibaba-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-alibaba-demo/consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-alibaba-demo/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/vhr/vhrserver/pom.xml" />
       </list>
     </option>
   </component>
