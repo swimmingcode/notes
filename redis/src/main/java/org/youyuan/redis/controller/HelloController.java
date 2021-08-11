@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.youyuan.redis.bean.Message;
 import org.youyuan.redis.mq.ProduceFactory;
 
-
-
 /**
  * @Describe: #请描述当前类的功能#
  * @Author: youjiancheng
