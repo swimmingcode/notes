@@ -24,7 +24,7 @@
     var sock = new SockJS("/endpointChat");
     var stomp = Stomp.over(sock);
     stomp.connect('guest','guest',function (frame) {
-        stomp.subscribe("/user/queue/notifications", handleNotification);
+        stomp.subscribe("/queryInfo/queue/notifications", handleNotification);
     });
     function handleNotification(message) {
         $("#output").append("<b>Received： "+message.body+"</b><br/>")

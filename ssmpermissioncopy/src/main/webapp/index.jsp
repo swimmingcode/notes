@@ -22,7 +22,7 @@
 <div data-options="region:'north'" style="height:80px; background: #4784ec; padding: 20px 20px">
     <img src="static/images/main_logo.png" alt="">
     <div style="position: absolute; right: 50px; top: 30px;">
-        <img src="./static/images/user.png" style="vertical-align: middle; margin-right: 10px;" >
+        <img src="./static/images/queryInfo.png" style="vertical-align: middle; margin-right: 10px;" >
         <%--显示当前登录用户名--%>
         <span style="color: white; font-size: 20px; margin-right: 5px;"><shiro:principal property="empUsername"/></span>
         <%--取消认证  跳转到 登录页面  在shiro配置文件当中  配置   /logout = logout --%>
