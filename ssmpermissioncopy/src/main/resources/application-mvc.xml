@@ -23,10 +23,10 @@
 
     <!--配置请求拦截器,拦截所有请求-->
     <mvc:interceptors>
-        <mvc:interceptor>
+        <mvc:com.xnpe.fchat.interceptor>
             <mvc:mapping path="/*"/>
-            <bean class="com.itlike.interceptor.RequestInterceptor"></bean>
-        </mvc:interceptor>
+            <bean class="com.itlike.com.xnpe.fchat.interceptor.RequestInterceptor"></bean>
+        </mvc:com.xnpe.fchat.interceptor>
     </mvc:interceptors>
 
     <!--配置文件上传解析器-->

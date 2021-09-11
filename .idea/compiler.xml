@@ -28,16 +28,18 @@
         <module name="middle-ware-design" />
         <module name="jwt" />
         <module name="whitelist" />
-        <module name="client (1)" />
+        <module name="db-router-spring-boot-starter-test" />
         <module name="vhr-web" />
+        <module name="redis" />
         <module name="ratelimiter-test" />
         <module name="order" />
         <module name="minio" />
         <module name="vhr-mapper" />
         <module name="myspring" />
         <module name="web" />
-        <module name="stomp-greeting-server" />
+        <module name="client (1)" />
         <module name="mongodb" />
+        <module name="db-router-spring-boot-starter" />
         <module name="virmachine" />
         <module name="consumer-server" />
         <module name="starter-test" />
@@ -45,7 +47,7 @@
         <module name="vhr-commons" />
         <module name="youyuancode‐spring‐boot‐starter‐autoconfigurer" />
         <module name="java" />
-        <module name="redis" />
+        <module name="stomp-greeting-server" />
         <module name="whitelist-test" />
         <module name="spring-cloud-alibaba-demo" />
         <module name="server" />
@@ -60,10 +62,13 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chat" target="1.8" />
+      <module name="client" target="1.8" />
       <module name="client (1)" target="1.8" />
       <module name="code-spring-boot-starter" target="1.8" />
       <module name="consumer" target="1.8" />
       <module name="consumer-server" target="1.8" />
+      <module name="db-router-spring-boot-starter" target="1.8" />
+      <module name="db-router-spring-boot-starter-test" target="1.8" />
       <module name="dubbo" target="1.8" />
       <module name="dubbo-zk" target="1.8" />
       <module name="elasticsearch" target="1.8" />
@@ -113,10 +118,13 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="FreeWebChat" options="-parameters" />
       <module name="chat" options="-parameters" />
+      <module name="client" options="-parameters" />
       <module name="client (1)" options="-parameters" />
       <module name="code-spring-boot-starter" options="-parameters" />
       <module name="consumer" options="-parameters" />
       <module name="consumer-server" options="-parameters" />
+      <module name="db-router-spring-boot-starter" options="-parameters" />
+      <module name="db-router-spring-boot-starter-test" options="-parameters" />
       <module name="dubbo" options="-parameters" />
       <module name="dubbo-zk" options="-parameters" />
       <module name="elasticsearch" options="-parameters" />

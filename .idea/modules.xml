@@ -4,10 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FreeWebChat/FreeWebChat.iml" filepath="$PROJECT_DIR$/FreeWebChat/FreeWebChat.iml" />
       <module fileurl="file://$PROJECT_DIR$/chat/chat.iml" filepath="$PROJECT_DIR$/chat/chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/httpfilesystem/client.iml" filepath="$PROJECT_DIR$/httpfilesystem/client.iml" />
       <module fileurl="file://$PROJECT_DIR$/httpfilesystem/client/client (1).iml" filepath="$PROJECT_DIR$/httpfilesystem/client/client (1).iml" />
       <module fileurl="file://$PROJECT_DIR$/starter/code-spring-boot-starter/code-spring-boot-starter.iml" filepath="$PROJECT_DIR$/starter/code-spring-boot-starter/code-spring-boot-starter.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-alibaba-demo/consumer/consumer.iml" filepath="$PROJECT_DIR$/spring-cloud-alibaba-demo/consumer/consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo-zk/consumer-server/consumer-server.iml" filepath="$PROJECT_DIR$/dubbo-zk/consumer-server/consumer-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/middle-ware-design/db-router-spring-boot-starter-main/db-router-spring-boot-starter.iml" filepath="$PROJECT_DIR$/middle-ware-design/db-router-spring-boot-starter-main/db-router-spring-boot-starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/middle-ware-design/db-router-spring-boot-starter-test-main/db-router-spring-boot-starter-test.iml" filepath="$PROJECT_DIR$/middle-ware-design/db-router-spring-boot-starter-test-main/db-router-spring-boot-starter-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo/dubbo.iml" filepath="$PROJECT_DIR$/dubbo/dubbo.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo-zk/dubbo-zk.iml" filepath="$PROJECT_DIR$/dubbo-zk/dubbo-zk.iml" />
       <module fileurl="file://$PROJECT_DIR$/elasticsearch/elasticsearch.iml" filepath="$PROJECT_DIR$/elasticsearch/elasticsearch.iml" />

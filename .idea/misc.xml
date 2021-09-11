@@ -66,6 +66,8 @@
         <option value="$PROJECT_DIR$/spring-cloud-alibaba-demo/consumer/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-alibaba-demo/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/vhr/vhrserver/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/db-router-spring-boot-starter-main/pom.xml" />
+        <option value="$PROJECT_DIR$/middle-ware-design/db-router-spring-boot-starter-test-main/pom.xml" />
       </list>
     </option>
   </component>
