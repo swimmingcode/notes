@@ -9,18 +9,14 @@
       <module fileurl="file://$PROJECT_DIR$/starter/code-spring-boot-starter/code-spring-boot-starter.iml" filepath="$PROJECT_DIR$/starter/code-spring-boot-starter/code-spring-boot-starter.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-alibaba-demo/consumer/consumer.iml" filepath="$PROJECT_DIR$/spring-cloud-alibaba-demo/consumer/consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo-zk/consumer-server/consumer-server.iml" filepath="$PROJECT_DIR$/dubbo-zk/consumer-server/consumer-server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/middle-ware-design/db-router-spring-boot-starter-main/db-router-spring-boot-starter.iml" filepath="$PROJECT_DIR$/middle-ware-design/db-router-spring-boot-starter-main/db-router-spring-boot-starter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/middle-ware-design/db-router-spring-boot-starter-test-main/db-router-spring-boot-starter-test.iml" filepath="$PROJECT_DIR$/middle-ware-design/db-router-spring-boot-starter-test-main/db-router-spring-boot-starter-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo/dubbo.iml" filepath="$PROJECT_DIR$/dubbo/dubbo.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo-zk/dubbo-zk.iml" filepath="$PROJECT_DIR$/dubbo-zk/dubbo-zk.iml" />
       <module fileurl="file://$PROJECT_DIR$/elasticsearch/elasticsearch.iml" filepath="$PROJECT_DIR$/elasticsearch/elasticsearch.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-alibaba-demo/gateway/gateway.iml" filepath="$PROJECT_DIR$/spring-cloud-alibaba-demo/gateway/gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/httpfilesystem/httpfilesystem.iml" filepath="$PROJECT_DIR$/httpfilesystem/httpfilesystem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/middle-ware-design/hystrix/hystrix.iml" filepath="$PROJECT_DIR$/middle-ware-design/hystrix/hystrix.iml" />
       <module fileurl="file://$PROJECT_DIR$/javase/javase.iml" filepath="$PROJECT_DIR$/javase/javase.iml" />
       <module fileurl="file://$PROJECT_DIR$/jwt/jwt.iml" filepath="$PROJECT_DIR$/jwt/jwt.iml" />
       <module fileurl="file://$PROJECT_DIR$/vhr/mailserver/mailserver.iml" filepath="$PROJECT_DIR$/vhr/mailserver/mailserver.iml" />
-      <module fileurl="file://$PROJECT_DIR$/middle-ware-design/methodext/methodext.iml" filepath="$PROJECT_DIR$/middle-ware-design/methodext/methodext.iml" />
       <module fileurl="file://$PROJECT_DIR$/middle-ware-design/middle-ware-design.iml" filepath="$PROJECT_DIR$/middle-ware-design/middle-ware-design.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongodb/mongodb.iml" filepath="$PROJECT_DIR$/mongodb/mongodb.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis-plus/mybatis-plus.iml" filepath="$PROJECT_DIR$/mybatis-plus/mybatis-plus.iml" />
@@ -30,8 +26,6 @@
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-alibaba-demo/pay/pay.iml" filepath="$PROJECT_DIR$/spring-cloud-alibaba-demo/pay/pay.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-alibaba-demo/provider/provider.iml" filepath="$PROJECT_DIR$/spring-cloud-alibaba-demo/provider/provider.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo-zk/provider-server/provider-server.iml" filepath="$PROJECT_DIR$/dubbo-zk/provider-server/provider-server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/middle-ware-design/ratelimiter/ratelimiter.iml" filepath="$PROJECT_DIR$/middle-ware-design/ratelimiter/ratelimiter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/middle-ware-design/ratelimiter-test/ratelimiter-test.iml" filepath="$PROJECT_DIR$/middle-ware-design/ratelimiter-test/ratelimiter-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis/redis.iml" filepath="$PROJECT_DIR$/redis/redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/httpfilesystem/server/server.iml" filepath="$PROJECT_DIR$/httpfilesystem/server/server.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-alibaba-demo/spring-cloud-alibaba-demo.iml" filepath="$PROJECT_DIR$/spring-cloud-alibaba-demo/spring-cloud-alibaba-demo.iml" />
@@ -53,7 +47,6 @@
       <module fileurl="file://$PROJECT_DIR$/virmachine/virmachine.iml" filepath="$PROJECT_DIR$/virmachine/virmachine.iml" />
       <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
       <module fileurl="file://$PROJECT_DIR$/websocket/websocket.iml" filepath="$PROJECT_DIR$/websocket/websocket.iml" />
-      <module fileurl="file://$PROJECT_DIR$/middle-ware-design/whitelist/whitelist.iml" filepath="$PROJECT_DIR$/middle-ware-design/whitelist/whitelist.iml" />
       <module fileurl="file://$PROJECT_DIR$/middle-ware-design/whitelist-test/whitelist-test.iml" filepath="$PROJECT_DIR$/middle-ware-design/whitelist-test/whitelist-test.iml" />
     </modules>
   </component>
