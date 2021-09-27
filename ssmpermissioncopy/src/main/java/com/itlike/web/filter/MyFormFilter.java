@@ -17,6 +17,7 @@ import javax.servlet.ServletResponse;
 public class MyFormFilter extends FormAuthenticationFilter {
 
     /*成功*/
+    @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
         response.setCharacterEncoding("utf-8");
         /*响应给浏览器*/

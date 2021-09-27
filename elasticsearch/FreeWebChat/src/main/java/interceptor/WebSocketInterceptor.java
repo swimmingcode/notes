@@ -1,4 +1,4 @@
-package interceptor;
+package com.xnpe.fchat.interceptor;
 
 import com.xnpe.fchat.data.MessageKey;
 import org.json.JSONObject;

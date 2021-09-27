@@ -7,37 +7,32 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="server" />
         <module name="client" />
         <module name="vhr-model" />
         <module name="websocket" />
-        <module name="ratelimiter" />
-        <module name="elasticsearch" />
+        <module name="code-spring-boot-starter" />
         <module name="ssmpermissioncopy" />
-        <module name="hystrix" />
         <module name="upload" />
         <module name="dubbo-zk" />
-        <module name="provider" />
+        <module name="mongodb" />
         <module name="mybatis-plus" />
         <module name="dubbo" />
-        <module name="code-spring-boot-starter" />
-        <module name="methodext" />
+        <module name="consumer" />
         <module name="FreeWebChat" />
         <module name="mailserver" />
+        <module name="order" />
         <module name="chat" />
-        <module name="consumer" />
+        <module name="stomp-greeting-server" />
         <module name="middle-ware-design" />
         <module name="jwt" />
-        <module name="whitelist" />
         <module name="vhr-web" />
-        <module name="ratelimiter-test" />
-        <module name="order" />
+        <module name="provider" />
         <module name="minio" />
         <module name="vhr-mapper" />
         <module name="myspring" />
         <module name="web" />
-        <module name="springcloudalibabademo" />
-        <module name="client (1)" />
-        <module name="mongodb" />
+        <module name="elasticsearch" />
         <module name="virmachine" />
         <module name="consumer-server" />
         <module name="starter-test" />
@@ -45,25 +40,28 @@
         <module name="vhr-commons" />
         <module name="youyuancode‐spring‐boot‐starter‐autoconfigurer" />
         <module name="java" />
-        <module name="stomp-greeting-server" />
+        <module name="redis" />
         <module name="whitelist-test" />
         <module name="spring-cloud-alibaba-demo" />
-        <module name="server" />
+        <module name="client (1)" />
         <module name="provider-server" />
         <module name="vhr-service" />
         <module name="gateway" />
         <module name="stomp-java-client" />
         <module name="httpfilesystem" />
-        <module name="redis" />
+        <module name="springcloudalibabademo" />
         <module name="pay" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chat" target="1.8" />
+      <module name="client" target="1.8" />
       <module name="client (1)" target="1.8" />
       <module name="code-spring-boot-starter" target="1.8" />
       <module name="consumer" target="1.8" />
       <module name="consumer-server" target="1.8" />
+      <module name="db-router-spring-boot-starter" target="1.8" />
+      <module name="db-router-spring-boot-starter-test" target="1.8" />
       <module name="dubbo" target="1.8" />
       <module name="dubbo-zk" target="1.8" />
       <module name="elasticsearch" target="1.8" />
@@ -85,6 +83,8 @@
       <module name="ratelimiter" target="1.8" />
       <module name="ratelimiter-test" target="1.8" />
       <module name="redis" target="1.8" />
+      <module name="redis-spring-boot-starter" target="1.8" />
+      <module name="redis-spring-boot-starter-test" target="1.8" />
       <module name="server" target="1.8" />
       <module name="spring-cloud-alibaba-demo" target="1.8" />
       <module name="springcloudalibabademo" target="1.8" />
@@ -113,10 +113,13 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="FreeWebChat" options="-parameters" />
       <module name="chat" options="-parameters" />
+      <module name="client" options="-parameters" />
       <module name="client (1)" options="-parameters" />
       <module name="code-spring-boot-starter" options="-parameters" />
       <module name="consumer" options="-parameters" />
       <module name="consumer-server" options="-parameters" />
+      <module name="db-router-spring-boot-starter" options="-parameters" />
+      <module name="db-router-spring-boot-starter-test" options="-parameters" />
       <module name="dubbo" options="-parameters" />
       <module name="dubbo-zk" options="-parameters" />
       <module name="elasticsearch" options="-parameters" />
@@ -136,6 +139,8 @@
       <module name="ratelimiter" options="-parameters" />
       <module name="ratelimiter-test" options="-parameters" />
       <module name="redis" options="-parameters" />
+      <module name="redis-spring-boot-starter" options="-parameters" />
+      <module name="redis-spring-boot-starter-test" options="-parameters" />
       <module name="server" options="-parameters" />
       <module name="spring-cloud-alibaba-demo" options="-parameters" />
       <module name="springcloudalibabademo" options="-parameters" />

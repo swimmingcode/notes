@@ -62,7 +62,7 @@
     -->
     <aop:config proxy-target-class="true"></aop:config>
     <!-- 使用第三方去扫描shiro的注解 -->
-    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor ">
+    <bean class="org.apache.shiro.spring.security.com.xnpe.fchat.interceptor.AuthorizationAttributeSourceAdvisor ">
         <property name="securityManager" ref="securityManager"/>
     </bean>
 

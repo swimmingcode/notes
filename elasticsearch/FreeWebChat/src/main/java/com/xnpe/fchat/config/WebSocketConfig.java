@@ -1,7 +1,7 @@
 package com.xnpe.fchat.config;
 
-import interceptor.MyHandler;
-import interceptor.WebSocketInterceptor;
+import com.xnpe.fchat.interceptor.MyHandler;
+import com.xnpe.fchat.interceptor.WebSocketInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;

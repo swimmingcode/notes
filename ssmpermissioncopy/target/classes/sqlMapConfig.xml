@@ -12,6 +12,6 @@
     </typeAliases>
     <!--分页-->
     <plugins>
-        <plugin interceptor="com.github.pagehelper.PageHelper"/>
+        <plugin com.xnpe.fchat.interceptor="com.github.pagehelper.PageHelper"/>
     </plugins>
 </configuration>
