@@ -22,14 +22,20 @@ public class NioServer {
         serverSocketChannel.configureBlocking(false);
         // 2. 配置 channel 监听的套接字
         serverSocketChannel.bind(new InetSocketAddress(8080));
-        // 3. 创建选择器并把通道注册到 Selector 上，并注册感兴趣的事件
+        // 3. 创建IO多路复用选择器并把通道注册到 Selector 上，
+        // 并注册感兴趣的事件
         Selector selector = Selector.open();
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
         // 4. 在死循环中不断监听
         while (true) {
-            if (selector.select() == 0) {
+            //阻塞的方法。返回值代表事件的通道的个数
+            // 0 超时
+            //-1 错误
+            int select = selector.select();
+            if (select == 0) {
                 continue;
             }
+            //只要走到这里，必然说明，发生了事情，有可读，可写，可连接的channel
             Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
             while (iterator.hasNext()) {
                 SelectionKey key = iterator.next();

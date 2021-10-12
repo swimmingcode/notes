@@ -9,7 +9,6 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.time.LocalDateTime;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -24,17 +23,15 @@ public class NioClient {
         try {
             SocketChannel socketChannel = SocketChannel.open();
             socketChannel.configureBlocking(false);
-
             Selector selector = Selector.open();
             socketChannel.register(selector, SelectionKey.OP_CONNECT);
-            socketChannel.connect(new InetSocketAddress("localhost", 8888));
+            socketChannel.connect(new InetSocketAddress("localhost", 8080));
             while (true) {
                 selector.select();
                 Set<SelectionKey> selectionKeys = selector.selectedKeys();
                 for (SelectionKey selectionKey : selectionKeys) {
                     if (selectionKey.isConnectable()) {
                         SocketChannel client = (SocketChannel) selectionKey.channel();
-
                         if (client.isConnectionPending()) {
                             client.finishConnect();
 
@@ -42,7 +39,9 @@ public class NioClient {
                             writeBuffer.put((LocalDateTime.now() + " 连接成功").getBytes());
                             writeBuffer.flip();
                             client.write(writeBuffer);
+
                             ExecutorService executorService = Executors.newSingleThreadExecutor(Executors.defaultThreadFactory());
+
                             executorService.submit(() -> {
                                 while (true) {
                                     try {
